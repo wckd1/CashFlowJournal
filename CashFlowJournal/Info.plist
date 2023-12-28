@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+    <array>
+        <string>urbanist-black.ttf</string>
+        <string>urbanist-bold.ttf</string>
+        <string>UrbanistExtraBold.ttf</string>
+        <string>urbanist-extra-light.ttf</string>
+        <string>urbanist-italic.ttf</string>
+        <string>urbanist-light.ttf</string>
+        <string>urbanist-medium.ttf</string>
+        <string>urbanist-regular.ttf</string>
+        <string>urbanist-semi.ttf</string>
+        <string>urbanist-thin.ttf</string>
+        <string>Urbanist-SemiBold.ttf</string>
+    </array>
+</dict>
+</plist>

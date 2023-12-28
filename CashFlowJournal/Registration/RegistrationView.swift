@@ -14,17 +14,37 @@ struct RegistrationView: View {
     
     var body: some View {
         ZStack {
-            Color.bg.edgesIgnoringSafeArea(.all)
+            Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack() {
+            VStack(spacing: 6) {
                 Spacer()
-                Text("Let's \nget to know \neach other!")
+                
+                Text(String(localized: "registration_title_first"))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(Font.system(size: 45))
+                    .modifier(UrbanistFont(.regular, size: 36))
+                    .foregroundColor(Color.text_color)
+                Text(String(localized: "registration_title_second"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .modifier(UrbanistFont(.bold, size: 42))
+                    .foregroundColor(Color.text_color)
+                HStack(spacing: 12) {
+                    Text(String(localized: "registration_title_third"))
+                        .modifier(UrbanistFont(.regular, size: 30))
+                    Text(String(localized: "registration_title_fourth"))
+                        .modifier(UrbanistFont(.bold, size: 30))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .foregroundColor(Color.background)
+                        .background(Color.green_color)
+                        .cornerRadius(12)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 6)
                 
                 Spacer()
                 
-                TextField("Enter your name", text: $usernameValue)
+                TextField(String(localized: "registration_username_hint"), text: $usernameValue)
+                    .modifier(UrbanistFont(.regular, size: 18))
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
                     .onSubmit {
@@ -34,6 +54,7 @@ struct RegistrationView: View {
                     .submitLabel(.continue)
                 Divider()
                     .padding(.horizontal, 8)
+                
                 Spacer()
             }
             .padding(24)
