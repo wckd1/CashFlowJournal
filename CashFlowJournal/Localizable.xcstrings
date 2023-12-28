@@ -1,6 +1,83 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "create_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Account"
+          }
+        }
+      }
+    },
+    "ob_account_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter account name"
+          }
+        }
+      }
+    },
+    "ob_account_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will be your space to track income, record expenses, and manage your financial health.  Enter name and tap \"Create Account\" to get started."
+          }
+        }
+      }
+    },
+    "ob_account_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To begin, we'll set up your first account. "
+          }
+        }
+      }
+    },
+    "ob_balance_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter account balance"
+          }
+        }
+      }
+    },
+    "ob_balance_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set an initial balance for your account. This reflects your current financial state.   Simply enter the amount and tap \"Save.\""
+          }
+        }
+      }
+    },
+    "ob_balance_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now, let's establish your starting point."
+          }
+        }
+      }
+    },
     "registration_title_first" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -52,6 +129,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter your name"
+          }
+        }
+      }
+    },
+    "save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         }
       }

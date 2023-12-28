@@ -2,7 +2,7 @@
 //  RegistrationView.swift
 //  CashFlowJournal
 //
-//  Created by Роман Коробейников on 28.12.2023.
+//  Created by Roman Korobeinikov on 28.12.2023.
 //
 
 import SwiftUI
@@ -34,8 +34,8 @@ struct RegistrationView: View {
                         .modifier(UrbanistFont(.bold, size: 30))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                        .foregroundColor(Color.background)
-                        .background(Color.green_color)
+                        .foregroundColor(Color.bg_color)
+                        .background(Color.primary_color)
                         .cornerRadius(12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -28,6 +28,9 @@
 		4E6531C12B3DB62400FF4811 /* urbanist-extra-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531B52B3DB62400FF4811 /* urbanist-extra-light.ttf */; };
 		4E6531C22B3DB62400FF4811 /* urbanist-semi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531B62B3DB62400FF4811 /* urbanist-semi.ttf */; };
 		4E6531C72B3DBB1100FF4811 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */; };
+		4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */; };
+		4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */; };
+		4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		4E6531B62B3DB62400FF4811 /* urbanist-semi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "urbanist-semi.ttf"; sourceTree = "<group>"; };
 		4E6531C52B3DB78F00FF4811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAccountView.swift; sourceTree = "<group>"; };
+		4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBalanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 		4E46ED502B3D926500B48E35 /* CashFlowJournal */ = {
 			isa = PBXGroup;
 			children = (
+				4E6531C82B3DBCC300FF4811 /* Onboarding */,
 				4E6531C52B3DB78F00FF4811 /* Info.plist */,
 				4E6531AA2B3DB62400FF4811 /* Font */,
 				4E6531A42B3DB35300FF4811 /* Registration */,
@@ -142,6 +149,16 @@
 				4E6531B62B3DB62400FF4811 /* urbanist-semi.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		4E6531C82B3DBCC300FF4811 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */,
+				4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */,
+				4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +248,11 @@
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
+				4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */,
+				4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */,
 				4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */,
 				4E6531A22B3D9CA700FF4811 /* ColorExtensions.swift in Sources */,
+				4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

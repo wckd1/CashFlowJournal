@@ -2,7 +2,7 @@
 //  SplashView.swift
 //  CashFlowJournal
 //
-//  Created by Роман Коробейников on 28.12.2023.
+//  Created by Roman Korobeinikov on 28.12.2023.
 //
 
 import SwiftUI
@@ -14,11 +14,12 @@ struct SplashView: View {
     @State private var isOnboarded: Bool = UserDefaults.isOnboarded
     
     var body: some View {
-        if username != "" {
-            // Check onboarding
-            Text(username)
-        } else {
+        if username.isEmpty {
             RegistrationView(username: $username)
+        } else if !isOnboarded {
+            OnboardingView(isCompleted: $isOnboarded)
+        } else {
+            Text(username)
         }
     }
 }

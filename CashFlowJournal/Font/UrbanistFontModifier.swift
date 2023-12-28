@@ -2,7 +2,7 @@
 //  UrbanistFontModifier.swift
 //  ConversAI
 //
-//  Created by Murat ÖZTÜRK on 3.06.2023.
+//  Created by Roman Korobeinikov on 28.12.2023.
 //
 
 import SwiftUI
