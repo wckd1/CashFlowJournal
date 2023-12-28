@@ -18,6 +18,6 @@ CashFlowJournal is an expense tracker app designed to help you manage and organi
 
 ## Issues
 
-If you encounter any issues or have suggestions, please [open an issue](https://github.com/your-username/CashFlowJournal/issues).
+If you encounter any issues or have suggestions, please [open an issue](https://github.com/wckd1/CashFlowJournal/issues).
 
 Happy tracking your finances with CashFlowJournal!
