@@ -10,7 +10,6 @@
 		4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */; };
 		4E46ED562B3D926700B48E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED552B3D926700B48E35 /* Assets.xcassets */; };
 		4E46ED592B3D926700B48E35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */; };
-		4E6531982B3D97F000FF4811 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531972B3D97F000FF4811 /* Constants.swift */; };
 		4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531992B3D985000FF4811 /* UserDefaults.swift */; };
 		4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65319B2B3D997C00FF4811 /* RegistrationView.swift */; };
 		4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65319D2B3D99BF00FF4811 /* SplashView.swift */; };
@@ -39,7 +38,6 @@
 		4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowJournalApp.swift; sourceTree = "<group>"; };
 		4E46ED552B3D926700B48E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4E6531972B3D97F000FF4811 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E6531992B3D985000FF4811 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		4E65319B2B3D997C00FF4811 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		4E65319D2B3D99BF00FF4811 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -94,12 +92,12 @@
 		4E46ED502B3D926500B48E35 /* CashFlowJournal */ = {
 			isa = PBXGroup;
 			children = (
-				4E6531C82B3DBCC300FF4811 /* Onboarding */,
+				4EBED4702B3ED3A300B11BFC /* Modifiers */,
+				4EBED46F2B3ED38A00B11BFC /* Screens */,
+				4EBED46E2B3ED38300B11BFC /* Models */,
 				4E6531C52B3DB78F00FF4811 /* Info.plist */,
 				4E6531AA2B3DB62400FF4811 /* Font */,
-				4E6531A42B3DB35300FF4811 /* Registration */,
 				4E6531A32B3DB34000FF4811 /* Extensions */,
-				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
 				4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */,
 				4E46ED552B3D926700B48E35 /* Assets.xcassets */,
 				4E46ED572B3D926700B48E35 /* Preview Content */,
@@ -120,9 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				4E6531992B3D985000FF4811 /* UserDefaults.swift */,
-				4E6531972B3D97F000FF4811 /* Constants.swift */,
 				4E6531A12B3D9CA700FF4811 /* ColorExtensions.swift */,
-				4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -140,7 +136,6 @@
 			children = (
 				4E6531AB2B3DB62400FF4811 /* urbanist-bold.ttf */,
 				4E6531AC2B3DB62400FF4811 /* urbanist-regular.ttf */,
-				4E6531AD2B3DB62400FF4811 /* UrbanistFontModifier.swift */,
 				4E6531AE2B3DB62400FF4811 /* urbanist-thin.ttf */,
 				4E6531AF2B3DB62400FF4811 /* UrbanistExtraBold.ttf */,
 				4E6531B02B3DB62400FF4811 /* Urbanist-SemiBold.ttf */,
@@ -162,6 +157,32 @@
 				4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		4EBED46E2B3ED38300B11BFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4EBED46F2B3ED38A00B11BFC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
+				4E6531A42B3DB35300FF4811 /* Registration */,
+				4E6531C82B3DBCC300FF4811 /* Onboarding */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4EBED4702B3ED3A300B11BFC /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				4E6531AD2B3DB62400FF4811 /* UrbanistFontModifier.swift */,
+				4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */,
-				4E6531982B3D97F000FF4811 /* Constants.swift in Sources */,
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
