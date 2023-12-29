@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CashFlowJournalApp: App {
@@ -15,9 +16,7 @@ struct CashFlowJournalApp: App {
         WindowGroup {
             SplashView()
                 .preferredColorScheme(colorScheme)
-                .onAppear {
-                    UserDefaults.username = ""
-                }
         }
+        .modelContainer(for: Account.self)
     }
 }

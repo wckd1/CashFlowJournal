@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct AppTextFieldStyle: TextFieldStyle {
-    var label: String?
+    var left: String?
+    var right: String?
     
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            if let label = label {
-                Text(label)
+            if let left = left {
+                Text(left)
             }
             
             configuration
                 .modifier(UrbanistFont(.regular, size: 18))
                 .foregroundStyle(Color.text_color)
+            
+            if let right = right {
+                Text(right)
+            }
         }
         .overlay(
             Rectangle()

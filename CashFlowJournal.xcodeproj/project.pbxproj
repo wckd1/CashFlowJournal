@@ -27,10 +27,10 @@
 		4E6531C12B3DB62400FF4811 /* urbanist-extra-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531B52B3DB62400FF4811 /* urbanist-extra-light.ttf */; };
 		4E6531C22B3DB62400FF4811 /* urbanist-semi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531B62B3DB62400FF4811 /* urbanist-semi.ttf */; };
 		4E6531C72B3DBB1100FF4811 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */; };
-		4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */; };
 		4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */; };
 		4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */; };
 		4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */; };
+		4EBED4722B3ED43700B11BFC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED4712B3ED43700B11BFC /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +56,10 @@
 		4E6531B62B3DB62400FF4811 /* urbanist-semi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "urbanist-semi.ttf"; sourceTree = "<group>"; };
 		4E6531C52B3DB78F00FF4811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAccountView.swift; sourceTree = "<group>"; };
 		4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBalanceView.swift; sourceTree = "<group>"; };
 		4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextFieldStyle.swift; sourceTree = "<group>"; };
+		4EBED4712B3ED43700B11BFC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +152,6 @@
 		4E6531C82B3DBCC300FF4811 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */,
 				4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */,
 				4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */,
 			);
@@ -162,6 +161,7 @@
 		4EBED46E2B3ED38300B11BFC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4EBED4712B3ED43700B11BFC /* Account.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,11 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */,
+				4EBED4722B3ED43700B11BFC /* Account.swift in Sources */,
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
-				4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */,
 				4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */,
 				4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */,
 				4E6531A22B3D9CA700FF4811 /* ColorExtensions.swift in Sources */,

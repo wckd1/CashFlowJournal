@@ -18,7 +18,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter account name"
+            "value" : "Enter account name (ex. Cash)"
           }
         }
       }
@@ -62,7 +62,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Set an initial balance for your account. This reflects your current financial state.   Simply enter the amount and tap \"Save.\""
+            "value" : "Set an initial balance for your \"%@\" account. This reflects your current financial state.   Simply enter the amount and tap \"Save.\""
           }
         }
       }

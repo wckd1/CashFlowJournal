@@ -16,7 +16,7 @@ struct RegistrationView: View {
         ZStack {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 6) {
+            VStack(spacing: 2) {
                 Spacer()
                 
                 Text(String(localized: "registration_title_first"))
@@ -44,7 +44,7 @@ struct RegistrationView: View {
                 Spacer()
                 
                 TextField(String(localized: "registration_username_hint"), text: $usernameValue)
-                    .textFieldStyle(AppTextFieldStyle(label: "🧑‍💼"))
+                    .textFieldStyle(AppTextFieldStyle(left: "🧑‍💼"))
                     .onSubmit {
                         guard usernameValue.isEmpty == false else { return }
                         username = usernameValue
