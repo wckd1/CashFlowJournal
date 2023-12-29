@@ -25,11 +25,7 @@ struct OnboardingAccountView: View {
             Spacer()
             
             TextField(String(localized: "ob_account_hint"), text: $accountName)
-                .modifier(UrbanistFont(.regular, size: 18))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-            Divider()
-                .padding(.horizontal, 8)
+                .textFieldStyle(AppTextFieldStyle(label: "🏦"))
             
             Button {
                 pageIndex += 1

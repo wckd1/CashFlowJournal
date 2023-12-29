@@ -31,6 +31,7 @@
 		4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */; };
 		4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */; };
 		4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */; };
+		4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		4E6531C92B3DBCD000FF4811 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAccountView.swift; sourceTree = "<group>"; };
 		4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBalanceView.swift; sourceTree = "<group>"; };
+		4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				4E6531992B3D985000FF4811 /* UserDefaults.swift */,
 				4E6531972B3D97F000FF4811 /* Constants.swift */,
 				4E6531A12B3D9CA700FF4811 /* ColorExtensions.swift */,
+				4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */,
 				4E6531982B3D97F000FF4811 /* Constants.swift in Sources */,
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
+				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
 				4E6531CA2B3DBCD000FF4811 /* OnboardingView.swift in Sources */,

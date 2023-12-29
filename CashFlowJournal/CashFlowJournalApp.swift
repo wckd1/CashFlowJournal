@@ -15,9 +15,9 @@ struct CashFlowJournalApp: App {
         WindowGroup {
             SplashView()
                 .preferredColorScheme(colorScheme)
-//                .onAppear {
-//                    UserDefaults.username = ""
-//                }
+                .onAppear {
+                    UserDefaults.username = ""
+                }
         }
     }
 }

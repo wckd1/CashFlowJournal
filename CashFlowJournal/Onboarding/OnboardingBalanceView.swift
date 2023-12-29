@@ -25,12 +25,8 @@ struct OnboardingBalanceView: View {
             Spacer()
             
             TextField(String(localized: "ob_balance_hint"), text: $balance)
-                .modifier(UrbanistFont(.regular, size: 18))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
+                .textFieldStyle(AppTextFieldStyle(label: "💰"))
                 .keyboardType(.decimalPad)
-            Divider()
-                .padding(.horizontal, 8)
             
             Button {
                 isCompleted = true

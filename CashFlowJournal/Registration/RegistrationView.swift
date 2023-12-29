@@ -44,16 +44,12 @@ struct RegistrationView: View {
                 Spacer()
                 
                 TextField(String(localized: "registration_username_hint"), text: $usernameValue)
-                    .modifier(UrbanistFont(.regular, size: 18))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
+                    .textFieldStyle(AppTextFieldStyle(label: "🧑‍💼"))
                     .onSubmit {
                         guard usernameValue.isEmpty == false else { return }
                         username = usernameValue
                     }
                     .submitLabel(.continue)
-                Divider()
-                    .padding(.horizontal, 8)
                 
                 Spacer()
             }
