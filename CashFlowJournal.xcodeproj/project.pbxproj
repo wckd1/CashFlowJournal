@@ -29,6 +29,7 @@
 		4E6531C72B3DBB1100FF4811 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */; };
 		4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */; };
 		4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */; };
+		4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6DAD022B3F027500EB61E0 /* Previewer.swift */; };
 		4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */; };
 		4EBED4722B3ED43700B11BFC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED4712B3ED43700B11BFC /* Account.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		4E6531C62B3DBB1100FF4811 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4E6531CF2B3DC4C900FF4811 /* OnboardingAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAccountView.swift; sourceTree = "<group>"; };
 		4E6531D12B3DC61900FF4811 /* OnboardingBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBalanceView.swift; sourceTree = "<group>"; };
+		4E6DAD022B3F027500EB61E0 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextFieldStyle.swift; sourceTree = "<group>"; };
 		4EBED4712B3ED43700B11BFC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */,
+				4E6DAD022B3F027500EB61E0 /* Previewer.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */,
 				4EBED4722B3ED43700B11BFC /* Account.swift in Sources */,
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
+				4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,

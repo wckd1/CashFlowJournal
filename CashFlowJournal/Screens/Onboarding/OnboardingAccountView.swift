@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct OnboardingAccountView: View {
     @Binding var isCompleted: Bool
@@ -21,15 +22,18 @@ struct OnboardingAccountView: View {
                     Text(String(localized: "ob_account_title"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .modifier(UrbanistFont(.bold, size: 30))
+                        .foregroundColor(Color.text_color)
                         .padding(.bottom, 36)
                     
                     Text(String(localized: "ob_account_subtitle"))
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color.text_color)
                         .modifier(UrbanistFont(.regular, size: 18))
                     
                     Spacer()
                     
                     TextField(String(localized: "ob_account_hint"), text: $account.name)
+                        .foregroundColor(Color.text_color)
                         .textFieldStyle(AppTextFieldStyle(left: "🏦"))
                     
                     NavigationLink(
@@ -54,5 +58,12 @@ struct OnboardingAccountView: View {
 }
 
 #Preview {
-    OnboardingAccountView(isCompleted: .constant(false))
+    do {
+        let previewer = try Previewer()
+        
+        return OnboardingAccountView(isCompleted: .constant(false))
+            .modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
 }

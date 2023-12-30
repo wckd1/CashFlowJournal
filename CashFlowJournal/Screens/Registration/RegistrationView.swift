@@ -30,6 +30,7 @@ struct RegistrationView: View {
                 HStack(spacing: 12) {
                     Text(String(localized: "registration_title_third"))
                         .modifier(UrbanistFont(.regular, size: 30))
+                        .foregroundColor(Color.text_color)
                     Text(String(localized: "registration_title_fourth"))
                         .modifier(UrbanistFont(.bold, size: 30))
                         .padding(.horizontal, 12)
