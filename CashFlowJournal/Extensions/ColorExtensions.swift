@@ -11,4 +11,6 @@ extension Color {
     static let bg_color = Color("Background")
     static let text_color = Color("TextColor")
     static let primary_color = Color("Primary")
+    static let income_color = Color("Primary")
+    static let expense_color = Color("Red")
 }

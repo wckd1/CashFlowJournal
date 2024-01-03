@@ -16,6 +16,7 @@ struct CashFlowJournalApp: App {
         WindowGroup {
             SplashView()
                 .preferredColorScheme(colorScheme)
+                .tint(Color.primary_color)
         }
         .modelContainer(for: Account.self)
     }

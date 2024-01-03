@@ -28,9 +28,9 @@ struct Previewer {
         }
         
         transactions = [
-            Transaction(title: "Groceries", amount: 45.64, source: nil, category: "Food", account: accounts[1]),
+            Transaction(title: "Snack", amount: -12.50, source: nil, category: "Snack", account: accounts[0]),
             Transaction(title: "Salary", amount: 450.00, source: "Salary", category: nil, account: accounts[1]),
-            Transaction(title: "Snack", amount: 12.50, source: nil, category: "Snack", account: accounts[0])
+            Transaction(title: "Groceries", amount: -45.64, source: nil, category: "Food", account: accounts[1])
         ]
         
         for transaction in transactions {

@@ -12,6 +12,7 @@ import Foundation
 class Account {
     var name: String = ""
     var balance: Float = 0.0
+    var transactions: [Transaction]? = [Transaction]()
     
     init(name: String, balance: Float = 0.0) {
         self.name = name

@@ -23,7 +23,7 @@ struct SplashView: View {
         } else if !isOnboarded {
             OnboardingAccountView(isCompleted: $isOnboarded)
         } else {
-            Text(username)
+            DashboardView()
         }
     }
 }

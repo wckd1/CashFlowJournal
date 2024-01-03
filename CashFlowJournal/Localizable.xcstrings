@@ -1,6 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Add" : {
+
+    },
+    "add_transaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add transaction"
+          }
+        }
+      }
+    },
     "create_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11,6 +25,75 @@
           }
         }
       }
+    },
+    "dashboard_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your balance is  %@"
+          }
+        }
+      }
+    },
+    "dashboard_balance_from_accounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary from %@ accounts"
+          }
+        }
+      }
+    },
+    "dashboard_greeting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, %@"
+          }
+        }
+      }
+    },
+    "dashboard_no_transactions_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use \"+\" in the upper right corner to add your first transaction"
+          }
+        }
+      }
+    },
+    "dashboard_no_transactions_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transactions yet"
+          }
+        }
+      }
+    },
+    "dashboard_transactions_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest transactions"
+          }
+        }
+      }
+    },
+    "Failed to create preview: %@" : {
+
     },
     "ob_account_hint" : {
       "extractionState" : "manual",
