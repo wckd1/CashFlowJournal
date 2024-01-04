@@ -14,9 +14,7 @@ struct DashboardView: View {
     @AppStorage(UserDefaults.usernameKey)
     private var username: String = UserDefaults.username
     
-    @State private var isAccountsShown = false
     
-    @Query private var accounts: [Account]
     @Query private var transactions: [Transaction]
     
     var body: some View {
@@ -26,55 +24,16 @@ struct DashboardView: View {
                 
                 VStack {
                     // Balance
-                    VStack(spacing: 12) {
-                        Text(
-                            String(
-                                format: String(localized: "dashboard_balance"),
-                                Formatter.shared.format(accounts.reduce(0) {$0 + $1.balance })
-                            )
-                        )
-                        .modifier(UrbanistFont(.regular, size: 30))
-                        .foregroundColor(Color.text_color)
-                        .multilineTextAlignment(.center)
-                        
-                        if isAccountsShown {
-                            ForEach(accounts) { account in
-                                HStack {
-                                    Text(account.name)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .modifier(UrbanistFont(.regular, size: 18))
-                                        .foregroundColor(Color.text_color)
-                                    
-                                    Text(Formatter.shared.format(account.balance))
-                                        .modifier(UrbanistFont(.regular, size: 18))
-                                        .foregroundColor(Color.text_color)
-                                }
-                            }
-                        } else if accounts.count > 1 {
-                            Text(String(format: String(localized: "dashboard_balance_from_accounts"), String(accounts.count)))
-                                .modifier(UrbanistFont(.regular, size: 12))
-                                .foregroundColor(Color.text_color)
-                        }
-                    }
-                    .onTapGesture {
-                        if accounts.count > 1 {
-                            withAnimation {
-                                isAccountsShown.toggle()
-                            }
-                        }
-                    }
-                    // Balance
+                    BalanceView()
                     
-                    Divider()
-                        .padding(.top, 24)
-                        .padding(.bottom, 6)
-                    
+                    // Transactions
                     if transactions.count > 1 {
                         // Transactions
-                        Text(String(localized: "dashboard_transactions_title"))
+                        Text("dashboard_transactions_title")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .modifier(UrbanistFont(.regular, size: 24))
                             .foregroundColor(Color.text_color)
+                            .padding(.bottom, 12)
                         
                         List {
                             ForEach(transactions) { transaction in
@@ -93,19 +52,23 @@ struct DashboardView: View {
                         )
                     }
                 }
-                .padding(24)
+                .padding(12)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text(String(format: String(localized: "dashboard_greeting"), username))
+                    Text("dashboard_greeting \(username)")
                         .modifier(UrbanistFont(.regular, size: 18))
                         .foregroundColor(Color.text_color)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu("Add", systemImage: "plus") {
+                    Menu("dashboard_add_menu", systemImage: "plus") {
                         Button {} label: {
-                            Text(String(localized: "add_transaction"))
+                            Text("add_transaction")
+                        }
+                        .buttonStyle(.plain)
+                        NavigationLink(destination: AddIncomeSourceView()) {
+                            Text("add_source")
                         }
                         .buttonStyle(.plain)
                     }

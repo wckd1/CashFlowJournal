@@ -11,33 +11,28 @@ struct TransactionCell: View {
     var transaction: Transaction
     
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            VStack(spacing: 6) {
-                // TODO: Add category / income type
-                Text(transaction.title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .modifier(UrbanistFont(.regular, size: 18))
-                    .foregroundColor(Color.text_color)
-                
-                Text(Formatter.shared.format(transaction.date))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .modifier(UrbanistFont(.regular, size: 12))
-                    .foregroundColor(Color.text_color)
-            }
+        HStack(alignment: .center, spacing: 12) {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(transaction.type.color)
+                .frame(width: 42, height: 42)
             
-            Text(Formatter.shared.format(transaction.amount))
-                .modifier(UrbanistFont(.regular, size: 18))
-                .foregroundColor(transaction.type.color)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
-extension TransactionType {
-    var color: Color {
-        switch self {
-        case .income: return Color.income_color
-        case .expense: return Color.expense_color
+            HStack(alignment: .top, spacing: 12) {
+                VStack(spacing: 6) {
+                    Text(transaction.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .modifier(UrbanistFont(.regular, size: 18))
+                        .foregroundColor(Color.text_color)
+                    
+                    Text(Formatter.shared.format(transaction.date))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .modifier(UrbanistFont(.regular, size: 12))
+                        .foregroundColor(Color.gray)
+                }
+                
+                Text(Formatter.shared.format(transaction.amount))
+                    .modifier(UrbanistFont(.regular, size: 18))
+                    .foregroundColor(transaction.type.color)
+            }
         }
     }
 }

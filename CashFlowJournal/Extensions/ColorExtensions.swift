@@ -8,9 +8,18 @@
 import SwiftUI
 
 extension Color {
-    static let bg_color = Color("Background")
-    static let text_color = Color("TextColor")
-    static let primary_color = Color("Primary")
-    static let income_color = Color("Primary")
-    static let expense_color = Color("Red")
+    static let bg_color = Color("CashFlowBackground")
+    static let primary_color = Color("CashFlowPrimary")
+    static let text_color = Color("CashFlowTextColor")
+    static let income_color = Color("CashFlowPrimary")
+    static let expense_color = Color("CashFlowRed")
+}
+
+extension TransactionType {
+    var color: Color {
+        switch self {
+        case .income: return Color.income_color
+        case .expense: return Color.expense_color
+        }
+    }
 }

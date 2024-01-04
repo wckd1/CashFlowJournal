@@ -1,8 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add" : {
+    "Add income source" : {
 
+    },
+    "add_source" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add income source"
+          }
+        }
+      }
     },
     "add_transaction" : {
       "extractionState" : "manual",
@@ -26,7 +37,18 @@
         }
       }
     },
-    "dashboard_balance" : {
+    "dashboard_add_menu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add entity"
+          }
+        }
+      }
+    },
+    "dashboard_balance %@" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -37,18 +59,18 @@
         }
       }
     },
-    "dashboard_balance_from_accounts" : {
+    "dashboard_balance_from_accounts %lld" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Summary from %@ accounts"
+            "value" : "Summary from %lld accounts"
           }
         }
       }
     },
-    "dashboard_greeting" : {
+    "dashboard_greeting %@" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -139,7 +161,7 @@
         }
       }
     },
-    "ob_balance_subtitle" : {
+    "ob_balance_subtitle %@" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

@@ -16,7 +16,7 @@ struct Previewer {
     
     init() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        container = try ModelContainer(for: Account.self, configurations: config)
+        container = try ModelContainer(for: Account.self, Transaction.self, configurations: config)
         
         // Accounts
         accounts = [

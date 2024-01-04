@@ -19,27 +19,27 @@ struct OnboardingAccountView: View {
                 Color.bg_color.edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Text(String(localized: "ob_account_title"))
+                    Text("ob_account_title")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .modifier(UrbanistFont(.bold, size: 30))
                         .foregroundColor(Color.text_color)
                         .padding(.bottom, 36)
                     
-                    Text(String(localized: "ob_account_subtitle"))
+                    Text("ob_account_subtitle")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color.text_color)
                         .modifier(UrbanistFont(.regular, size: 18))
                     
                     Spacer()
                     
-                    TextField(String(localized: "ob_account_hint"), text: $account.name)
+                    TextField("ob_account_hint", text: $account.name)
                         .foregroundColor(Color.text_color)
                         .textFieldStyle(AppTextFieldStyle(left: "🏦"))
                     
                     NavigationLink(
                         destination: OnboardingBalanceView(account: account, isCompleted: $isCompleted)
                     ) {
-                        Text(String(localized: "create_account"))
+                        Text("create_account")
                             .modifier(UrbanistFont(.bold, size: 18))
                             .foregroundColor(Color.bg_color)
                             .padding(.vertical, 12)

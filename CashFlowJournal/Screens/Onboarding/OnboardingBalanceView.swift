@@ -25,20 +25,20 @@ struct OnboardingBalanceView: View {
         ZStack {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             VStack {
-                Text(String(localized: "ob_balance_title"))
+                Text("ob_balance_title")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .modifier(UrbanistFont(.bold, size: 30))
                     .foregroundColor(Color.text_color)
                     .padding(.bottom, 36)
                 
-                Text(String(format: String(localized: "ob_balance_subtitle"), account.name))
+                Text("ob_balance_subtitle \(account.name)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .modifier(UrbanistFont(.regular, size: 18))
                     .foregroundColor(Color.text_color)
                 
                 Spacer()
                 
-                TextField(String(localized: "ob_balance_hint"), value: $account.balance, formatter: formatter)
+                TextField("ob_balance_hint", value: $account.balance, formatter: formatter)
                     .textFieldStyle(AppTextFieldStyle(left: "💰", right: "€"))
                     .foregroundColor(Color.text_color)
                     .multilineTextAlignment(.trailing)
@@ -47,7 +47,7 @@ struct OnboardingBalanceView: View {
                 Button {
                     saveAccount()
                 } label: {
-                    Text(String(localized: "save"))
+                    Text("save")
                         .modifier(UrbanistFont(.bold, size: 18))
                         .foregroundColor(Color.bg_color)
                         .padding(.vertical, 12)

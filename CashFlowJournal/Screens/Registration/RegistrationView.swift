@@ -19,19 +19,19 @@ struct RegistrationView: View {
             VStack(spacing: 2) {
                 Spacer()
                 
-                Text(String(localized: "registration_title_first"))
+                Text("registration_title_first")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .modifier(UrbanistFont(.regular, size: 36))
                     .foregroundColor(Color.text_color)
-                Text(String(localized: "registration_title_second"))
+                Text("registration_title_second")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .modifier(UrbanistFont(.bold, size: 42))
                     .foregroundColor(Color.text_color)
                 HStack(spacing: 12) {
-                    Text(String(localized: "registration_title_third"))
+                    Text("registration_title_third")
                         .modifier(UrbanistFont(.regular, size: 30))
                         .foregroundColor(Color.text_color)
-                    Text(String(localized: "registration_title_fourth"))
+                    Text("registration_title_fourth")
                         .modifier(UrbanistFont(.bold, size: 30))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
@@ -44,7 +44,7 @@ struct RegistrationView: View {
                 
                 Spacer()
                 
-                TextField(String(localized: "registration_username_hint"), text: $usernameValue)
+                TextField("registration_username_hint", text: $usernameValue)
                     .textFieldStyle(AppTextFieldStyle(left: "🧑‍💼"))
                     .onSubmit {
                         guard usernameValue.isEmpty == false else { return }

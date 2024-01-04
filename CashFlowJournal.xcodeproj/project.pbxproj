@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E3577A42B46C12400D2AACE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		4E46ED4E2B3D926500B48E35 /* CashFlowJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashFlowJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowJournalApp.swift; sourceTree = "<group>"; };
 		4E46ED552B3D926700B48E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 			children = (
 				4E6DAD002B3EF58D00EB61E0 /* DashboardView.swift */,
 				4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */,
+				4E3577A42B46C12400D2AACE /* BalanceView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 				4E6DAD012B3EF58D00EB61E0 /* DashboardView.swift in Sources */,
 				4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */,
 				4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */,
+				4E3577A52B46C12400D2AACE /* BalanceView.swift in Sources */,
 				4E6531A22B3D9CA700FF4811 /* ColorExtensions.swift in Sources */,
 				4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */,
 			);
