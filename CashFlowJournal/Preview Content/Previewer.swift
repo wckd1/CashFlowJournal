@@ -18,6 +18,7 @@ struct Previewer {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         container = try ModelContainer(for: Account.self, configurations: config)
         
+        // Accounts
         accounts = [
             Account(name: "Cash", balance: 10),
             Account(name: "Lovcen", balance: 1450)
@@ -27,10 +28,11 @@ struct Previewer {
             container.mainContext.insert(account)
         }
         
+        // Transactions
         transactions = [
-            Transaction(title: "Snack", amount: -12.50, source: nil, category: "Snack", account: accounts[0]),
-            Transaction(title: "Salary", amount: 450.00, source: "Salary", category: nil, account: accounts[1]),
-            Transaction(title: "Groceries", amount: -45.64, source: nil, category: "Food", account: accounts[1])
+            Transaction(title: "Snack", amount: 12.50, type: .expense(category: "Snack"), account: accounts[0]),
+            Transaction(title: "Salary", amount: 450.00, type: .income(source: sources[0].id), account: accounts[1]),
+            Transaction(title: "Groceries", amount: 45.64, type: .expense(category: "Food"), account: accounts[1])
         ]
         
         for transaction in transactions {

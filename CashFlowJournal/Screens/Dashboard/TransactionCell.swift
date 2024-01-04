@@ -27,10 +27,18 @@ struct TransactionCell: View {
             
             Text(Formatter.shared.format(transaction.amount))
                 .modifier(UrbanistFont(.regular, size: 18))
-                .foregroundColor(
-                    transaction.amount > 0 ? Color.income_color : Color.expense_color)
+                .foregroundColor(transaction.type.color)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+extension TransactionType {
+    var color: Color {
+        switch self {
+        case .income: return Color.income_color
+        case .expense: return Color.expense_color
+        }
     }
 }
 

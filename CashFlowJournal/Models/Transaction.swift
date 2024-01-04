@@ -13,18 +13,21 @@ class Transaction {
     var id: UUID
     var title: String
     var amount: Float
-    var source: String?
-    var category: String?
+    var type: TransactionType
     var account: Account
     let date: Date
     
-    init(title: String, amount: Float, source: String?, category: String?, account: Account) {
+    init(title: String, amount: Float, type: TransactionType, account: Account) {
         self.id = UUID()
         self.title = title
         self.amount = amount
-        self.source = source
-        self.category = category
+        self.type = type
         self.account = account
         self.date = Date()
     }
+}
+
+enum TransactionType: Codable {
+    case income(source: UUID)
+    case expense(category: String)
 }
