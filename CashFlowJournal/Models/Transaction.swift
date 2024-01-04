@@ -13,21 +13,27 @@ class Transaction {
     var id: UUID
     var title: String
     var amount: Float
-    var type: TransactionType
+    @Transient var type: TransactionType {
+        get { TransactionType(rawValue: _type)! }
+        set { _type = newValue.rawValue }
+    }
+    @Attribute var _type: TransactionType.RawValue
+    var source: Source?
     var account: Account
     let date: Date
     
-    init(title: String, amount: Float, type: TransactionType, account: Account) {
+    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, account: Account) {
         self.id = UUID()
         self.title = title
         self.amount = amount
-        self.type = type
+        self._type = type.rawValue
+        self.source = source
         self.account = account
         self.date = Date()
     }
 }
 
-enum TransactionType: Codable {
-    case income(source: UUID)
-    case expense(category: String)
+enum TransactionType: String, Codable {
+    case income
+    case expense
 }

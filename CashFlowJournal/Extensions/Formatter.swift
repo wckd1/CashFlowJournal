@@ -10,6 +10,12 @@ import Foundation
 class Formatter {
     static let shared = Formatter()
     
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true
+        return formatter
+    }()
+    
     let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

@@ -15,12 +15,6 @@ struct OnboardingBalanceView: View {
     @Binding var isCompleted: Bool
     @State private var balance: String = ""
     
-    private let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.allowsFloats = true
-        return formatter
-    }()
-    
     var body: some View {
         ZStack {
             Color.bg_color.edgesIgnoringSafeArea(.all)
@@ -38,7 +32,7 @@ struct OnboardingBalanceView: View {
                 
                 Spacer()
                 
-                TextField("ob_balance_hint", value: $account.balance, formatter: formatter)
+                TextField("ob_balance_hint", value: $account.balance, formatter: Formatter.shared.numberFormatter)
                     .textFieldStyle(AppTextFieldStyle(left: "💰", right: "€"))
                     .foregroundColor(Color.text_color)
                     .multilineTextAlignment(.trailing)

@@ -42,9 +42,9 @@ struct Previewer {
         
         // Transactions
         transactions = [
-            Transaction(title: "Snack", amount: 12.50, type: .expense(category: "Snack"), account: accounts[0]),
-            Transaction(title: "Salary", amount: 450.00, type: .income(source: sources[0].id), account: accounts[1]),
-            Transaction(title: "Groceries", amount: 45.64, type: .expense(category: "Food"), account: accounts[1])
+            Transaction(title: "Snack", amount: 12.50, type: .expense, account: accounts[0]),
+            Transaction(title: "Salary", amount: 450.00, type: .income, source: sources[0], account: accounts[1]),
+            Transaction(title: "Groceries", amount: 45.64, type: .expense, account: accounts[1])
         ]
         
         for transaction in transactions {

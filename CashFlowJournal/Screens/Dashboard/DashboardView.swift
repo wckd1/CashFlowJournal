@@ -63,7 +63,7 @@ struct DashboardView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu("dashboard_add_menu", systemImage: "plus") {
-                        Button {} label: {
+                        NavigationLink(destination: AddTransactionView()) {
                             Text("add_transaction")
                         }
                         .buttonStyle(.plain)

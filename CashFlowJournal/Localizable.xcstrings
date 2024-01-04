@@ -56,6 +56,72 @@
         }
       }
     },
+    "add_transaction_account_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify transaction's account"
+          }
+        }
+      }
+    },
+    "add_transaction_amount_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter transaction amount"
+          }
+        }
+      }
+    },
+    "add_transaction_category_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify expense category"
+          }
+        }
+      }
+    },
+    "add_transaction_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter transaction title"
+          }
+        }
+      }
+    },
+    "add_transaction_source_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify income source"
+          }
+        }
+      }
+    },
+    "add_transaction_type_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify transaction's type"
+          }
+        }
+      }
+    },
     "create_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -144,7 +210,13 @@
         }
       }
     },
+    "Expense" : {
+
+    },
     "Failed to create preview: %@" : {
+
+    },
+    "Income" : {
 
     },
     "ob_account_hint" : {

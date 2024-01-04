@@ -12,9 +12,16 @@ struct TransactionCell: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(transaction.type.color)
-                .frame(width: 42, height: 42)
+            if transaction.type == .income, let source = transaction.source {
+                Image(systemName: source.icon)
+                    .frame(width: 48, height: 48)
+                    .background(Color(hex: source.color))
+                    .cornerRadius(12)
+            } else {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(transaction.type.color)
+                    .frame(width: 48, height: 48)
+            }
             
             HStack(alignment: .top, spacing: 12) {
                 VStack(spacing: 6) {
@@ -42,7 +49,7 @@ struct TransactionCell: View {
     do {
         let previewer = try Previewer()
         
-        return TransactionCell(transaction: previewer.transactions[0])
+        return TransactionCell(transaction: previewer.transactions[1])
             .modelContainer(previewer.container)
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
