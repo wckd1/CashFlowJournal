@@ -1,17 +1,17 @@
 //
-//  AddIncomeSourceView.swift
+//  AddExpenseCategoryView.swift
 //  CashFlowJournal
 //
-//  Created by Роман Коробейников on 03.01.2024.
+//  Created by Роман Коробейников on 04.01.2024.
 //
 
 import SwiftUI
 
-struct AddIncomeSourceView: View {
+struct AddExpenseCategoryView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable private var source = Source(name: "", color: Color.primary_color.toHex(), icon: "dollarsign")
+    @Bindable private var category = Category(name: "", color: Color.primary_color.toHex(), icon: "bag")
     
     @State private var color = Color.random()
     @State private var isIconPickerPresented = false
@@ -21,23 +21,23 @@ struct AddIncomeSourceView: View {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 24) {
-                TextField("add_source_hint", text: $source.name)
+                TextField("add_category_hint", text: $category.name)
                     .foregroundStyle(Color.text_color)
-                    .textFieldStyle(AppTextFieldStyle(left: "💸"))
+                    .textFieldStyle(AppTextFieldStyle(left: "🏷️"))
                 
-                ColorPicker("add_source_color_hint", selection: $color, supportsOpacity: false)
+                ColorPicker("add_category_color_hint", selection: $color, supportsOpacity: false)
                     .modifier(UrbanistFont(.regular, size: 18))
                     .foregroundStyle(Color.text_color)
                     .padding(.top, 24)
                     .onChange(of: color) { _, value in
-                        source.color = value.toHex()
+                        category.color = value.toHex()
                     }
                 
                 HStack {
-                    Text("add_source_icon_hint")
+                    Text("add_category_icon_hint")
                         .modifier(UrbanistFont(.regular, size: 18))
                     Spacer()
-                    Image(systemName: source.icon)
+                    Image(systemName: category.icon)
                         .font(.title3)
                         .foregroundStyle(color)
                 }
@@ -45,13 +45,13 @@ struct AddIncomeSourceView: View {
                     isIconPickerPresented.toggle()
                 }
                 .sheet(isPresented: $isIconPickerPresented, content: {
-                    IconPicker(selection: $source.icon)
+                    IconPicker(selection: $category.icon)
                 })
                 
                 Spacer()
                 
                 Button {
-                    saveSource()
+                    saveCategory()
                 } label: {
                     Text("save")
                         .modifier(UrbanistFont(.bold, size: 18))
@@ -60,18 +60,18 @@ struct AddIncomeSourceView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
-                .background(source.name.isEmpty ? Color.gray : Color.primary_color)
+                .background(category.name.isEmpty ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
                 .padding(.top, 25)
-                .disabled(source.name.isEmpty)
+                .disabled(category.name.isEmpty)
             }
             .padding(24)
         }
-        .navigationTitle("add_source")
+        .navigationTitle("add_category")
     }
     
-    private func saveSource() {
-        modelContext.insert(source)
+    private func saveCategory() {
+        modelContext.insert(category)
         dismiss()
     }
 }
@@ -81,10 +81,11 @@ struct AddIncomeSourceView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddIncomeSourceView()
+            AddExpenseCategoryView()
                 .modelContainer(previewer.container)
         }
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }
+

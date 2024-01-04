@@ -71,6 +71,10 @@ struct DashboardView: View {
                             Text("add_source")
                         }
                         .buttonStyle(.plain)
+                        NavigationLink(destination: AddExpenseCategoryView()) {
+                            Text("add_category")
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }

@@ -14,13 +14,14 @@ struct AddTransactionView: View {
     
     @Query private var accounts: [Account]
     @Query private var sources: [Source]
+    @Query private var categories: [Category]
     
     @State private var type: Int = 0
     @State private var title: String = ""
     @State private var amount: Float = 0
     @State private var selectedAccount: Account?
     @State private var selectedSource: Source?
-    @State private var selectedCategory: String? = ""
+    @State private var selectedCategory: Category?
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -49,7 +50,9 @@ struct AddTransactionView: View {
                     .keyboardType(.decimalPad)
                     .padding(.bottom, 24)
                     .onChange(of: amount) { _, value in
-                        type = value < 0 ? 1 : 0
+                        if value < 0, type == 0 {
+                            type = 1
+                        }
                     }
                 
                 if type == 0 {
@@ -85,6 +88,28 @@ struct AddTransactionView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .modifier(UrbanistFont(.regular, size: 18))
                         .foregroundStyle(Color.text_color)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(categories) { category in
+                                Button {
+                                    selectedCategory = category
+                                } label: {
+                                    HStack {
+                                        Image(systemName: category.icon)
+                                            .font(.subheadline)
+                                            .foregroundStyle(Color.text_color)
+                                        Text(category.name)
+                                            .foregroundStyle(Color.text_color)
+                                    }
+                                }
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 18)
+                                .background(selectedCategory == category ? Color(hex: category.color) : Color.gray)
+                                .cornerRadius(6)
+                            }
+                        }
+                    }
                 }
                 
                 // Account
@@ -151,14 +176,15 @@ struct AddTransactionView: View {
         // TODO: Change account's balance
         
         let transactionType: TransactionType = type == 0
-            ? .income
-            : .expense
+        ? .income
+        : .expense
         
         let transaction = Transaction(
             title: title,
             amount: amount,
             type: transactionType,
-            source: transactionType == .income ? selectedSource : nil,
+            source: transactionType == .income ? selectedSource! : nil,
+            category: transactionType == .expense ? selectedCategory! : nil,
             account: selectedAccount!
         )
         modelContext.insert(transaction)

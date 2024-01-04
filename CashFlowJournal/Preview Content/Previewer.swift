@@ -13,6 +13,7 @@ struct Previewer {
     let container: ModelContainer
     let accounts: [Account]
     let sources: [Source]
+    let categories: [Category]
     let transactions: [Transaction]
     
     init() throws {
@@ -40,11 +41,21 @@ struct Previewer {
             container.mainContext.insert(source)
         }
         
+        // Expense categories
+        categories = [
+            Category(name: "Food", color: "#4666FF", icon: "bag"),
+            Category(name: "Rent", color: "#444178", icon: "house")
+        ]
+        
+        for category in categories {
+            container.mainContext.insert(category)
+        }
+        
         // Transactions
         transactions = [
-            Transaction(title: "Snack", amount: 12.50, type: .expense, account: accounts[0]),
+            Transaction(title: "Groceries", amount: 12.50, type: .expense, category: categories[0], account: accounts[0]),
             Transaction(title: "Salary", amount: 450.00, type: .income, source: sources[0], account: accounts[1]),
-            Transaction(title: "Groceries", amount: 45.64, type: .expense, account: accounts[1])
+            Transaction(title: "December rent", amount: 45.64, type: .expense, category: categories[1], account: accounts[1])
         ]
         
         for transaction in transactions {

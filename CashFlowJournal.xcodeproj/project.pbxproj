@@ -15,6 +15,8 @@
 		4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */; };
 		4E46ED562B3D926700B48E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED552B3D926700B48E35 /* Assets.xcassets */; };
 		4E46ED592B3D926700B48E35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */; };
+		4E5AE3F52B4708F800CBCB29 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE3F42B4708F800CBCB29 /* Category.swift */; };
+		4E5AE3F82B470A1B00CBCB29 /* AddExpenseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE3F72B470A1B00CBCB29 /* AddExpenseCategoryView.swift */; };
 		4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6531992B3D985000FF4811 /* UserDefaults.swift */; };
 		4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65319B2B3D997C00FF4811 /* RegistrationView.swift */; };
 		4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65319D2B3D99BF00FF4811 /* SplashView.swift */; };
@@ -53,6 +55,8 @@
 		4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowJournalApp.swift; sourceTree = "<group>"; };
 		4E46ED552B3D926700B48E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4E5AE3F42B4708F800CBCB29 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4E5AE3F72B470A1B00CBCB29 /* AddExpenseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCategoryView.swift; sourceTree = "<group>"; };
 		4E6531992B3D985000FF4811 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		4E65319B2B3D997C00FF4811 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		4E65319D2B3D99BF00FF4811 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4E5AE3F62B470A0A00CBCB29 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4E5AE3F72B470A1B00CBCB29 /* AddExpenseCategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		4E6531A32B3DB34000FF4811 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 				4EBED4712B3ED43700B11BFC /* Account.swift */,
 				4E88A2ED2B3F0B11001255B2 /* Transaction.swift */,
 				4E25BA862B45AFC5007E2953 /* Source.swift */,
+				4E5AE3F42B4708F800CBCB29 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +245,7 @@
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
 				4E3577A92B46EBFC00D2AACE /* Transaction */,
 				4E25BA832B45AE6B007E2953 /* Source */,
+				4E5AE3F62B470A0A00CBCB29 /* Category */,
 				4E6531A42B3DB35300FF4811 /* Registration */,
 				4E6531C82B3DBCC300FF4811 /* Onboarding */,
 			);
@@ -349,6 +363,8 @@
 				4E3577A52B46C12400D2AACE /* BalanceView.swift in Sources */,
 				4E6531A22B3D9CA700FF4811 /* ColorExtensions.swift in Sources */,
 				4E6531D02B3DC4C900FF4811 /* OnboardingAccountView.swift in Sources */,
+				4E5AE3F82B470A1B00CBCB29 /* AddExpenseCategoryView.swift in Sources */,
+				4E5AE3F52B4708F800CBCB29 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

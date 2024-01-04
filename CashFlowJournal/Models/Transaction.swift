@@ -19,15 +19,17 @@ class Transaction {
     }
     @Attribute var _type: TransactionType.RawValue
     var source: Source?
+    var category: Category?
     var account: Account
     let date: Date
     
-    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, account: Account) {
+    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account) {
         self.id = UUID()
         self.title = title
         self.amount = amount
         self._type = type.rawValue
         self.source = source
+        self.category = category
         self.account = account
         self.date = Date()
     }

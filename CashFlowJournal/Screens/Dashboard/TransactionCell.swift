@@ -17,6 +17,11 @@ struct TransactionCell: View {
                     .frame(width: 48, height: 48)
                     .background(Color(hex: source.color))
                     .cornerRadius(12)
+            } else if let category = transaction.category {
+                Image(systemName: category.icon)
+                    .frame(width: 48, height: 48)
+                    .background(Color(hex: category.color))
+                    .cornerRadius(12)
             } else {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(transaction.type.color)
