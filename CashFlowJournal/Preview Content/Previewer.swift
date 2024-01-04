@@ -12,11 +12,12 @@ import SwiftData
 struct Previewer {
     let container: ModelContainer
     let accounts: [Account]
+    let sources: [Source]
     let transactions: [Transaction]
     
     init() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        container = try ModelContainer(for: Account.self, Transaction.self, configurations: config)
+        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, configurations: config)
         
         // Accounts
         accounts = [
@@ -26,6 +27,17 @@ struct Previewer {
 
         for account in accounts {
             container.mainContext.insert(account)
+        }
+        
+        // Income sources
+        sources = [
+            Source(name: "Salary", color: "#4666FF", icon: "dollarsign"),
+            Source(name: "Freelance", color: "#03C03C", icon: "arrowshape.up"),
+            Source(name: "Gift", color: "#444178", icon: "gift"),
+        ]
+        
+        for source in sources {
+            container.mainContext.insert(source)
         }
         
         // Transactions

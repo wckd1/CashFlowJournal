@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E25BA852B45AE79007E2953 /* AddIncomeSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */; };
+		4E25BA872B45AFC5007E2953 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA862B45AFC5007E2953 /* Source.swift */; };
+		4E3577A52B46C12400D2AACE /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3577A42B46C12400D2AACE /* BalanceView.swift */; };
+		4E3577A82B46C88D00D2AACE /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3577A72B46C88D00D2AACE /* IconPicker.swift */; };
 		4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */; };
 		4E46ED562B3D926700B48E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED552B3D926700B48E35 /* Assets.xcassets */; };
 		4E46ED592B3D926700B48E35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E46ED582B3D926700B48E35 /* Preview Assets.xcassets */; };
@@ -39,7 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeSourceView.swift; sourceTree = "<group>"; };
+		4E25BA862B45AFC5007E2953 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4E3577A42B46C12400D2AACE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		4E3577A72B46C88D00D2AACE /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		4E46ED4E2B3D926500B48E35 /* CashFlowJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashFlowJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E46ED512B3D926500B48E35 /* CashFlowJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowJournalApp.swift; sourceTree = "<group>"; };
 		4E46ED552B3D926700B48E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +91,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E25BA832B45AE6B007E2953 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		4E3577A62B46C87C00D2AACE /* IconPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4E3577A72B46C88D00D2AACE /* IconPicker.swift */,
+			);
+			path = IconPicker;
+			sourceTree = "<group>";
+		};
 		4E46ED452B3D926500B48E35 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +126,7 @@
 		4E46ED502B3D926500B48E35 /* CashFlowJournal */ = {
 			isa = PBXGroup;
 			children = (
+				4E3577A62B46C87C00D2AACE /* IconPicker */,
 				4EBED4702B3ED3A300B11BFC /* Modifiers */,
 				4EBED46F2B3ED38A00B11BFC /* Screens */,
 				4EBED46E2B3ED38300B11BFC /* Models */,
@@ -186,6 +210,7 @@
 			children = (
 				4EBED4712B3ED43700B11BFC /* Account.swift */,
 				4E88A2ED2B3F0B11001255B2 /* Transaction.swift */,
+				4E25BA862B45AFC5007E2953 /* Source.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +220,7 @@
 			children = (
 				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
+				4E25BA832B45AE6B007E2953 /* Source */,
 				4E6531A42B3DB35300FF4811 /* Registration */,
 				4E6531C82B3DBCC300FF4811 /* Onboarding */,
 			);
@@ -296,8 +322,11 @@
 				4E46ED522B3D926500B48E35 /* CashFlowJournalApp.swift in Sources */,
 				4EBED4722B3ED43700B11BFC /* Account.swift in Sources */,
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
+				4E25BA852B45AE79007E2953 /* AddIncomeSourceView.swift in Sources */,
+				4E3577A82B46C88D00D2AACE /* IconPicker.swift in Sources */,
 				4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
+				4E25BA872B45AFC5007E2953 /* Source.swift in Sources */,
 				4E88A2EE2B3F0B11001255B2 /* Transaction.swift in Sources */,
 				4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,

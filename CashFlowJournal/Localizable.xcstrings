@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add income source" : {
-
-    },
     "add_source" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11,6 +8,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add income source"
+          }
+        }
+      }
+    },
+    "add_source_color_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick source color"
+          }
+        }
+      }
+    },
+    "add_source_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter income source title"
+          }
+        }
+      }
+    },
+    "add_source_icon_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick source icon"
           }
         }
       }
@@ -182,6 +212,9 @@
           }
         }
       }
+    },
+    "Pick a symbol" : {
+
     },
     "registration_title_first" : {
       "extractionState" : "manual",
