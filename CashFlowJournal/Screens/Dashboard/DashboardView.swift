@@ -80,7 +80,7 @@ struct DashboardView: View {
                             Text("dashboard_accounts")
                         }
                         .buttonStyle(.plain)
-                        NavigationLink(destination: AddIncomeSourceView()) {
+                        NavigationLink(destination: SourcesView()) {
                             Text("dashboard_sources")
                         }
                         .buttonStyle(.plain)

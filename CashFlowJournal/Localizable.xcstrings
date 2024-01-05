@@ -378,6 +378,28 @@
         }
       }
     },
+    "no_sources_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use \"+\" in the top right corner to add your first income source"
+          }
+        }
+      }
+    },
+    "no_sources_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No income sources"
+          }
+        }
+      }
+    },
     "ob_account_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {

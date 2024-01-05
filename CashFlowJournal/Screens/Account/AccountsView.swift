@@ -60,4 +60,3 @@ struct AccountsView: View {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }
-
