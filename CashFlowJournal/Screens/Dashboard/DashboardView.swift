@@ -19,7 +19,7 @@ struct DashboardView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .bottomTrailing) {
                 Color.bg_color.edgesIgnoringSafeArea(.all)
                 
                 VStack {
@@ -53,6 +53,17 @@ struct DashboardView: View {
                     }
                 }
                 .padding(12)
+                
+                NavigationLink(destination: AddTransactionView()) {
+                    Text("add_transaction")
+                        .foregroundStyle(Color.text_color)
+                }
+                .buttonStyle(.plain)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 18)
+                .background(Color.primary_color)
+                .cornerRadius(6)
+                .padding(.trailing, 18)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
