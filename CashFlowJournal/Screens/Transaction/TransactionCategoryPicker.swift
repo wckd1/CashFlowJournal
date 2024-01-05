@@ -12,11 +12,6 @@ struct TransactionCategoryPicker: View {
     @Binding var selectedCategory: Category?
     
     var body: some View {
-        Text("add_transaction_category_hint")
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .modifier(UrbanistFont(.regular, size: 18))
-            .foregroundStyle(Color.text_color)
-        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(categories) { category in

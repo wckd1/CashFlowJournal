@@ -35,7 +35,14 @@ class Transaction {
     }
 }
 
-enum TransactionType: String, Codable {
+enum TransactionType: String, Codable, CaseIterable {
     case income
     case expense
+    
+    var title: String {
+        switch self {
+        case .income: return String(localized: "income")
+        case .expense: return String(localized: "expense")
+        }
+    }
 }

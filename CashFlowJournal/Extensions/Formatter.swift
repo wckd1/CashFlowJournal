@@ -13,6 +13,7 @@ class Formatter {
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = true
+        formatter.zeroSymbol = ""
         return formatter
     }()
     

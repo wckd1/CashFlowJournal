@@ -12,12 +12,6 @@ struct TransactionSourcePicker: View {
     @Binding var selectedSource: Source?
     
     var body: some View {
-        Group {
-            Text("add_transaction_source_hint")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .modifier(UrbanistFont(.regular, size: 18))
-                .foregroundStyle(Color.text_color)
-            
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(sources) { source in
@@ -38,7 +32,6 @@ struct TransactionSourcePicker: View {
                     .cornerRadius(6)
                 }
             }
-        }
         }
     }
 }

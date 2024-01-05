@@ -16,7 +16,7 @@ struct AddTransactionView: View {
     @Query private var sources: [Source]
     @Query private var categories: [Category]
     
-    @State private var type: Int = 0
+    @State private var transactionType: TransactionType = .income
     @State private var title: String = ""
     @State private var amount: Float = 0
     @State private var selectedAccount: Account?
@@ -30,57 +30,83 @@ struct AddTransactionView: View {
         ZStack(alignment: .top) {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 12) {
-                // Type
-                Picker("add_transaction_type_hint", selection: $type) {
-                    Text("income").tag(0)
-                    Text("expense").tag(1)
-                }
-                .pickerStyle(.segmented)
-                .padding(.bottom, 18)
-                .onChange(of: type) { _, _ in
-                    validate()
-                }
-                
-                // Title
-                TextField("add_transaction_hint", text: $title)
-                    .foregroundStyle(Color.text_color)
-                    .textFieldStyle(AppTextFieldStyle(left: "📝"))
-                    .padding(.bottom, 18)
-                    .onChange(of: title) { _, _ in
-                        validate()
+            VStack {
+                Form {
+                    Section {
+                        // Type
+                        Picker("add_transaction_type_hint", selection: $transactionType) {
+                            ForEach(TransactionType.allCases, id: \.self) {
+                                Text($0.title).tag($0)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(.vertical, 18)
+                        .onChange(of: transactionType) { _, _ in
+                            validate()
+                        }
+                        
+                        // Title
+                        TextField("add_transaction_hint", text: $title)
+                            .foregroundStyle(Color.text_color)
+                            .textFieldStyle(AppTextFieldStyle(left: "📝"))
+                            .padding(.bottom, 18)
+                            .onChange(of: title) { _, _ in
+                                validate()
+                            }
+                        
+                        // Amount
+                        TextField("add_transaction_amount_hint", value: $amount, formatter: Formatter.shared.numberFormatter)
+                            .textFieldStyle(AppTextFieldStyle(left: "💵", right: "€"))
+                            .foregroundColor(Color.text_color)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                            .padding(.bottom, 24)
+                            .onChange(of: amount) { _, value in
+                                validate()
+                            }
                     }
-                
-                // Amount
-                TextField("add_transaction_amount_hint", value: $amount, formatter: Formatter.shared.numberFormatter)
-                    .textFieldStyle(AppTextFieldStyle(left: "💵", right: "€"))
-                    .foregroundColor(Color.text_color)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.decimalPad)
-                    .padding(.bottom, 24)
-                    .onChange(of: amount) { _, _ in
-                        validate()
+                    .listRowBackground(Color.bg_color)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                    
+                    switch transactionType {
+                    case .income:
+                        // Source
+                        Section(header: Text("add_transaction_source_hint")) {
+                            TransactionSourcePicker(sources: sources, selectedSource: $selectedSource)
+                                .onChange(of: selectedSource) { _, _ in
+                                    validate()
+                                }
+                        }
+                        .listRowBackground(Color.bg_color)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                    case .expense:
+                        // Category
+                        Section(header: Text("add_transaction_category_hint")) {
+                            TransactionCategoryPicker(categories: categories, selectedCategory: $selectedCategory)
+                                .onChange(of: selectedCategory) { _, _ in
+                                    validate()
+                                }
+                        }
+                        .listRowBackground(Color.bg_color)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                     }
-                
-                // Source
-                if type == 0 {
-                    TransactionSourcePicker(sources: sources, selectedSource: $selectedSource)
-                    .onChange(of: selectedSource) { _, _ in
-                        validate()
+                    
+                    // Account
+                    Section(header: Text("add_transaction_account_hint")) {
+                        TransactionAccountPicker(accounts: accounts, selectedAccount: $selectedAccount)
+                            .onChange(of: selectedAccount) { _, _ in
+                                validate()
+                            }
                     }
-                } else {
-                    // Category
-                    TransactionCategoryPicker(categories: categories, selectedCategory: $selectedCategory)
-                    .onChange(of: selectedCategory) { _, _ in
-                        validate()
-                    }
+                    .listRowBackground(Color.bg_color)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                 }
-                
-                // Account
-                TransactionAccountPicker(accounts: accounts, selectedAccount: $selectedAccount)
-                .onChange(of: selectedAccount) { _, _ in
-                    validate()
-                }
+                .background(Color.bg_color)
+                .scrollContentBackground(.hidden)
                 
                 Spacer()
                 
@@ -102,12 +128,13 @@ struct AddTransactionView: View {
                 .buttonStyle(.bordered)
                 .background(isValid ? Color.primary_color : Color.gray)
                 .cornerRadius(12)
-                .padding(.top, 25)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 6)
                 .disabled(!isValid)
             }
-            .padding(24)
         }
         .navigationTitle("add_transaction")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private func validate() {
@@ -115,12 +142,14 @@ struct AddTransactionView: View {
         transactionError = nil
         
         if title.isEmpty { isValidatioPassed = false }
-        if amount <= 0 { isValidatioPassed = false }
+        if Float(amount) <= 0  { isValidatioPassed = false }
         
-        if type == 0, selectedSource == nil {
-            isValidatioPassed = false
-        }
-        if type == 1 {
+        switch transactionType {
+        case .income:
+            if selectedSource == nil {
+                isValidatioPassed = false
+            }
+        case .expense:
             if selectedCategory == nil {
                 isValidatioPassed = false
             }
@@ -137,20 +166,8 @@ struct AddTransactionView: View {
         isValid = isValidatioPassed
     }
     
-    private func checkAccountBalance() {
-        if type == 1, let selectedAccount, selectedAccount.balance < amount {
-            transactionError = String(localized: "add_transaction_account_funds_error")
-        } else {
-            transactionError = nil
-        }
-    }
-    
     private func saveTransaction() {
         // Save transaction
-        let transactionType: TransactionType = type == 0
-        ? .income
-        : .expense
-        
         let transaction = Transaction(
             title: title,
             amount: amount,
