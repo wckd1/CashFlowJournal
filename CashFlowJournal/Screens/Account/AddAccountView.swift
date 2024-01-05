@@ -1,42 +1,45 @@
 //
-//  OnboardingBalanceView.swift
+//  AddAccountView.swift
 //  CashFlowJournal
 //
-//  Created by Roman Korobeinikov on 28.12.2023.
+//  Created by Роман Коробейников on 05.01.2024.
 //
 
 import SwiftUI
-import SwiftData
 
-struct OnboardingBalanceView: View {
+struct AddAccountView: View {
+    @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable var account: Account
-    @Binding var isCompleted: Bool
-    @State private var balance: String = ""
+    @Bindable private var account = Account(name: "", color: Color.primary_color.toHex())
+    @State private var color = Color.random()
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.bg_color.edgesIgnoringSafeArea(.all)
-            VStack {
-                Text("ob_balance_title")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .modifier(UrbanistFont(.bold, size: 30))
-                    .foregroundColor(Color.text_color)
-                    .padding(.bottom, 36)
+            
+            VStack(spacing: 24) {
                 
-                Text("ob_balance_subtitle \(account.name)")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .modifier(UrbanistFont(.regular, size: 18))
+                TextField("add_account_name_hint", text: $account.name)
                     .foregroundColor(Color.text_color)
-                
-                Spacer()
+                    .textFieldStyle(AppTextFieldStyle(left: "🏦"))
                 
                 TextField("add_account_balance_hint", value: $account.balance, formatter: Formatter.shared.numberFormatter)
                     .textFieldStyle(AppTextFieldStyle(left: "💰", right: "€"))
                     .foregroundColor(Color.text_color)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
+                    .padding(.top, 6)
+                
+                ColorPicker("add_account_color_hint", selection: $color, supportsOpacity: false)
+                    .modifier(UrbanistFont(.regular, size: 18))
+                    .foregroundStyle(Color.text_color)
+                    .padding(.top, 24)
+                    .onChange(of: color) { _, value in
+                        account.color = value.toHex()
+                    }
+                
+                Spacer()
                 
                 Button {
                     saveAccount()
@@ -48,18 +51,20 @@ struct OnboardingBalanceView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
-                .background(account.balance <= 0 ? Color.gray : Color.primary_color)
+                .background(account.name.isEmpty ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
                 .padding(.top, 25)
-                .disabled(account.balance <= 0)
+                .disabled(account.name.isEmpty)
             }
             .padding(24)
         }
+        .navigationTitle("add_account")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private func saveAccount() {
         modelContext.insert(account)
-        isCompleted = true
+        dismiss()
     }
 }
 
@@ -67,8 +72,10 @@ struct OnboardingBalanceView: View {
     do {
         let previewer = try Previewer()
         
-        return OnboardingBalanceView(account: previewer.accounts[0], isCompleted: .constant(false))
-            .modelContainer(previewer.container)
+        return NavigationView {
+            AddAccountView()
+                .modelContainer(previewer.container)
+        }
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

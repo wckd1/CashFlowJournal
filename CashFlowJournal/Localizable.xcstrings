@@ -1,6 +1,50 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "add_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add account"
+          }
+        }
+      }
+    },
+    "add_account_balance_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter account initial balance"
+          }
+        }
+      }
+    },
+    "add_account_color_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick account color"
+          }
+        }
+      }
+    },
+    "add_account_name_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter account name (ex. Cash)"
+          }
+        }
+      }
+    },
     "add_category" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,13 +232,13 @@
         }
       }
     },
-    "dashboard_add_menu" : {
+    "dashboard_accounts" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add entity"
+            "value" : "Accounts"
           }
         }
       }
@@ -221,6 +265,17 @@
         }
       }
     },
+    "dashboard_categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense categories"
+          }
+        }
+      }
+    },
     "dashboard_greeting %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -232,13 +287,24 @@
         }
       }
     },
+    "dashboard_manage_menu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your assets"
+          }
+        }
+      }
+    },
     "dashboard_no_transactions_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Use \"+\" in the upper right corner to add your first transaction"
+            "value" : "Use \"Add transaction\" button to add your first transaction"
           }
         }
       }
@@ -250,6 +316,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No transactions yet"
+          }
+        }
+      }
+    },
+    "dashboard_sources" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income sources"
           }
         }
       }
@@ -301,17 +378,6 @@
         }
       }
     },
-    "ob_account_hint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter account name (ex. Cash)"
-          }
-        }
-      }
-    },
     "ob_account_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -330,17 +396,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To begin, we'll set up your first account. "
-          }
-        }
-      }
-    },
-    "ob_balance_hint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter account balance"
           }
         }
       }

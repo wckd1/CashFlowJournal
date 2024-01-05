@@ -22,7 +22,11 @@ struct BalanceView: View {
             
             if isAccountsShown {
                 ForEach(accounts) { account in
-                    HStack {
+                    HStack(alignment: .center, spacing: 12) {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color(hex: account.color))
+                            .frame(width: 18, height: 18)
+                        
                         Text(account.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .modifier(UrbanistFont(.regular, size: 18))

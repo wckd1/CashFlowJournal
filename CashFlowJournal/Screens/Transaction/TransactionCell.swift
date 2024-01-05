@@ -14,18 +14,18 @@ struct TransactionCell: View {
         HStack(alignment: .center, spacing: 12) {
             if transaction.type == .income, let source = transaction.source {
                 Image(systemName: source.icon)
-                    .frame(width: 48, height: 48)
+                    .frame(width: 42, height: 42)
                     .background(Color(hex: source.color))
                     .cornerRadius(12)
             } else if let category = transaction.category {
                 Image(systemName: category.icon)
-                    .frame(width: 48, height: 48)
+                    .frame(width: 42, height: 42)
                     .background(Color(hex: category.color))
                     .cornerRadius(12)
             } else {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(transaction.type.color)
-                    .frame(width: 48, height: 48)
+                    .frame(width: 42, height: 42)
             }
             
             HStack(alignment: .top, spacing: 12) {
@@ -48,7 +48,6 @@ struct TransactionCell: View {
         }
     }
 }
-
 
 #Preview {
     do {

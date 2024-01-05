@@ -75,17 +75,17 @@ struct DashboardView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu("dashboard_add_menu", systemImage: "plus") {
-                        NavigationLink(destination: AddTransactionView()) {
-                            Text("add_transaction")
+                    Menu("dashboard_manage_menu", systemImage: "squares.leading.rectangle") {
+                        NavigationLink(destination: AccountsView()) {
+                            Text("dashboard_accounts")
                         }
                         .buttonStyle(.plain)
                         NavigationLink(destination: AddIncomeSourceView()) {
-                            Text("add_source")
+                            Text("dashboard_sources")
                         }
                         .buttonStyle(.plain)
                         NavigationLink(destination: AddExpenseCategoryView()) {
-                            Text("add_category")
+                            Text("dashboard_categories")
                         }
                         .buttonStyle(.plain)
                     }

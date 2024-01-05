@@ -43,6 +43,9 @@
 		4E94B5A82B4828E7006119DE /* TransactionAccountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5A72B4828E7006119DE /* TransactionAccountPicker.swift */; };
 		4E94B5AA2B4829B7006119DE /* TransactionSourcePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5A92B4829B7006119DE /* TransactionSourcePicker.swift */; };
 		4E94B5AC2B482A31006119DE /* TransactionCategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5AB2B482A31006119DE /* TransactionCategoryPicker.swift */; };
+		4E94B5AF2B484ADA006119DE /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5AE2B484ADA006119DE /* AccountsView.swift */; };
+		4E94B5B12B484B3F006119DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B02B484B3F006119DE /* AccountCell.swift */; };
+		4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B22B484C73006119DE /* AddAccountView.swift */; };
 		4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA7D3D2B459A4D00041F74 /* Formatter.swift */; };
 		4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */; };
 		4EBED4722B3ED43700B11BFC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED4712B3ED43700B11BFC /* Account.swift */; };
@@ -87,6 +90,9 @@
 		4E94B5A72B4828E7006119DE /* TransactionAccountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAccountPicker.swift; sourceTree = "<group>"; };
 		4E94B5A92B4829B7006119DE /* TransactionSourcePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSourcePicker.swift; sourceTree = "<group>"; };
 		4E94B5AB2B482A31006119DE /* TransactionCategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategoryPicker.swift; sourceTree = "<group>"; };
+		4E94B5AE2B484ADA006119DE /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		4E94B5B02B484B3F006119DE /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		4E94B5B22B484C73006119DE /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		4EBA7D3D2B459A4D00041F74 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextFieldStyle.swift; sourceTree = "<group>"; };
 		4EBED4712B3ED43700B11BFC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 		4E3577A92B46EBFC00D2AACE /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */,
 				4E3577AA2B46EC1800D2AACE /* AddTransactionView.swift */,
 				4E94B5A72B4828E7006119DE /* TransactionAccountPicker.swift */,
 				4E94B5A92B4829B7006119DE /* TransactionSourcePicker.swift */,
@@ -230,10 +237,19 @@
 			isa = PBXGroup;
 			children = (
 				4E6DAD002B3EF58D00EB61E0 /* DashboardView.swift */,
-				4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */,
 				4E3577A42B46C12400D2AACE /* BalanceView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		4E94B5AD2B484ACA006119DE /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				4E94B5AE2B484ADA006119DE /* AccountsView.swift */,
+				4E94B5B02B484B3F006119DE /* AccountCell.swift */,
+				4E94B5B22B484C73006119DE /* AddAccountView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		4EBED46E2B3ED38300B11BFC /* Models */ = {
@@ -251,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
+				4E94B5AD2B484ACA006119DE /* Account */,
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
 				4E3577A92B46EBFC00D2AACE /* Transaction */,
 				4E25BA832B45AE6B007E2953 /* Source */,
@@ -362,6 +379,8 @@
 				4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E94B5A82B4828E7006119DE /* TransactionAccountPicker.swift in Sources */,
+				4E94B5AF2B484ADA006119DE /* AccountsView.swift in Sources */,
+				4E94B5B12B484B3F006119DE /* AccountCell.swift in Sources */,
 				4E25BA872B45AFC5007E2953 /* Source.swift in Sources */,
 				4E3577AB2B46EC1800D2AACE /* AddTransactionView.swift in Sources */,
 				4E88A2EE2B3F0B11001255B2 /* Transaction.swift in Sources */,
@@ -370,6 +389,7 @@
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
 				4E6DAD012B3EF58D00EB61E0 /* DashboardView.swift in Sources */,
+				4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */,
 				4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */,
 				4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */,
 				4E3577A52B46C12400D2AACE /* BalanceView.swift in Sources */,

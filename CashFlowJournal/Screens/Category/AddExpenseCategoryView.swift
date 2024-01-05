@@ -68,6 +68,7 @@ struct AddExpenseCategoryView: View {
             .padding(24)
         }
         .navigationTitle("add_category")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private func saveCategory() {

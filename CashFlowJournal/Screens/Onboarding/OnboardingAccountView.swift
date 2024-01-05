@@ -10,7 +10,7 @@ import SwiftData
 
 struct OnboardingAccountView: View {
     @Binding var isCompleted: Bool
-    @Bindable private var account = Account(name: "")
+    @Bindable private var account = Account(name: "", color: Color.random().toHex())
     
     var body: some View {
         NavigationStack {
@@ -32,7 +32,7 @@ struct OnboardingAccountView: View {
                     
                     Spacer()
                     
-                    TextField("ob_account_hint", text: $account.name)
+                    TextField("add_account_name_hint", text: $account.name)
                         .foregroundColor(Color.text_color)
                         .textFieldStyle(AppTextFieldStyle(left: "🏦"))
                     

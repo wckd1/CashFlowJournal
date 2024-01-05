@@ -23,7 +23,7 @@ struct TransactionAccountPicker: View {
                     }
                     .padding(.vertical, 12)
                     .padding(.horizontal, 18)
-                    .background(selectedAccount == account ? Color.primary_color : Color.gray)
+                    .background(selectedAccount == account ? Color(hex: account.color) : Color.gray)
                     .cornerRadius(6)
                 }
             }

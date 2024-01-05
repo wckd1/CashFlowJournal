@@ -5,7 +5,7 @@
 //  Created by Роман Коробейников on 29.12.2023.
 //
 
-import Foundation
+import SwiftUI
 import SwiftData
 
 @MainActor
@@ -18,12 +18,12 @@ struct Previewer {
     
     init() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, configurations: config)
+        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, Category.self, configurations: config)
         
         // Accounts
         accounts = [
-            Account(name: "Cash", balance: 10),
-            Account(name: "Lovcen", balance: 1450)
+            Account(name: "Cash", balance: 10, color: Color.random().toHex()),
+            Account(name: "Lovcen", balance: 1450, color: Color.random().toHex())
         ]
 
         for account in accounts {
@@ -32,9 +32,9 @@ struct Previewer {
         
         // Income sources
         sources = [
-            Source(name: "Salary", color: "#4666FF", icon: "dollarsign"),
-            Source(name: "Freelance", color: "#03C03C", icon: "arrowshape.up"),
-            Source(name: "Gift", color: "#444178", icon: "gift"),
+            Source(name: "Salary", color: Color.random().toHex(), icon: "dollarsign"),
+            Source(name: "Freelance", color: Color.random().toHex(), icon: "arrowshape.up"),
+            Source(name: "Gift", color: Color.random().toHex(), icon: "gift"),
         ]
         
         for source in sources {
@@ -43,8 +43,8 @@ struct Previewer {
         
         // Expense categories
         categories = [
-            Category(name: "Food", color: "#4666FF", icon: "bag"),
-            Category(name: "Rent", color: "#444178", icon: "house")
+            Category(name: "Food", color: Color.random().toHex(), icon: "bag"),
+            Category(name: "Rent", color: Color.random().toHex(), icon: "house")
         ]
         
         for category in categories {

@@ -68,6 +68,7 @@ struct AddIncomeSourceView: View {
             .padding(24)
         }
         .navigationTitle("add_source")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private func saveSource() {
