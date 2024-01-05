@@ -33,7 +33,7 @@ struct IconPicker: View {
                         }.padding(.top, 5)
                     }
                 }
-                .navigationTitle("Pick a symbol")
+                .navigationTitle("icon_picker_title")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {

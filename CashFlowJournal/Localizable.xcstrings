@@ -100,6 +100,17 @@
         }
       }
     },
+    "add_transaction_account_funds_error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected account has insufficient funds"
+          }
+        }
+      }
+    },
     "add_transaction_account_hint" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -254,14 +265,41 @@
         }
       }
     },
-    "Expense" : {
-
+    "expense" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense"
+          }
+        }
+      }
     },
     "Failed to create preview: %@" : {
 
     },
-    "Income" : {
-
+    "icon_picker_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick an icon"
+          }
+        }
+      }
+    },
+    "income" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income"
+          }
+        }
+      }
     },
     "ob_account_hint" : {
       "extractionState" : "manual",
@@ -328,9 +366,6 @@
           }
         }
       }
-    },
-    "Pick a symbol" : {
-
     },
     "registration_title_first" : {
       "extractionState" : "manual",

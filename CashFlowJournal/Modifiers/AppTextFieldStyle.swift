@@ -13,7 +13,7 @@ struct AppTextFieldStyle: TextFieldStyle {
     
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            if let left = left {
+            if let left {
                 Text(left)
             }
             
@@ -21,7 +21,7 @@ struct AppTextFieldStyle: TextFieldStyle {
                 .modifier(UrbanistFont(.regular, size: 18))
                 .foregroundStyle(Color.text_color)
             
-            if let right = right {
+            if let right {
                 Text(right)
             }
         }

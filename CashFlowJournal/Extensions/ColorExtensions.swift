@@ -13,6 +13,7 @@ extension Color {
     static let text_color = Color("CashFlowTextColor")
     static let income_color = Color("CashFlowPrimary")
     static let expense_color = Color("CashFlowRed")
+    static let error_color = Color("CashFlowRed")
     
     init(hex: String) {
         var cleanHexCode = hex.trimmingCharacters(in: .whitespacesAndNewlines)

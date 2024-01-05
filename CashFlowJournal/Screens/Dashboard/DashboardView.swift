@@ -14,8 +14,8 @@ struct DashboardView: View {
     @AppStorage(UserDefaults.usernameKey)
     private var username: String = UserDefaults.username
     
-    
-    @Query private var transactions: [Transaction]
+    @Query(sort: \Transaction.date, order: .reverse)
+    private var transactions: [Transaction]
     
     var body: some View {
         NavigationStack {
@@ -25,6 +25,7 @@ struct DashboardView: View {
                 VStack {
                     // Balance
                     BalanceView()
+                        .padding(.horizontal, 12)
                     
                     // Transactions
                     if transactions.count > 1 {
@@ -34,13 +35,14 @@ struct DashboardView: View {
                             .modifier(UrbanistFont(.regular, size: 24))
                             .foregroundColor(Color.text_color)
                             .padding(.bottom, 12)
+                            .padding(.horizontal, 12)
                         
                         List {
                             ForEach(transactions) { transaction in
                                 TransactionCell(transaction: transaction)
                             }
                             .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                            .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
                             .listRowBackground(Color.bg_color)
                         }
                         .listStyle(.plain)
@@ -52,7 +54,7 @@ struct DashboardView: View {
                         )
                     }
                 }
-                .padding(12)
+                .padding(.vertical, 12)
                 
                 NavigationLink(destination: AddTransactionView()) {
                     Text("add_transaction")
