@@ -19,6 +19,7 @@ struct AccountsView: View {
             
             List {
                 ForEach(accounts) { account in
+                    // TODO: Account details
                     AccountCell(account: account)
                 }
                 .onDelete(perform: deleteAccounts)

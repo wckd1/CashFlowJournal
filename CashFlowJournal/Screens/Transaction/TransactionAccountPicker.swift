@@ -14,6 +14,7 @@ struct TransactionAccountPicker: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
+                // TODO: Add account if no exists
                 ForEach(accounts) { account in
                     Button {
                         selectedAccount = account

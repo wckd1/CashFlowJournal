@@ -14,6 +14,7 @@ struct TransactionSourcePicker: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
+                // TODO: Add account if no exists
                 ForEach(sources) { source in
                     Button {
                         selectedSource = source

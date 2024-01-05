@@ -44,6 +44,7 @@ struct DashboardView: View {
                         
                         List {
                             ForEach(transactions) { transaction in
+                                // TODO: Transaction details
                                 TransactionCell(transaction: transaction)
                             }
                             .listRowSeparator(.hidden)

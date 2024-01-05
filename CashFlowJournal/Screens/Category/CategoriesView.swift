@@ -26,6 +26,7 @@ struct CategoriesView: View {
             } else {
                 List {
                     ForEach(categories) { category in
+                        // TODO: Category details
                         CategoryCell(category: category)
                     }
                     .onDelete(perform: deleteCategories)
