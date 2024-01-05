@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SourceCell: View {
-    var source: Source
+    let source: Source
     
     var body: some View {
         HStack(alignment: .center, spacing: 12) {

@@ -48,6 +48,8 @@
 		4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B22B484C73006119DE /* AddAccountView.swift */; };
 		4E94B5B52B485314006119DE /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B42B485314006119DE /* SourcesView.swift */; };
 		4E94B5B72B4853BF006119DE /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B62B4853BF006119DE /* SourceCell.swift */; };
+		4E94B5B92B4855D9006119DE /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B82B4855D9006119DE /* CategoriesView.swift */; };
+		4E94B5BB2B485667006119DE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5BA2B485667006119DE /* CategoryCell.swift */; };
 		4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA7D3D2B459A4D00041F74 /* Formatter.swift */; };
 		4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */; };
 		4EBED4722B3ED43700B11BFC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBED4712B3ED43700B11BFC /* Account.swift */; };
@@ -97,6 +99,8 @@
 		4E94B5B22B484C73006119DE /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		4E94B5B42B485314006119DE /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
 		4E94B5B62B4853BF006119DE /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
+		4E94B5B82B4855D9006119DE /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		4E94B5BA2B485667006119DE /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		4EBA7D3D2B459A4D00041F74 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		4EBED46C2B3ED0E100B11BFC /* AppTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextFieldStyle.swift; sourceTree = "<group>"; };
 		4EBED4712B3ED43700B11BFC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		4E5AE3F62B470A0A00CBCB29 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4E94B5B82B4855D9006119DE /* CategoriesView.swift */,
+				4E94B5BA2B485667006119DE /* CategoryCell.swift */,
 				4E5AE3F72B470A1B00CBCB29 /* AddExpenseCategoryView.swift */,
 			);
 			path = Category;
@@ -273,11 +279,11 @@
 			isa = PBXGroup;
 			children = (
 				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
-				4E94B5AD2B484ACA006119DE /* Account */,
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
-				4E3577A92B46EBFC00D2AACE /* Transaction */,
+				4E94B5AD2B484ACA006119DE /* Account */,
 				4E25BA832B45AE6B007E2953 /* Source */,
 				4E5AE3F62B470A0A00CBCB29 /* Category */,
+				4E3577A92B46EBFC00D2AACE /* Transaction */,
 				4E6531A42B3DB35300FF4811 /* Registration */,
 				4E6531C82B3DBCC300FF4811 /* Onboarding */,
 			);
@@ -386,6 +392,7 @@
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,
 				4E94B5A82B4828E7006119DE /* TransactionAccountPicker.swift in Sources */,
 				4E94B5B72B4853BF006119DE /* SourceCell.swift in Sources */,
+				4E94B5BB2B485667006119DE /* CategoryCell.swift in Sources */,
 				4E94B5B52B485314006119DE /* SourcesView.swift in Sources */,
 				4E94B5AF2B484ADA006119DE /* AccountsView.swift in Sources */,
 				4E94B5B12B484B3F006119DE /* AccountCell.swift in Sources */,
@@ -395,6 +402,7 @@
 				4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */,
 				4E94B5AA2B4829B7006119DE /* TransactionSourcePicker.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
+				4E94B5B92B4855D9006119DE /* CategoriesView.swift in Sources */,
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
 				4E6DAD012B3EF58D00EB61E0 /* DashboardView.swift in Sources */,
 				4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */,

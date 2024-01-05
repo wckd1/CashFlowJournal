@@ -378,6 +378,28 @@
         }
       }
     },
+    "no_categories_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use \"+\" in the top right corner to add your first expense category"
+          }
+        }
+      }
+    },
+    "no_categories_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expense categories"
+          }
+        }
+      }
+    },
     "no_sources_description" : {
       "extractionState" : "manual",
       "localizations" : {

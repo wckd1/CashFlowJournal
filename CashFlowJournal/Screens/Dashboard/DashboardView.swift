@@ -28,8 +28,13 @@ struct DashboardView: View {
                         .padding(.horizontal, 12)
                     
                     // Transactions
-                    if transactions.count > 1 {
-                        // Transactions
+                    if transactions.count < 1 {
+                        ContentUnavailableView(
+                            String(localized: "dashboard_no_transactions_title"),
+                            systemImage: "clipboard",
+                            description: Text("dashboard_no_transactions_description")
+                        )
+                    } else {
                         Text("dashboard_transactions_title")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .modifier(UrbanistFont(.regular, size: 24))
@@ -46,12 +51,6 @@ struct DashboardView: View {
                             .listRowBackground(Color.bg_color)
                         }
                         .listStyle(.plain)
-                    } else {
-                        ContentUnavailableView(
-                            String(localized: "dashboard_no_transactions_title"),
-                            systemImage: "clipboard",
-                            description: Text("dashboard_no_transactions_description")
-                        )
                     }
                 }
                 .padding(.vertical, 12)
@@ -84,7 +83,7 @@ struct DashboardView: View {
                             Text("dashboard_sources")
                         }
                         .buttonStyle(.plain)
-                        NavigationLink(destination: AddExpenseCategoryView()) {
+                        NavigationLink(destination: CategoriesView()) {
                             Text("dashboard_categories")
                         }
                         .buttonStyle(.plain)
