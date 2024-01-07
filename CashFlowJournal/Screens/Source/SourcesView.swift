@@ -26,8 +26,9 @@ struct SourcesView: View {
             } else {
                 List {
                     ForEach(sources) { source in
-                        // TODO: Source details
-                        SourceCell(source: source)
+                        NavigationLink(destination: SourceDetailsView(source: source)) {
+                            SourceCell(source: source)
+                        }
                     }
                     .onDelete(perform: deleteSources)
                     .listRowSeparator(.hidden)

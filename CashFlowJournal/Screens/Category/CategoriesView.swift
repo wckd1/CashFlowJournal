@@ -26,8 +26,9 @@ struct CategoriesView: View {
             } else {
                 List {
                     ForEach(categories) { category in
-                        // TODO: Category details
-                        CategoryCell(category: category)
+                        NavigationLink(destination: CategoryDetailsView(category: category)) {
+                            CategoryCell(category: category)
+                        }
                     }
                     .onDelete(perform: deleteCategories)
                     .listRowSeparator(.hidden)

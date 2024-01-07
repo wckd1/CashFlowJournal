@@ -19,8 +19,9 @@ struct AccountsView: View {
             
             List {
                 ForEach(accounts) { account in
-                    // TODO: Account details
-                    AccountCell(account: account)
+                    NavigationLink(destination: AccountDetailsView(account: account)) {
+                        AccountCell(account: account)
+                    }
                 }
                 .onDelete(perform: deleteAccounts)
                 .listRowSeparator(.hidden)

@@ -356,6 +356,9 @@
     "Failed to create preview: %@" : {
 
     },
+    "History" : {
+
+    },
     "icon_picker_title" : {
       "extractionState" : "manual",
       "localizations" : {

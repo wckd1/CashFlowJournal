@@ -39,8 +39,7 @@ struct DashboardView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .modifier(UrbanistFont(.regular, size: 24))
                             .foregroundColor(Color.text_color)
-                            .padding(.bottom, 12)
-                            .padding(.horizontal, 12)
+                            .padding(12)
                         
                         List {
                             ForEach(transactions) { transaction in
