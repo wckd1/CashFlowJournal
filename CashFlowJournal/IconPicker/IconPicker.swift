@@ -58,6 +58,7 @@ struct IconPicker: View {
                 self.symbols = loadSymbols()
             }
         }
+        // TODO: Fix collapse
         .searchable(text: $searchText)
     }
     

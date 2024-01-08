@@ -22,7 +22,7 @@ struct Previewer {
         
         // Accounts
         accounts = [
-            Account(name: "Cash", balance: 10, color: Color.random().toHex()),
+            Account(name: "Cash", balance: 359, color: Color.random().toHex()),
             Account(name: "Lovcen", balance: 1450, color: Color.random().toHex())
         ]
 
@@ -52,14 +52,33 @@ struct Previewer {
         }
         
         // Transactions
-        transactions = [
-            Transaction(title: "Groceries", amount: 12.50, type: .expense, category: categories[0], account: accounts[0]),
-            Transaction(title: "Salary", amount: 450.00, type: .income, source: sources[0], account: accounts[1]),
-            Transaction(title: "December rent", amount: 45.64, type: .expense, category: categories[1], account: accounts[1])
-        ]
-        
-        for transaction in transactions {
-            container.mainContext.insert(transaction)
+        var trxBuild: [Transaction] = []
+        for dayOffset in 1...30 {
+            let count = Int.random(in: 1..<10)
+            
+            for index in (0...count) {
+                let sourceIndex = Int.random(in: 0..<sources.count)
+                let categoryIndex = Int.random(in: 0..<categories.count)
+                
+                let typeRand = Int.random(in: 1..<10)
+                let ttype: TransactionType = typeRand < 6 ? .income : .expense
+                
+                let trx = Transaction(
+                    title: "Transaction_\(dayOffset)_\(index)",
+                    amount: Float.random(in: 20..<100),
+                    type: ttype,
+                    source: ttype == .income ? sources[sourceIndex] : nil,
+                    category: ttype == .expense ? categories[categoryIndex] : nil,
+                    account: accounts[1],
+                    date: Calendar.current.date(byAdding: .day, value: -dayOffset, to: Date())!
+                )
+                
+                trxBuild.append(trx)
+                container.mainContext.insert(trx)
+            }
         }
+        
+        
+        transactions = trxBuild
     }
 }

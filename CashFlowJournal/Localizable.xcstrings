@@ -221,6 +221,9 @@
         }
       }
     },
+    "amount" : {
+
+    },
     "create_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -228,6 +231,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create Account"
+          }
+        }
+      }
+    },
+    "current %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current: %@"
           }
         }
       }
@@ -342,6 +356,9 @@
         }
       }
     },
+    "date" : {
+
+    },
     "expense" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -349,6 +366,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expense"
+          }
+        }
+      }
+    },
+    "expense %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses: %@"
           }
         }
       }
@@ -377,6 +405,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Income"
+          }
+        }
+      }
+    },
+    "income %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income: %@"
+          }
+        }
+      }
+    },
+    "month" : {
+
+    },
+    "no_accounts_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use \"+\" in the top right corner to add your first account"
+          }
+        }
+      }
+    },
+    "no_accounts_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No accounts"
           }
         }
       }
@@ -534,6 +598,15 @@
           }
         }
       }
+    },
+    "total %@" : {
+
+    },
+    "week" : {
+
+    },
+    "year" : {
+
     }
   },
   "version" : "1.0"

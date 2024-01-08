@@ -23,7 +23,7 @@ class Transaction {
     var account: Account
     let date: Date
     
-    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account) {
+    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account, date: Date = Date()) {
         self.id = UUID()
         self.title = title
         self.amount = amount
@@ -31,7 +31,7 @@ class Transaction {
         self.source = source
         self.category = category
         self.account = account
-        self.date = Date()
+        self.date = date
     }
 }
 
