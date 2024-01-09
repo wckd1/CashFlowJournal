@@ -12,13 +12,11 @@ import Charts
 enum PeriodFilter: CaseIterable {
     case week
     case month
-    case year
     
     var title: String {
         switch self {
         case .week: return String(localized: "week")
         case .month: return String(localized: "month")
-        case .year: return String(localized: "year")
         }
     }
 }
@@ -99,12 +97,13 @@ struct AccountDetailsView: View {
                             Chart {
                                 ForEach(chartData()) { barData in
                                     BarMark(
-                                        x: .value("day", barData.date, unit: .day),
-                                        y: .value("amount", barData.amount)
+                                        x: .value("chart_date", barData.date, unit: .day),
+                                        y: .value("chart_amount", barData.amount)
                                     )
                                     .foregroundStyle(barData.type == .income ? Color.income_color : Color.expense_color)
                                 }
                             }
+                            .chartYAxis(.hidden)
                         }
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
@@ -163,9 +162,6 @@ struct AccountDetailsView: View {
             return DateInterval(start: startDay, end: Date())
         case .month:
             guard let startDay = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return nil }
-            return DateInterval(start: startDay, end: Date())
-        case .year:
-            guard let startDay = Calendar.current.date(byAdding: .year, value: -1, to: Date()) else { return nil }
             return DateInterval(start: startDay, end: Date())
         }
     }
