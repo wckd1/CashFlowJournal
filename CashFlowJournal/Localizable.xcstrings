@@ -378,9 +378,6 @@
         }
       }
     },
-    "date" : {
-
-    },
     "expense" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -404,9 +401,6 @@
       }
     },
     "Failed to create preview: %@" : {
-
-    },
-    "History" : {
 
     },
     "icon_picker_title" : {
@@ -467,6 +461,17 @@
         }
       }
     },
+    "no_accounts_transactions_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transactions"
+          }
+        }
+      }
+    },
     "no_categories_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -511,6 +516,28 @@
         }
       }
     },
+    "no_transactions_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Related transactions will be displayed here"
+          }
+        }
+      }
+    },
+    "no_transactions_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No related transactions"
+          }
+        }
+      }
+    },
     "ob_account_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -551,6 +578,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Now, let's establish your starting point."
+          }
+        }
+      }
+    },
+    "picker_last7days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 7 days"
+          }
+        }
+      }
+    },
+    "picker_last30days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 30 days"
+          }
+        }
+      }
+    },
+    "picker_month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
+          }
+        }
+      }
+    },
+    "picker_overall" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overall"
+          }
+        }
+      }
+    },
+    "picker_year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year"
           }
         }
       }
@@ -622,13 +704,15 @@
       }
     },
     "total %@" : {
-
-    },
-    "week" : {
-
-    },
-    "year" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

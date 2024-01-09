@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0A60722B4D66B700A1E2C2 /* PeriodFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A60712B4D66B700A1E2C2 /* PeriodFilter.swift */; };
 		4E25BA852B45AE79007E2953 /* AddIncomeSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */; };
 		4E25BA872B45AFC5007E2953 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA862B45AFC5007E2953 /* Source.swift */; };
 		4E2A2F202B4AD8B20096AEBF /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A2F1F2B4AD8B20096AEBF /* AccountDetailsView.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E0A60712B4D66B700A1E2C2 /* PeriodFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodFilter.swift; sourceTree = "<group>"; };
 		4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeSourceView.swift; sourceTree = "<group>"; };
 		4E25BA862B45AFC5007E2953 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4E2A2F1F2B4AD8B20096AEBF /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				4E88A2ED2B3F0B11001255B2 /* Transaction.swift */,
 				4E25BA862B45AFC5007E2953 /* Source.swift */,
 				4E5AE3F42B4708F800CBCB29 /* Category.swift */,
+				4E0A60712B4D66B700A1E2C2 /* PeriodFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				4E88A2EE2B3F0B11001255B2 /* Transaction.swift in Sources */,
 				4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */,
 				4E94B5AA2B4829B7006119DE /* TransactionSourcePicker.swift in Sources */,
+				4E0A60722B4D66B700A1E2C2 /* PeriodFilter.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E2A2F222B4ADE920096AEBF /* SourceDetailsView.swift in Sources */,
 				4E94B5B92B4855D9006119DE /* CategoriesView.swift in Sources */,

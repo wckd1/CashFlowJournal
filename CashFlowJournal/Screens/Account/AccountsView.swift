@@ -25,9 +25,8 @@ struct AccountsView: View {
                     description: Text("no_accounts_description")
                 )
             } else {
-                List {
-                    // Charts
-                    Section {ZStack() {
+                VStack {
+                    ZStack() {
                         Chart(accounts) { account in
                             SectorMark(
                                 angle: .value(
@@ -45,13 +44,10 @@ struct AccountsView: View {
                             .foregroundColor(Color.text_color)
                             .multilineTextAlignment(.center)
                     }
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 0, trailing: 12))
-                    .listRowBackground(Color.bg_color)
-                    }
+                    .padding(.top, 12)
                     
                     // Accounts
-                    Section {
+                    List {
                         ForEach(accounts) { account in
                             NavigationLink(destination: AccountDetailsView(account: account)) {
                                 AccountCell(account: account)
@@ -62,10 +58,10 @@ struct AccountsView: View {
                         .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
                         .listRowBackground(Color.bg_color)
                     }
+                    .listStyle(.plain)
+                    .padding(.vertical, 6)
+                    .listSectionSpacing(.compact)
                 }
-                .listStyle(.plain)
-                .padding(.vertical, 6)
-                .listSectionSpacing(.compact)
             }
         }
         .navigationTitle("dashboard_accounts")
@@ -79,7 +75,7 @@ struct AccountsView: View {
         }
     }
     
-    func deleteAccounts(at offsets: IndexSet) {
+    private func deleteAccounts(at offsets: IndexSet) {
         for offset in offsets {
             let account = accounts[offset]
             modelContext.delete(account)

@@ -9,19 +9,7 @@ import SwiftUI
 import SwiftData
 import Charts
 
-enum PeriodFilter: CaseIterable {
-    case week
-    case month
-    
-    var title: String {
-        switch self {
-        case .week: return String(localized: "week")
-        case .month: return String(localized: "month")
-        }
-    }
-}
-
-struct ChartBarData: Identifiable {
+fileprivate struct ChartData: Identifiable {
     var id: String {
         "\(date)_\(type)"
     }
@@ -36,7 +24,7 @@ struct AccountDetailsView: View {
     @Query private var transactions: [Transaction]
     @State private var incomeTransactions: [Transaction] = []
     @State private var expenseTransactions: [Transaction] = []
-    @State private var selectedPeriod: PeriodFilter = .week
+    @State private var selectedPeriod: PeriodFilter = .last7days
     
     init(account: Account) {
         self.account = account
@@ -76,7 +64,7 @@ struct AccountDetailsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Picker("add_transaction_type_hint", selection: $selectedPeriod) {
-                        ForEach(PeriodFilter.allCases, id: \.self) {
+                        ForEach(PeriodFilter.accountCases, id: \.self) {
                             Text($0.title).tag($0)
                         }
                     }
@@ -86,9 +74,9 @@ struct AccountDetailsView: View {
                 
                 if transactions.count < 1 {
                     ContentUnavailableView(
-                        String(localized: "no_accounts_title"),
+                        String(localized: "no_transactions_title"),
                         systemImage: "clipboard",
-                        description: Text("no_accounts_description")
+                        description: Text("no_transactions_description")
                     )
                 } else {
                     List {
@@ -140,7 +128,7 @@ struct AccountDetailsView: View {
     }
     
     private func reloadTransactions() {
-        guard let interval = periodDates() else { return }
+        guard let interval = selectedPeriod.periodDates() else { return }
         
         incomeTransactions = transactions.filter { transaction in
             transaction.type == .income
@@ -155,28 +143,17 @@ struct AccountDetailsView: View {
         }
     }
     
-    private func periodDates() -> DateInterval? {
-        switch selectedPeriod {
-        case .week:
-            guard let startDay = Calendar.current.date(byAdding: .day, value: -7, to: Date()) else { return nil }
-            return DateInterval(start: startDay, end: Date())
-        case .month:
-            guard let startDay = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return nil }
-            return DateInterval(start: startDay, end: Date())
-        }
-    }
-    
-    private func chartData() -> [ChartBarData] {
+    private func chartData() -> [ChartData] {
         // Income
         let incomeGroup = Dictionary(grouping: incomeTransactions) { $0.date }
         var incomeList = incomeGroup.map { k, v in
-            ChartBarData(date: k, type: .income, amount: v.reduce(0) {$0 + $1.amount })
+            ChartData(date: k, type: .income, amount: v.reduce(0) {$0 + $1.amount })
         }
         
         // Expenses
         let expenseGroup = Dictionary(grouping: expenseTransactions) { $0.date }
         let expensesList = expenseGroup.map { k, v in
-            ChartBarData(date: k, type: .expense, amount: v.reduce(0) {$0 + $1.amount })
+            ChartData(date: k, type: .expense, amount: v.reduce(0) {$0 + $1.amount })
         }
         incomeList.append(contentsOf: expensesList)
         
