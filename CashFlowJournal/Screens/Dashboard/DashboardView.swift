@@ -12,7 +12,7 @@ struct DashboardView: View {
     @Environment(\.modelContext) var modelContext
     
     @AppStorage(UserDefaults.usernameKey)
-    private var username: String = UserDefaults.username
+    private var username: String = ""
     
     @Query(sort: \Transaction.date, order: .reverse)
     private var transactions: [Transaction]

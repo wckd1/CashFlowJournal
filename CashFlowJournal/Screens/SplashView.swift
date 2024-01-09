@@ -12,10 +12,10 @@ struct SplashView: View {
     @Environment(\.modelContext) var modelContext
     
     @AppStorage(UserDefaults.usernameKey)
-    private var username: String = UserDefaults.username
+    private var username: String = ""
     
     @AppStorage(UserDefaults.isOnboardedKey)
-    private var isOnboarded: Bool = UserDefaults.isOnboarded
+    private var isOnboarded: Bool = false
     
     var body: some View {
         if username.isEmpty {
