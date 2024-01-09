@@ -4,6 +4,8 @@ This project serves as a study app for exploring and implementing new SwiftUI fe
 
 ## Overview
 
+![CashFlowJournal_Previews](https://github.com/wckd1/CashFlowJournal/assets/10062961/a18220a0-6ce7-4091-afdd-c986e1a5162b)
+
 CashFlowJournal is an expense tracker app designed to help you manage and organize your finances using a ledger approach. Track your income, record expenses, and gain insights into your spending patterns in a systematic and chronological manner.
 
 
