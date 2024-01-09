@@ -33,7 +33,7 @@ struct SourceDetailsView: View {
                         .modifier(UrbanistFont(.regular, size: 24))
                         .foregroundColor(Color.text_color)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 24)
+                        .padding(.vertical, 24)
                     
                     Picker("add_transaction_type_hint", selection: $selectedPeriod) {
                         ForEach(PeriodFilter.incomeCases , id: \.self) {
@@ -44,7 +44,7 @@ struct SourceDetailsView: View {
                 }
                 .padding(.horizontal, 12)
                 
-                if transactions.count < 1 {
+                if filteredTransactions.count < 1 {
                     ContentUnavailableView(
                         String(localized: "no_transactions_title"),
                         systemImage: "clipboard",

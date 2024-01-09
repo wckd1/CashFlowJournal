@@ -32,6 +32,10 @@ enum PeriodFilter {
         return [.last7days, .month, .year, .overall]
     }
     
+    static var categoryCases: [PeriodFilter] {
+        return [.last7days, .month, .year, .overall]
+    }
+    
     func periodDates() -> DateInterval? {
         switch self {
         case .last7days:

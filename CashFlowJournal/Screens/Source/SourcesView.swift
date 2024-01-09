@@ -10,8 +10,8 @@ import SwiftData
 import Charts
 
 fileprivate struct ChartData: Identifiable {
-    var id: String {
-        source.name
+    var id: UUID {
+        source.id
     }
     
     let source: Source
@@ -99,10 +99,7 @@ struct SourcesView: View {
     }
     
     private func chartData() -> [ChartData] {
-        // Income
-        let sourcesGroup = Dictionary(grouping: transactions) { $0.source! }
-        
-        return sourcesGroup.map { k, v in
+        Dictionary(grouping: transactions) { $0.source! }.map { k, v in
             ChartData(source: k, amount: v.reduce(0) {$0 + $1.amount })
         }
     }
