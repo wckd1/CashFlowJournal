@@ -46,3 +46,22 @@ enum TransactionType: String, Codable, CaseIterable {
         }
     }
 }
+
+struct TransactionGroup: Identifiable {
+    var id: String
+    let transactions: [Transaction]
+}
+
+extension Array where Element: Transaction {
+    func groups() -> [TransactionGroup] {
+        Dictionary(
+            grouping: self,
+            by: { $0.date.formatted(date: .long, time: .omitted) }
+        ).map {
+            TransactionGroup(id: $0.key, transactions: $0.value)
+        }
+        .sorted(by: {
+            $0.transactions.first!.date > $1.transactions.first!.date
+        })
+    }
+}

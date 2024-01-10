@@ -367,17 +367,6 @@
         }
       }
     },
-    "dashboard_transactions_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Latest transactions"
-          }
-        }
-      }
-    },
     "expense" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -22,6 +22,9 @@ fileprivate struct ChartData: Identifiable {
 struct AccountDetailsView: View {
     private let account: Account
     @Query private var transactions: [Transaction]
+    private var sortedTransactions: [TransactionGroup] {
+        transactions.groups()
+    }
     @State private var incomeTransactions: [Transaction] = []
     @State private var expenseTransactions: [Transaction] = []
     @State private var selectedPeriod: PeriodFilter = .last7days
@@ -98,18 +101,21 @@ struct AccountDetailsView: View {
                         .listRowBackground(Color.bg_color)
                         
                         // Transactions
-                        Section {
-                            ForEach(transactions) { transaction in
-                                TransactionCell(transaction: transaction)
+                        ForEach(sortedTransactions) { group in
+                            Section {
+                                ForEach(group.transactions) { transaction in
+                                    // TODO: Transaction details
+                                    TransactionCell(transaction: transaction)
+                                }
+                            } header: {
+                                Text(group.id)
+                                    .modifier(UrbanistFont(.regular, size: 18))
+                                    .foregroundColor(Color.text_color)
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
-                            .listRowBackground(Color.bg_color)
-                        } header: {
-                            Text("dashboard_transactions_title")
-                                .modifier(UrbanistFont(.regular, size: 18))
-                                .foregroundColor(Color.text_color)
                         }
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+                        .listRowBackground(Color.bg_color)
                     }
                     .listStyle(.plain)
                     .padding(.vertical, 6)

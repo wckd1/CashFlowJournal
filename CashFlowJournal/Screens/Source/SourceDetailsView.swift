@@ -11,8 +11,12 @@ import SwiftData
 struct SourceDetailsView: View {
     private let source: Source
     @Query private var transactions: [Transaction]
-    @State private var filteredTransactions: [Transaction] = []
+    
     @State private var selectedPeriod: PeriodFilter = .overall
+    @State private var filteredTransactions: [Transaction] = []
+    private var sortedTransactions: [TransactionGroup] {
+        filteredTransactions.groups()
+    }
     
     init(source: Source) {
         self.source = source
@@ -52,18 +56,21 @@ struct SourceDetailsView: View {
                     )
                 } else {
                     List {
-                        Section {
-                            ForEach(filteredTransactions) { transaction in
-                                TransactionCell(transaction: transaction)
+                        ForEach(sortedTransactions) { group in
+                            Section {
+                                ForEach(group.transactions) { transaction in
+                                    // TODO: Transaction details
+                                    TransactionCell(transaction: transaction)
+                                }
+                            } header: {
+                                Text(group.id)
+                                    .modifier(UrbanistFont(.regular, size: 18))
+                                    .foregroundColor(Color.text_color)
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
-                            .listRowBackground(Color.bg_color)
-                        } header: {
-                            Text("dashboard_transactions_title")
-                                .modifier(UrbanistFont(.regular, size: 18))
-                                .foregroundColor(Color.text_color)
                         }
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+                        .listRowBackground(Color.bg_color)
                     }
                     .listStyle(.plain)
                     .padding(.vertical, 6)
