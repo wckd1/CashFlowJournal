@@ -9,20 +9,20 @@ import SwiftUI
 import SwiftData
 
 struct DashboardView: View {
-    @Environment(\.modelContext) var modelContext
-    
     @AppStorage(UserDefaults.usernameKey)
     private var username: String = ""
     
-    @Query(sort: \Transaction.date, order: .reverse)
-    private var transactions: [Transaction]
+    @Query private var transactions: [Transaction]
+    private var sortedTransactions: [TransactionGroup] {
+        transactions.groups()
+    }
     
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 Color.bg_color.edgesIgnoringSafeArea(.all)
                 
-                VStack {
+                VStack(spacing: 0) {
                     // Balance
                     BalanceView()
                         .padding(.horizontal, 12)
@@ -35,16 +35,18 @@ struct DashboardView: View {
                             description: Text("dashboard_no_transactions_description")
                         )
                     } else {
-                        Text("dashboard_transactions_title")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .modifier(UrbanistFont(.regular, size: 24))
-                            .foregroundColor(Color.text_color)
-                            .padding(12)
-                        
                         List {
-                            ForEach(transactions) { transaction in
-                                // TODO: Transaction details
-                                TransactionCell(transaction: transaction)
+                            ForEach(sortedTransactions) { group in
+                                Section {
+                                    ForEach(group.transactions) { transaction in
+                                        // TODO: Transaction details
+                                        TransactionCell(transaction: transaction)
+                                    }
+                                } header: {
+                                    Text(group.id)
+                                        .modifier(UrbanistFont(.regular, size: 18))
+                                        .foregroundColor(Color.text_color)
+                                }
                             }
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
