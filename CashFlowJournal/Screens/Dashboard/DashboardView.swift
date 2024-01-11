@@ -35,24 +35,7 @@ struct DashboardView: View {
                             description: Text("dashboard_no_transactions_description")
                         )
                     } else {
-                        List {
-                            ForEach(sortedTransactions) { group in
-                                Section {
-                                    ForEach(group.transactions) { transaction in
-                                        // TODO: Transaction details
-                                        TransactionCell(transaction: transaction)
-                                    }
-                                } header: {
-                                    Text(group.id)
-                                        .modifier(UrbanistFont(.regular, size: 18))
-                                        .foregroundColor(Color.text_color)
-                                }
-                            }
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
-                            .listRowBackground(Color.bg_color)
-                        }
-                        .listStyle(.plain)
+                        TransactionsList(transactions: transactions)
                     }
                 }
                 .padding(.vertical, 12)

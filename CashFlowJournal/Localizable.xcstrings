@@ -221,9 +221,6 @@
         }
       }
     },
-    "amount" : {
-
-    },
     "chart_amount" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -424,9 +421,6 @@
           }
         }
       }
-    },
-    "month" : {
-
     },
     "no_accounts_description" : {
       "extractionState" : "manual",
