@@ -161,7 +161,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Specify transaction's account"
+            "value" : "Specify destination account"
           }
         }
       }
@@ -195,6 +195,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter transaction title"
+          }
+        }
+      }
+    },
+    "add_transaction_origin_account_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify origin account"
           }
         }
       }
@@ -704,6 +715,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total: %@"
+          }
+        }
+      }
+    },
+    "transfer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer"
           }
         }
       }

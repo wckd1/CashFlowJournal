@@ -69,7 +69,8 @@ struct Previewer {
                     type: ttype,
                     source: ttype == .income ? sources[sourceIndex] : nil,
                     category: ttype == .expense ? categories[categoryIndex] : nil,
-                    account: accounts[1],
+                    account: nil,
+                    originAccount: accounts[1],
                     date: Calendar.current.date(byAdding: .day, value: -dayOffset, to: Date())!
                 )
                 

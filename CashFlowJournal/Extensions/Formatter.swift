@@ -26,19 +26,7 @@ class Formatter {
         return formatter
     }()
     
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d.MM.yyy HH:mm"
-        return formatter
-    }()
-
-    
     func format(_ price: Float) -> String {
         return priceFormatter.string(from: NSNumber(value: price)) ?? String(describing: price)
     }
-    
-    func format(_ date: Date) -> String {
-        return dateFormatter.string(from: date)
-    }
 }
-

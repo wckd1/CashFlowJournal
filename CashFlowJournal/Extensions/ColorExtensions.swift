@@ -55,6 +55,7 @@ extension TransactionType {
         switch self {
         case .income: return Color.income_color
         case .expense: return Color.expense_color
+        case .transfer: return Color.text_color
         }
     }
 }

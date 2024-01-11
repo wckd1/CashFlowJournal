@@ -12,19 +12,20 @@ struct TransactionCell: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
-            if transaction.type == .income, let source = transaction.source {
-                Image(systemName: source.icon)
+            switch transaction.type {
+            case .income:
+                Image(systemName: transaction.source!.icon)
                     .frame(width: 42, height: 42)
-                    .background(Color(hex: source.color))
+                    .background(Color(hex: transaction.source!.color))
                     .cornerRadius(12)
-            } else if let category = transaction.category {
-                Image(systemName: category.icon)
+            case .expense:
+                Image(systemName: transaction.category!.icon)
                     .frame(width: 42, height: 42)
-                    .background(Color(hex: category.color))
+                    .background(Color(hex: transaction.category!.color))
                     .cornerRadius(12)
-            } else {
+            case .transfer:
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(transaction.type.color)
+                    .fill(Color(hex: transaction.account!.color))
                     .frame(width: 42, height: 42)
             }
             
@@ -35,7 +36,7 @@ struct TransactionCell: View {
                         .modifier(UrbanistFont(.regular, size: 18))
                         .foregroundColor(Color.text_color)
                     
-                    Text(Formatter.shared.format(transaction.date))
+                    Text(transaction.date.formatted(date: .omitted, time: .shortened))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .modifier(UrbanistFont(.regular, size: 12))
                         .foregroundColor(Color.gray)
