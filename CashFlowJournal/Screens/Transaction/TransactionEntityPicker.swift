@@ -1,5 +1,5 @@
 //
-//  TransactionCategoryPicker.swift
+//  TransactionEntityPicker.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 05.01.2024.
@@ -7,29 +7,41 @@
 
 import SwiftUI
 
-struct TransactionCategoryPicker: View {
-    @State var categories: [Category]
-    @Binding var selectedCategory: Category?
+protocol Pickerable {
+    var name: String { get }
+    var icon: String { get }
+    var color: String { get }
+}
+
+extension Account: Pickerable {
+    var icon: String { "" }
+}
+extension Source: Pickerable {}
+extension Category: Pickerable {}
+
+struct TransactionEntityPicker<T: Pickerable & Identifiable & Equatable>: View {
+    @State var items: [T]
+    @Binding var selectedItem: T?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 // TODO: Add account if no exists
-                ForEach(categories) { category in
+                ForEach(items) { item in
                     Button {
-                        selectedCategory = category
+                        selectedItem = item
                     } label: {
                         HStack {
-                            Image(systemName: category.icon)
+                            Image(systemName: item.icon)
                                 .font(.subheadline)
                                 .foregroundStyle(Color.text_color)
-                            Text(category.name)
+                            Text(item.name)
                                 .foregroundStyle(Color.text_color)
                         }
                     }
                     .padding(.vertical, 12)
                     .padding(.horizontal, 18)
-                    .background(selectedCategory == category ? Color(hex: category.color) : Color.gray)
+                    .background(selectedItem == item ? Color(hex: item.color) : Color.gray)
                     .cornerRadius(6)
                 }
             }
@@ -41,7 +53,7 @@ struct TransactionCategoryPicker: View {
     do {
         let previewer = try Previewer()
         
-        return TransactionCategoryPicker(categories: previewer.categories, selectedCategory: .constant(previewer.categories[0]))
+        return TransactionEntityPicker(items: previewer.sources, selectedItem: .constant(previewer.sources[0]))
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

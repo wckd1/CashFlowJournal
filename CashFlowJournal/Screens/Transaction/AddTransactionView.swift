@@ -22,6 +22,7 @@ struct AddTransactionView: View {
     @State private var selectedAccount: Account?
     @State private var selectedSource: Source?
     @State private var selectedCategory: Category?
+    @State private var originAccount: Account?
     
     @State private var transactionError: String?
     @State private var isValid: Bool = false
@@ -73,7 +74,7 @@ struct AddTransactionView: View {
                     case .income:
                         // Source
                         Section(header: Text("add_transaction_source_hint")) {
-                            TransactionSourcePicker(sources: sources, selectedSource: $selectedSource)
+                            TransactionEntityPicker(items: sources, selectedItem: $selectedSource)
                                 .onChange(of: selectedSource) { _, _ in
                                     validate()
                                 }
@@ -84,8 +85,19 @@ struct AddTransactionView: View {
                     case .expense:
                         // Category
                         Section(header: Text("add_transaction_category_hint")) {
-                            TransactionCategoryPicker(categories: categories, selectedCategory: $selectedCategory)
-                                .onChange(of: selectedCategory) { _, _ in
+                            TransactionEntityPicker(items: categories, selectedItem: $selectedCategory)
+                                .onChange(of: selectedSource) { _, _ in
+                                    validate()
+                                }
+                        }
+                        .listRowBackground(Color.bg_color)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                    case .transfer:
+                        // Account
+                        Section(header: Text("add_transaction_account_hint")) {
+                            TransactionEntityPicker(items: accounts, selectedItem: $selectedAccount)
+                                .onChange(of: selectedAccount) { _, _ in
                                     validate()
                                 }
                         }
@@ -95,9 +107,9 @@ struct AddTransactionView: View {
                     }
                     
                     // Account
-                    Section(header: Text("add_transaction_account_hint")) {
-                        TransactionAccountPicker(accounts: accounts, selectedAccount: $selectedAccount)
-                            .onChange(of: selectedAccount) { _, _ in
+                    Section(header: Text("add_transaction_origin_account_hint")) {
+                        TransactionEntityPicker(items: accounts, selectedItem: $originAccount)
+                            .onChange(of: originAccount) { _, _ in
                                 validate()
                             }
                     }
@@ -108,7 +120,7 @@ struct AddTransactionView: View {
                 .background(Color.bg_color)
                 .scrollContentBackground(.hidden)
                 
-                Spacer()
+//                Spacer()
                 
                 // Error
                 if let transactionError {
@@ -144,22 +156,26 @@ struct AddTransactionView: View {
         if title.isEmpty { isValidatioPassed = false }
         if Float(amount) <= 0  { isValidatioPassed = false }
         
-        switch transactionType {
-        case .income:
+        if transactionType == .income {
             if selectedSource == nil {
                 isValidatioPassed = false
             }
-        case .expense:
-            if selectedCategory == nil {
+        } else {
+            if let account = originAccount, account.balance < amount {
+                transactionError = String(localized: "add_transaction_account_funds_error")
                 isValidatioPassed = false
             }
-            if let account = selectedAccount, account.balance < amount {
-                transactionError = String(localized: "add_transaction_account_funds_error")
+            
+            if transactionType == .expense, selectedCategory == nil {
+                isValidatioPassed = false
+            }
+            
+            if transactionType == .transfer, selectedAccount == nil {
                 isValidatioPassed = false
             }
         }
         
-        if selectedAccount == nil {
+        if originAccount == nil {
             isValidatioPassed = false
         }
         
@@ -176,7 +192,8 @@ struct AddTransactionView: View {
                     type: transactionType,
                     source: transactionType == .income ? selectedSource! : nil,
                     category: transactionType == .expense ? selectedCategory! : nil,
-                    account: selectedAccount!
+                    account: transactionType == .transfer ? selectedAccount! : nil,
+                    originAccount: originAccount!
                 )
                 modelContext.insert(transaction)
                 
@@ -185,15 +202,21 @@ struct AddTransactionView: View {
                     // Update source's transactions
                     selectedSource?.transactions.append(transaction)
                     // Update account balance
-                    selectedAccount?.balance += transaction.amount
+                    originAccount?.balance += transaction.amount
                 case .expense:
                     // Update category's transactions
                     selectedCategory?.transactions.append(transaction)
                     // Update account balance
-                    selectedAccount?.balance -= transaction.amount
+                    originAccount?.balance -= transaction.amount
+                case .transfer:
+                    // Update accounts transactions
+                    selectedAccount?.transactions.append(transaction)
+                    // Update account balance
+                    selectedAccount?.balance += transaction.amount
+                    originAccount?.balance -= transaction.amount
                 }
                 
-                selectedAccount?.transactions.append(transaction)
+                originAccount?.transactions.append(transaction)
             }
             
             modelContext.processPendingChanges()

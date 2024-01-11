@@ -19,16 +19,27 @@ class Transaction {
     @Attribute private var _type: TransactionType.RawValue
     var source: Source?
     var category: Category?
-    private(set) var account: Account?
+    var account: Account?
+    private(set) var originAccount: Account?
     let date: Date
     
-    init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account, date: Date = Date()) {
+    init(
+        title: String,
+        amount: Float,
+        type: TransactionType,
+        source: Source? = nil,
+        category: Category? = nil,
+        account: Account? = nil,
+        originAccount: Account,
+        date: Date = Date()
+    ) {
         self.title = title
         self.amount = amount
         self._type = type.rawValue
         self.source = source
         self.category = category
         self.account = account
+        self.originAccount = originAccount
         self.date = date
     }
 }
@@ -36,11 +47,13 @@ class Transaction {
 enum TransactionType: String, Codable, CaseIterable {
     case income
     case expense
+    case transfer
     
     var title: String {
         switch self {
         case .income: return String(localized: "income")
         case .expense: return String(localized: "expense")
+        case .transfer: return String(localized: "transfer")
         }
     }
 }
