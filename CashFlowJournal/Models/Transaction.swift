@@ -19,7 +19,7 @@ class Transaction {
     @Attribute private var _type: TransactionType.RawValue
     var source: Source?
     var category: Category?
-    var account: Account
+    private(set) var account: Account?
     let date: Date
     
     init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account, date: Date = Date()) {

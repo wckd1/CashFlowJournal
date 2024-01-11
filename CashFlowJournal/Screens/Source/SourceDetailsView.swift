@@ -24,7 +24,7 @@ struct SourceDetailsView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 24)
                     
-                    Picker("add_transaction_type_hint", selection: $selectedPeriod) {
+                    Picker("picker_period_hint", selection: $selectedPeriod) {
                         ForEach(PeriodFilter.incomeCases , id: \.self) {
                             Text($0.title).tag($0)
                         }

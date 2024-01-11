@@ -20,23 +20,13 @@ fileprivate struct ChartData: Identifiable {
 }
 
 struct AccountDetailsView: View {
-    private let account: Account
-    @Query private var transactions: [Transaction]
+    let account: Account
     private var sortedTransactions: [TransactionGroup] {
-        transactions.groups()
+        account.transactions.groups()
     }
     @State private var incomeTransactions: [Transaction] = []
     @State private var expenseTransactions: [Transaction] = []
     @State private var selectedPeriod: PeriodFilter = .last7days
-    
-    init(account: Account) {
-        self.account = account
-        
-        _transactions = Query(
-            filter: AccountDetailsView.filterByAccount(account.id),
-            sort: \.date, order: .reverse
-        )
-    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -66,7 +56,7 @@ struct AccountDetailsView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Picker("add_transaction_type_hint", selection: $selectedPeriod) {
+                    Picker("picker_period_hint", selection: $selectedPeriod) {
                         ForEach(PeriodFilter.accountCases, id: \.self) {
                             Text($0.title).tag($0)
                         }
@@ -75,7 +65,7 @@ struct AccountDetailsView: View {
                 }
                 .padding(.horizontal, 12)
                 
-                if transactions.count < 1 {
+                if account.transactions.count < 1 {
                     ContentUnavailableView(
                         String(localized: "no_transactions_title"),
                         systemImage: "clipboard",
@@ -136,13 +126,13 @@ struct AccountDetailsView: View {
     private func reloadTransactions() {
         guard let interval = selectedPeriod.periodDates() else { return }
         
-        incomeTransactions = transactions.filter { transaction in
+        incomeTransactions = account.transactions.filter { transaction in
             transaction.type == .income
             && transaction.date >= interval.start
             && transaction.date <= interval.end
         }
         
-        expenseTransactions = transactions.filter { transaction in
+        expenseTransactions = account.transactions.filter { transaction in
             transaction.type == .expense
             && transaction.date >= interval.start
             && transaction.date <= interval.end
@@ -164,13 +154,6 @@ struct AccountDetailsView: View {
         incomeList.append(contentsOf: expensesList)
         
         return incomeList
-    }
-    
-    // Predicates
-    private static func filterByAccount(_ accountID: UUID) -> Predicate<Transaction> {
-        return #Predicate<Transaction> { transaction in
-            transaction.account.id == accountID
-        }
     }
 }
 

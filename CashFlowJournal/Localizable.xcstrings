@@ -609,6 +609,17 @@
         }
       }
     },
+    "picker_period_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify period filter"
+          }
+        }
+      }
+    },
     "picker_year" : {
       "extractionState" : "manual",
       "localizations" : {
