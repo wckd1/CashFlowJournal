@@ -10,16 +10,14 @@ import Foundation
 
 @Model
 class Category {
-    var id: UUID
     @Attribute(.unique) var name: String
     var color: String
     var icon: String
+    @Relationship(inverse: \Transaction.category) var transactions: [Transaction] = [Transaction]()
     
     init(name: String, color: String, icon: String) {
-        self.id = UUID()
         self.name = name
         self.color = color
         self.icon = icon
     }
 }
-
