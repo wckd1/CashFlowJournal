@@ -167,23 +167,36 @@ struct AddTransactionView: View {
     }
     
     private func saveTransaction() {
-        // Save transaction
-        let transaction = Transaction(
-            title: title,
-            amount: amount,
-            type: transactionType,
-            source: transactionType == .income ? selectedSource! : nil,
-            category: transactionType == .expense ? selectedCategory! : nil,
-            account: selectedAccount!
-        )
-        modelContext.insert(transaction)
-        
-        // Update account balance
-        var transactionAmount = amount
-        if transactionType == .expense { transactionAmount *= -1 }
-        selectedAccount!.balance += transactionAmount
-        
-        dismiss()
+        do {
+            try modelContext.transaction {
+                // Save transaction
+                let transaction = Transaction(
+                    title: title,
+                    amount: amount,
+                    type: transactionType,
+                    source: transactionType == .income ? selectedSource! : nil,
+                    category: transactionType == .expense ? selectedCategory! : nil,
+                    account: selectedAccount!
+                )
+                modelContext.insert(transaction)
+                
+                // Update source's transactions
+                if transactionType == .income {
+                    selectedSource?.transactions.append(transaction)
+                }
+                
+                // Update account balance
+                var transactionAmount = amount
+                if transactionType == .expense { transactionAmount *= -1 }
+                selectedAccount!.balance += transactionAmount
+            }
+            
+            modelContext.processPendingChanges()
+            
+            dismiss()
+        } catch let error {
+            print("Error saving transaction: \(error.localizedDescription)")
+        }
     }
 }
 

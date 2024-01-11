@@ -9,23 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct SourceDetailsView: View {
-    private let source: Source
-    @Query private var transactions: [Transaction]
-    
-    @State private var selectedPeriod: PeriodFilter = .overall
-    @State private var filteredTransactions: [Transaction] = []
-    private var sortedTransactions: [TransactionGroup] {
-        filteredTransactions.groups()
-    }
-    
-    init(source: Source) {
-        self.source = source
-        
-        _transactions = Query(
-            filter: SourceDetailsView.sourcePredicate(source.id),
-            sort: \.date, order: .reverse
-        )
-    }
+    let source: Source
+    @State private var selectedPeriod: PeriodFilter = .month
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -33,7 +18,7 @@ struct SourceDetailsView: View {
             
             VStack {
                 Group {
-                    Text("Total income:\n" + Formatter.shared.format(filteredTransactions.reduce(0) {$0 + $1.amount }))
+                    Text("Total income:\n" + Formatter.shared.format(source.transactions.reduce(0) { $0 + $1.amount }))
                         .modifier(UrbanistFont(.regular, size: 24))
                         .foregroundColor(Color.text_color)
                         .multilineTextAlignment(.center)
@@ -48,61 +33,11 @@ struct SourceDetailsView: View {
                 }
                 .padding(.horizontal, 12)
                 
-                if filteredTransactions.count < 1 {
-                    ContentUnavailableView(
-                        String(localized: "no_transactions_title"),
-                        systemImage: "clipboard",
-                        description: Text("no_transactions_description")
-                    )
-                } else {
-                    List {
-                        ForEach(sortedTransactions) { group in
-                            Section {
-                                ForEach(group.transactions) { transaction in
-                                    // TODO: Transaction details
-                                    TransactionCell(transaction: transaction)
-                                }
-                            } header: {
-                                Text(group.id)
-                                    .modifier(UrbanistFont(.regular, size: 18))
-                                    .foregroundColor(Color.text_color)
-                            }
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
-                        .listRowBackground(Color.bg_color)
-                    }
-                    .listStyle(.plain)
-                    .padding(.vertical, 6)
-                    .listSectionSpacing(.compact)
-                }
-            }
-            .onChange(of: selectedPeriod) { _, _ in
-                reloadTransactions()
-            }
-            .onAppear {
-                reloadTransactions()
+                TransactionsList(transactions: source.transactions.filter(period: selectedPeriod))
             }
         }
         .navigationTitle(source.name)
         .navigationBarTitleDisplayMode(.large)
-    }
-    
-    private func reloadTransactions() {
-        if let interval = selectedPeriod.periodDates() {
-            filteredTransactions = transactions.filter { transaction in
-                transaction.date >= interval.start
-                && transaction.date <= interval.end
-            }
-        } else {
-            filteredTransactions = transactions
-        }
-    }
-    
-    private static func sourcePredicate(_ sourceID: UUID) -> Predicate<Transaction> {
-        return #Predicate<Transaction> { transaction in
-            transaction.source?.id == sourceID
-        }
     }
 }
 

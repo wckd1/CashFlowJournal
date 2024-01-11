@@ -10,21 +10,19 @@ import Foundation
 
 @Model
 class Transaction {
-    var id: UUID
     var title: String
     var amount: Float
     @Transient var type: TransactionType {
         get { TransactionType(rawValue: _type)! }
         set { _type = newValue.rawValue }
     }
-    @Attribute var _type: TransactionType.RawValue
+    @Attribute private var _type: TransactionType.RawValue
     var source: Source?
     var category: Category?
     var account: Account
     let date: Date
     
     init(title: String, amount: Float, type: TransactionType, source: Source? = nil, category: Category? = nil, account: Account, date: Date = Date()) {
-        self.id = UUID()
         self.title = title
         self.amount = amount
         self._type = type.rawValue
@@ -58,10 +56,22 @@ extension Array where Element: Transaction {
             grouping: self,
             by: { $0.date.formatted(date: .long, time: .omitted) }
         ).map {
-            TransactionGroup(id: $0.key, transactions: $0.value)
+            TransactionGroup(
+                id: $0.key,
+                transactions: $0.value
+                .sorted(by: {  $0.date > $1.date })
+            )
         }
         .sorted(by: {
             $0.transactions.first!.date > $1.transactions.first!.date
         })
+    }
+    
+    func filter(period: PeriodFilter) -> [Transaction] {
+        guard let interval = period.periodDates() else { return self }
+        return self.filter { transaction in
+            transaction.date >= interval.start
+            && transaction.date <= interval.end
+        }
     }
 }

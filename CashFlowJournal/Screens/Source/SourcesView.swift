@@ -10,9 +10,7 @@ import SwiftData
 import Charts
 
 fileprivate struct ChartData: Identifiable {
-    var id: UUID {
-        source.id
-    }
+    var id: PersistentIdentifier { source.persistentModelID }
     
     let source: Source
     let amount: Float
@@ -22,14 +20,9 @@ struct SourcesView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query private var sources: [Source]
-    @Query private var transactions: [Transaction]
     
-    init() {
-        _transactions = Query(
-            filter: #Predicate<Transaction> { transaction in
-                transaction.source != nil
-            }
-        )
+    private var transactions: [Transaction] {
+        return sources.flatMap { $0.transactions }
     }
     
     var body: some View {
@@ -66,7 +59,9 @@ struct SourcesView: View {
                     
                     List {
                         ForEach(sources) { source in
-                            NavigationLink(destination: SourceDetailsView(source: source)) {
+                            NavigationLink {
+                                SourceDetailsView(source: source)
+                            } label: {
                                 SourceCell(source: source)
                             }
                         }
@@ -83,7 +78,9 @@ struct SourcesView: View {
         .navigationTitle("dashboard_sources")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink(destination: AddIncomeSourceView()) {
+            NavigationLink {
+                AddIncomeSourceView()
+            } label: {
                 Image(systemName: "plus")
                     .foregroundStyle(Color.primary_color)
             }
@@ -99,7 +96,7 @@ struct SourcesView: View {
     }
     
     private func chartData() -> [ChartData] {
-        Dictionary(grouping: transactions) { $0.source! }.map { k, v in
+        return Dictionary(grouping: transactions) { $0.source! }.map { k, v in
             ChartData(source: k, amount: v.reduce(0) {$0 + $1.amount })
         }
     }

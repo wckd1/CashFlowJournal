@@ -48,10 +48,10 @@ struct OnboardingBalanceView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
-                .background(account.balance <= 0 ? Color.gray : Color.primary_color)
+                .background(account.balance < 0 ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
                 .padding(.top, 25)
-                .disabled(account.balance <= 0)
+                .disabled(account.balance < 0)
             }
             .padding(24)
         }
