@@ -10,9 +10,7 @@ import SwiftData
 import Charts
 
 fileprivate struct ChartData: Identifiable {
-    var id: UUID {
-        category.id
-    }
+    var id: PersistentIdentifier { category.persistentModelID }
     
     let category: Category
     let amount: Float
@@ -22,14 +20,9 @@ struct CategoriesView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query private var categories: [Category]
-    @Query private var transactions: [Transaction]
     
-    init() {
-        _transactions = Query(
-            filter: #Predicate<Transaction> { transaction in
-                transaction.category != nil
-            }
-        )
+    private var transactions: [Transaction] {
+        return categories.flatMap { $0.transactions }
     }
     
     var body: some View {
@@ -66,7 +59,9 @@ struct CategoriesView: View {
                     
                     List {
                         ForEach(categories) { category in
-                            NavigationLink(destination: CategoryDetailsView(category: category)) {
+                            NavigationLink {
+                                CategoryDetailsView(category: category)
+                            } label: {
                                 CategoryCell(category: category)
                             }
                         }
@@ -83,7 +78,9 @@ struct CategoriesView: View {
         .navigationTitle("dashboard_categories")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink(destination: AddExpenseCategoryView()) {
+            NavigationLink {
+                AddExpenseCategoryView()
+            } label: {
                 Image(systemName: "plus")
                     .foregroundStyle(Color.primary_color)
             }

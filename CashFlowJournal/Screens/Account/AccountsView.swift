@@ -49,7 +49,9 @@ struct AccountsView: View {
                     // Accounts
                     List {
                         ForEach(accounts) { account in
-                            NavigationLink(destination: AccountDetailsView(account: account)) {
+                            NavigationLink {
+                                AccountDetailsView(account: account)
+                            } label: {
                                 AccountCell(account: account)
                             }
                         }
@@ -67,7 +69,9 @@ struct AccountsView: View {
         .navigationTitle("dashboard_accounts")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink(destination: AddAccountView()) {
+            NavigationLink {
+                AddAccountView()
+            } label: {
                 Image(systemName: "plus")
                     .foregroundStyle(Color.primary_color)
             }

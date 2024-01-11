@@ -187,6 +187,8 @@ struct AddTransactionView: View {
                     // Update account balance
                     selectedAccount?.balance += transaction.amount
                 case .expense:
+                    // Update category's transactions
+                    selectedCategory?.transactions.append(transaction)
                     // Update account balance
                     selectedAccount?.balance -= transaction.amount
                 }
