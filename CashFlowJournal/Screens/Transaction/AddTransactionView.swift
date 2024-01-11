@@ -180,15 +180,18 @@ struct AddTransactionView: View {
                 )
                 modelContext.insert(transaction)
                 
-                // Update source's transactions
-                if transactionType == .income {
+                switch transaction.type {
+                case .income:
+                    // Update source's transactions
                     selectedSource?.transactions.append(transaction)
+                    // Update account balance
+                    selectedAccount?.balance += transaction.amount
+                case .expense:
+                    // Update account balance
+                    selectedAccount?.balance -= transaction.amount
                 }
                 
-                // Update account balance
-                var transactionAmount = amount
-                if transactionType == .expense { transactionAmount *= -1 }
-                selectedAccount!.balance += transactionAmount
+                selectedAccount?.transactions.append(transaction)
             }
             
             modelContext.processPendingChanges()
