@@ -20,7 +20,7 @@ struct CategoryEditView: View {
     init(category: Category? = nil) {
         let categoryColorHEX = category?.color ?? Color.random().toHex()
         self._color = State(initialValue: Color(hex: categoryColorHEX))
-        self.category = category ?? Category(name: "", color:categoryColorHEX, icon: "bag")
+        self.category = category ?? Category(name: "", color: categoryColorHEX, icon: "bag")
     }
     
     var body: some View {
@@ -55,7 +55,7 @@ struct CategoryEditView: View {
                     Text("save")
                         .modifier(UrbanistFont(.bold, size: 18))
                         .foregroundColor(Color.bg_color)
-                        .padding(.vertical, 12)
+                        .padding(.vertical)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)

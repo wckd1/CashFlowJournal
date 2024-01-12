@@ -1,20 +1,27 @@
 //
-//  AddIncomeSourceView.swift
+//  SourceEditView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 03.01.2024.
 //
 
 import SwiftUI
+import SwiftData
 
-struct AddIncomeSourceView: View {
+struct SourceEditView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable private var source = Source(name: "", color: Color.primary_color.toHex(), icon: "dollarsign")
+    @Query private var groups: [SourceGroup]
     
-    @State private var color = Color.random()
-    @State private var isIconPickerPresented = false
+    @Bindable private var source: Source
+    @State private var color: Color
+    
+    init(source: Source? = nil) {
+        let sourceColorHEX = source?.color ?? Color.random().toHex()
+        self._color = State(initialValue: Color(hex: sourceColorHEX))
+        self.source = source ?? Source(name: "", color: sourceColorHEX, icon: "dollarsign")
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -25,28 +32,20 @@ struct AddIncomeSourceView: View {
                     .foregroundStyle(Color.text_color)
                     .textFieldStyle(AppTextFieldStyle(left: "💸"))
                 
-                ColorPicker("add_source_color_hint", selection: $color, supportsOpacity: false)
-                    .modifier(UrbanistFont(.regular, size: 18))
-                    .foregroundStyle(Color.text_color)
+                CustomColorPicker(hint: "add_source_color_hint", color: $color)
                     .padding(.top, 24)
                     .onChange(of: color) { _, value in
                         source.color = value.toHex()
                     }
                 
-                HStack {
-                    Text("add_source_icon_hint")
+                CustomIconPicker(hint: "add_source_icon_hint", icon: $source.icon, color: $color)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("add_source_group_hint")
                         .modifier(UrbanistFont(.regular, size: 18))
-                    Spacer()
-                    Image(systemName: source.icon)
-                        .font(.title3)
-                        .foregroundStyle(color)
+                    
+                    EntityPicker(items: groups, selectedItem: $source.group)
                 }
-                .onTapGesture {
-                    isIconPickerPresented.toggle()
-                }
-                .sheet(isPresented: $isIconPickerPresented, content: {
-                    IconPickerModalView(selection: $source.icon)
-                })
                 
                 Spacer()
                 
@@ -56,18 +55,17 @@ struct AddIncomeSourceView: View {
                     Text("save")
                         .modifier(UrbanistFont(.bold, size: 18))
                         .foregroundColor(Color.bg_color)
-                        .padding(.vertical, 12)
+                        .padding(.vertical)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
                 .background(source.name.isEmpty ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
-                .padding(.top, 25)
                 .disabled(source.name.isEmpty)
             }
             .padding(24)
         }
-        .navigationTitle("add_source")
+        .navigationTitle(source.name.isEmpty ? "add_source" : "edit_source")
         .navigationBarTitleDisplayMode(.large)
     }
     
@@ -82,7 +80,7 @@ struct AddIncomeSourceView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddIncomeSourceView()
+            SourceEditView()
                 .modelContainer(previewer.container)
         }
     } catch {

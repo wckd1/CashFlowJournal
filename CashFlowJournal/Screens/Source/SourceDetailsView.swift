@@ -16,9 +16,17 @@ struct SourceDetailsView: View {
         ZStack(alignment: .top) {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack {
+            VStack(alignment: .leading) {
+                if let group = source.group {
+                    Text(group.name)
+                        .modifier(UrbanistFont(.regular, size: 18))
+                        .foregroundColor(Color.gray)
+                        .padding(.horizontal)
+                }
+                
                 Group {
                     Text("Total income:\n" + Formatter.shared.format(source.transactions.reduce(0) { $0 + $1.amount }))
+                        .frame(maxWidth: .infinity, alignment: .center)
                         .modifier(UrbanistFont(.regular, size: 24))
                         .foregroundColor(Color.text_color)
                         .multilineTextAlignment(.center)
@@ -31,13 +39,19 @@ struct SourceDetailsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
-                .padding(.horizontal, 12)
+                .padding(.horizontal)
                 
                 TransactionsList(transactions: source.transactions.filter(period: selectedPeriod))
             }
         }
         .navigationTitle(source.name)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            NavigationLink { SourceEditView(source: source) } label: {
+                Image(systemName: "gearshape")
+                    .foregroundStyle(Color.primary_color)
+            }
+        }
     }
 }
 

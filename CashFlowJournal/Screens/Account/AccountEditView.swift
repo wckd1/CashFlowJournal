@@ -65,7 +65,7 @@ struct AccountEditView: View {
                     Text("save")
                         .modifier(UrbanistFont(.bold, size: 18))
                         .foregroundColor(Color.bg_color)
-                        .padding(.vertical, 12)
+                        .padding(.vertical)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)

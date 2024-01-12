@@ -18,7 +18,7 @@ struct Previewer {
     
     init() throws {
         container = try ModelContainer(
-            for: Account.self, Transaction.self, Source.self, Category.self, AccountGroup.self, CategoryGroup.self,
+            for: Account.self, Transaction.self, Source.self, Category.self, AccountGroup.self, CategoryGroup.self, SourceGroup.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
         
@@ -39,9 +39,12 @@ struct Previewer {
         }
         
         // Income sources
+        let incomeGroups = [
+            SourceGroup(name: "LLP")
+        ]
         sources = [
             Source(name: "Salary", color: Color.random().toHex(), icon: "dollarsign"),
-            Source(name: "Freelance", color: Color.random().toHex(), icon: "arrowshape.up"),
+            Source(name: "Freelance", color: Color.random().toHex(), icon: "arrowshape.up", group: incomeGroups[0]),
             Source(name: "Gift", color: Color.random().toHex(), icon: "gift"),
         ]
         

@@ -60,6 +60,10 @@ extension CategoryGroup: Pickerable {
     var icon: String { "" }
     var color: String { Color.primary_color.toHex() }
 }
+extension SourceGroup: Pickerable {
+    var icon: String { "" }
+    var color: String { Color.primary_color.toHex() }
+}
 
 #Preview {
     do {
