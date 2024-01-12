@@ -7,26 +7,37 @@
 
 import SwiftUI
 import SwiftData
-import Charts
-
-fileprivate struct ChartData: Identifiable {
-    var id: String {
-        "\(date)_\(type)"
-    }
-    
-    let date: Date
-    let type: TransactionType
-    let amount: Float
-}
 
 struct AccountDetailsView: View {
     let account: Account
-    private var sortedTransactions: [TransactionGroup] {
-        account.transactions.groups()
-    }
-    @State private var incomeTransactions: [Transaction] = []
-    @State private var expenseTransactions: [Transaction] = []
+    
     @State private var selectedPeriod: PeriodFilter = .last7days
+    
+    private var incomeTransactions: [Transaction] {
+        let transactions = account.transactions.filter { transaction in
+            transaction.type == .income
+        }
+        
+        guard let interval = selectedPeriod.periodDates() else { return transactions }
+        
+        return transactions.filter { transaction in
+            transaction.date >= interval.start
+            && transaction.date <= interval.end
+        }
+    }
+    private var expenseTransactions: [Transaction] {
+        let transactions = account.transactions.filter { transaction in
+            transaction.type == .expense
+            || transaction.type == .transfer
+        }
+        
+        guard let interval = selectedPeriod.periodDates() else { return transactions }
+        
+        return transactions.filter { transaction in
+            transaction.date >= interval.start
+            && transaction.date <= interval.end
+        }
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -46,8 +57,7 @@ struct AccountDetailsView: View {
                             .modifier(UrbanistFont(.regular, size: 18))
                             .foregroundColor(Color.text_color)
                             .multilineTextAlignment(.center)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal)
+                            .padding()
                             .background(Color(hex: account.color).opacity(0.8))
                             .cornerRadius(12)
                         
@@ -64,7 +74,7 @@ struct AccountDetailsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Picker("picker_period_hint", selection: $selectedPeriod) {
-                        ForEach(PeriodFilter.accountCases, id: \.self) {
+                        ForEach(PeriodFilter.allCases, id: \.self) {
                             Text($0.title).tag($0)
                         }
                     }
@@ -72,58 +82,7 @@ struct AccountDetailsView: View {
                 }
                 .padding(.horizontal)
                 
-                if account.transactions.count < 1 {
-                    ContentUnavailableView(
-                        String(localized: "no_transactions_title"),
-                        systemImage: "clipboard",
-                        description: Text("no_transactions_description")
-                    )
-                } else {
-                    List {
-                        // Charts
-                        Section {
-                            Chart {
-                                ForEach(chartData()) { barData in
-                                    BarMark(
-                                        x: .value("chart_date", barData.date, unit: .day),
-                                        y: .value("chart_amount", barData.amount)
-                                    )
-                                    .foregroundStyle(barData.type == .income ? Color.income_color : Color.expense_color)
-                                }
-                            }
-                            .chartYAxis(.hidden)
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
-                        .listRowBackground(Color.bg_color)
-                        
-                        // Transactions
-                        ForEach(sortedTransactions) { group in
-                            Section {
-                                ForEach(group.transactions) { transaction in
-                                    // TODO: Transaction details
-                                    TransactionCell(transaction: transaction)
-                                }
-                            } header: {
-                                Text(group.id)
-                                    .modifier(UrbanistFont(.regular, size: 18))
-                                    .foregroundColor(Color.gray)
-                            }
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
-                        .listRowBackground(Color.bg_color)
-                    }
-                    .listStyle(.plain)
-                    .padding(.vertical, 6)
-                    .listSectionSpacing(.compact)
-                }
-            }
-            .onChange(of: selectedPeriod) { _, _ in
-                reloadTransactions()
-            }
-            .onAppear {
-                reloadTransactions()
+                TransactionsList(transactions: account.transactions.filter(period: selectedPeriod))
             }
         }
         .navigationTitle(account.name)
@@ -135,39 +94,6 @@ struct AccountDetailsView: View {
             }
             .buttonStyle(.plain)
         }
-    }
-    
-    private func reloadTransactions() {
-        guard let interval = selectedPeriod.periodDates() else { return }
-        
-        incomeTransactions = account.transactions.filter { transaction in
-            transaction.type == .income
-            && transaction.date >= interval.start
-            && transaction.date <= interval.end
-        }
-        
-        expenseTransactions = account.transactions.filter { transaction in
-            (transaction.type == .expense || transaction.type == .transfer)
-            && transaction.date >= interval.start
-            && transaction.date <= interval.end
-        }
-    }
-    
-    private func chartData() -> [ChartData] {
-        // Income
-        let incomeGroup = Dictionary(grouping: incomeTransactions) { $0.date }
-        var incomeList = incomeGroup.map { k, v in
-            ChartData(date: k, type: .income, amount: v.reduce(0) {$0 + $1.amount })
-        }
-        
-        // Expenses
-        let expenseGroup = Dictionary(grouping: expenseTransactions) { $0.date }
-        let expensesList = expenseGroup.map { k, v in
-            ChartData(date: k, type: .expense, amount: v.reduce(0) {$0 + $1.amount })
-        }
-        incomeList.append(contentsOf: expensesList)
-        
-        return incomeList
     }
 }
 

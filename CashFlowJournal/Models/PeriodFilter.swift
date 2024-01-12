@@ -7,9 +7,8 @@
 
 import Foundation
 
-enum PeriodFilter {
+enum PeriodFilter: CaseIterable {
     case last7days
-    case last30days
     case month
     case year
     case overall
@@ -17,32 +16,16 @@ enum PeriodFilter {
     var title: String {
         switch self {
         case .last7days: return String(localized: "picker_last7days")
-        case .last30days: return String(localized: "picker_last30days")
         case .month: return String(localized: "picker_month")
         case .year: return String(localized: "picker_year")
         case .overall: return String(localized: "picker_overall")
         }
     }
     
-    static var accountCases: [PeriodFilter] {
-        return [.last7days, .last30days]
-    }
-    
-    static var incomeCases: [PeriodFilter] {
-        return [.last7days, .month, .year, .overall]
-    }
-    
-    static var categoryCases: [PeriodFilter] {
-        return [.last7days, .month, .year, .overall]
-    }
-    
     func periodDates() -> DateInterval? {
         switch self {
         case .last7days:
             guard let startDay = Calendar.current.date(byAdding: .day, value: -7, to: Date()) else { return nil }
-            return DateInterval(start: startDay, end: Date())
-        case .last30days:
-            guard let startDay = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return nil }
             return DateInterval(start: startDay, end: Date())
         case .month:
             let currentYear = Calendar.current.component(.year, from: Date())

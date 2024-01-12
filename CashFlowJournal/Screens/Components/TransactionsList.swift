@@ -31,7 +31,7 @@ struct TransactionsList: View {
                     } header: {
                         Text(group.id)
                             .modifier(UrbanistFont(.regular, size: 18))
-                            .foregroundColor(Color.text_color)
+                            .foregroundColor(Color.gray)
                     }
                 }
                 .listRowSeparator(.hidden)
@@ -39,7 +39,6 @@ struct TransactionsList: View {
                 .listRowBackground(Color.bg_color)
             }
             .listStyle(.plain)
-            .padding(.vertical, 6)
             .listSectionSpacing(.compact)
         }
     }
