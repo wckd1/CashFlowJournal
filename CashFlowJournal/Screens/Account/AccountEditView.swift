@@ -1,18 +1,30 @@
 //
-//  AddAccountView.swift
+//  AccountEditView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 05.01.2024.
 //
 
 import SwiftUI
+import SwiftData
 
-struct AddAccountView: View {
+struct AccountEditView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable private var account = Account(name: "", color: Color.primary_color.toHex())
-    @State private var color = Color.random()
+    @Query private var groups: [EntityGroup]
+    
+    @Bindable private var account: Account
+    @State private var color: Color
+    private let isCreation: Bool
+    
+    init(account: Account? = nil) {
+        self.isCreation = account == nil
+        
+        let accountColorHEX = account?.color ?? Color.random().toHex()
+        self._color = State(initialValue: Color(hex: accountColorHEX))
+        self.account = account ?? Account(name: "", color: accountColorHEX)
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -24,12 +36,14 @@ struct AddAccountView: View {
                     .foregroundColor(Color.text_color)
                     .textFieldStyle(AppTextFieldStyle(left: "🏦"))
                 
-                TextField("add_account_balance_hint", value: $account.balance, formatter: Formatter.shared.numberFormatter)
-                    .textFieldStyle(AppTextFieldStyle(left: "💰", right: "€"))
-                    .foregroundColor(Color.text_color)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.decimalPad)
-                    .padding(.top, 6)
+                if isCreation {
+                    TextField("add_account_balance_hint", value: $account.balance, formatter: Formatter.shared.numberFormatter)
+                        .textFieldStyle(AppTextFieldStyle(left: "💰", right: "€"))
+                        .foregroundColor(Color.text_color)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
+                        .padding(.top, 6)
+                }
                 
                 ColorPicker("add_account_color_hint", selection: $color, supportsOpacity: false)
                     .modifier(UrbanistFont(.regular, size: 18))
@@ -38,6 +52,13 @@ struct AddAccountView: View {
                     .onChange(of: color) { _, value in
                         account.color = value.toHex()
                     }
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("add_account_group_hint")
+                        .modifier(UrbanistFont(.regular, size: 18))
+                    
+                    EntityPicker(items: groups, selectedItem: $account.group)
+                }
                 
                 Spacer()
                 
@@ -58,7 +79,7 @@ struct AddAccountView: View {
             }
             .padding(24)
         }
-        .navigationTitle("add_account")
+        .navigationTitle(account.name.isEmpty ? "add_account" : "edit_account")
         .navigationBarTitleDisplayMode(.large)
     }
     
@@ -73,7 +94,7 @@ struct AddAccountView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddAccountView()
+            AccountEditView()
                 .modelContainer(previewer.container)
         }
     } catch {

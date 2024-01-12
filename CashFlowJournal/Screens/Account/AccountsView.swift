@@ -79,7 +79,7 @@ struct AccountsView: View {
         .toolbar {
             Menu("dashboard_manage_menu", systemImage: "plus") {
                 
-                NavigationLink { AddAccountView() } label: {
+                NavigationLink { AccountEditView() } label: {
                     Text("add_account")
                 }
                 .buttonStyle(.plain)

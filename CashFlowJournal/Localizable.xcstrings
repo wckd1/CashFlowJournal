@@ -34,6 +34,17 @@
         }
       }
     },
+    "add_account_group_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify account's group (Optional)"
+          }
+        }
+      }
+    },
     "add_account_name_hint" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -393,6 +404,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Income sources"
+          }
+        }
+      }
+    },
+    "edit_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit account"
           }
         }
       }

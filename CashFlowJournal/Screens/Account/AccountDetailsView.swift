@@ -32,7 +32,14 @@ struct AccountDetailsView: View {
         ZStack(alignment: .top) {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack {
+            VStack(alignment: .leading) {
+                if let group = account.group {
+                    Text(group.name)
+                        .modifier(UrbanistFont(.regular, size: 18))
+                        .foregroundColor(Color.gray)
+                        .padding(.horizontal)
+                }
+                
                 Group {
                     HStack(alignment: .center, spacing: 12) {
                         Text("current \(Formatter.shared.format(account.balance))")
@@ -40,7 +47,7 @@ struct AccountDetailsView: View {
                             .foregroundColor(Color.text_color)
                             .multilineTextAlignment(.center)
                             .padding(.vertical, 12)
-                            .padding(.horizontal, 18)
+                            .padding(.horizontal)
                             .background(Color(hex: account.color).opacity(0.8))
                             .cornerRadius(12)
                         
@@ -63,7 +70,7 @@ struct AccountDetailsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
-                .padding(.horizontal, 12)
+                .padding(.horizontal)
                 
                 if account.transactions.count < 1 {
                     ContentUnavailableView(
@@ -100,7 +107,7 @@ struct AccountDetailsView: View {
                             } header: {
                                 Text(group.id)
                                     .modifier(UrbanistFont(.regular, size: 18))
-                                    .foregroundColor(Color.text_color)
+                                    .foregroundColor(Color.gray)
                             }
                         }
                         .listRowSeparator(.hidden)
@@ -121,6 +128,13 @@ struct AccountDetailsView: View {
         }
         .navigationTitle(account.name)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            NavigationLink { AccountEditView(account: account) } label: {
+                Image(systemName: "gearshape")
+                    .foregroundStyle(Color.primary_color)
+            }
+            .buttonStyle(.plain)
+        }
     }
     
     private func reloadTransactions() {
@@ -133,7 +147,7 @@ struct AccountDetailsView: View {
         }
         
         expenseTransactions = account.transactions.filter { transaction in
-            transaction.type == .expense
+            (transaction.type == .expense || transaction.type == .transfer)
             && transaction.date >= interval.start
             && transaction.date <= interval.end
         }
@@ -162,7 +176,7 @@ struct AccountDetailsView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AccountDetailsView(account: previewer.accounts[1])
+            AccountDetailsView(account: previewer.accounts[3])
                 .modelContainer(previewer.container)
         }
     } catch {

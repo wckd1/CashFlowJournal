@@ -74,7 +74,7 @@ struct AddTransactionView: View {
                     case .income:
                         // Source
                         Section(header: Text("add_transaction_source_hint")) {
-                            TransactionEntityPicker(items: sources, selectedItem: $selectedSource)
+                            EntityPicker(items: sources, selectedItem: $selectedSource)
                                 .onChange(of: selectedSource) { _, _ in
                                     validate()
                                 }
@@ -85,7 +85,7 @@ struct AddTransactionView: View {
                     case .expense:
                         // Category
                         Section(header: Text("add_transaction_category_hint")) {
-                            TransactionEntityPicker(items: categories, selectedItem: $selectedCategory)
+                            EntityPicker(items: categories, selectedItem: $selectedCategory)
                                 .onChange(of: selectedSource) { _, _ in
                                     validate()
                                 }
@@ -96,7 +96,7 @@ struct AddTransactionView: View {
                     case .transfer:
                         // Account
                         Section(header: Text("add_transaction_account_hint")) {
-                            TransactionEntityPicker(items: accounts, selectedItem: $selectedAccount)
+                            EntityPicker(items: accounts, selectedItem: $selectedAccount)
                                 .onChange(of: selectedAccount) { _, _ in
                                     validate()
                                 }
@@ -108,7 +108,7 @@ struct AddTransactionView: View {
                     
                     // Account
                     Section(header: Text("add_transaction_origin_account_hint")) {
-                        TransactionEntityPicker(items: accounts, selectedItem: $originAccount)
+                        EntityPicker(items: accounts, selectedItem: $originAccount)
                             .onChange(of: originAccount) { _, _ in
                                 validate()
                             }
