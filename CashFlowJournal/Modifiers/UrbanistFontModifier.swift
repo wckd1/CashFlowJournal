@@ -21,7 +21,6 @@ enum UrbanistFontType: String {
 }
 
 struct UrbanistFont: ViewModifier {
-    
     var type: UrbanistFontType
     var size: CGFloat
     
@@ -34,5 +33,3 @@ struct UrbanistFont: ViewModifier {
         content.font(Font.custom(type.rawValue, size: size))
     }
 }
-
-
