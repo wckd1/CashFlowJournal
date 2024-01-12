@@ -30,3 +30,12 @@ class CategoryGroup: EntityGroup {
         self.name = name
     }
 }
+
+@Model
+class SourceGroup: EntityGroup {
+    @Attribute(.unique) var name: String
+    
+    required init(name: String) {
+        self.name = name
+    }
+}

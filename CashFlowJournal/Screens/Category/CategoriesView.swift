@@ -42,24 +42,24 @@ struct CategoriesView: View {
                 VStack {
                     // Chart
                     ZStack() {
-                            Chart(chartData()) { item in
-                                SectorMark(
-                                    angle: .value(
-                                        Text(verbatim: item.category.name),
-                                        item.amount
-                                    ),
-                                    innerRadius: .ratio(0.75)
-                                )
-                                .foregroundStyle(Color(hex: item.category.color))
-                            }
-                            .frame(height: 240)
-                            
-                            Text("total \(Formatter.shared.format(transactions.reduce(0) {$0 + $1.amount }))")
-                                .modifier(UrbanistFont(.regular, size: 24))
-                                .foregroundColor(Color.text_color)
-                                .multilineTextAlignment(.center)
+                        Chart(chartData()) { item in
+                            SectorMark(
+                                angle: .value(
+                                    Text(verbatim: item.category.name),
+                                    item.amount
+                                ),
+                                innerRadius: .ratio(0.75)
+                            )
+                            .foregroundStyle(Color(hex: item.category.color))
                         }
-                        .padding(.vertical)
+                        .frame(height: 240)
+                        
+                        Text("total \(Formatter.shared.format(transactions.reduce(0) {$0 + $1.amount }))")
+                            .modifier(UrbanistFont(.regular, size: 24))
+                            .foregroundColor(Color.text_color)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.vertical)
                     
                     // Categories
                     List {

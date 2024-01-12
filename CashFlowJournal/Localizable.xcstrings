@@ -40,7 +40,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Specify account's group (Optional)"
+            "value" : "Specify account group (Optional)"
           }
         }
       }
@@ -84,7 +84,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Specify category's group (Optional)"
+            "value" : "Specify category group (Optional)"
           }
         }
       }
@@ -151,6 +151,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pick source color"
+          }
+        }
+      }
+    },
+    "add_source_group_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify source group (Optional)"
           }
         }
       }
@@ -437,6 +448,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit expense category"
+          }
+        }
+      }
+    },
+    "edit_source" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit income source"
           }
         }
       }

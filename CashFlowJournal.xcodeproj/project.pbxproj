@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0A60722B4D66B700A1E2C2 /* PeriodFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A60712B4D66B700A1E2C2 /* PeriodFilter.swift */; };
-		4E25BA852B45AE79007E2953 /* AddIncomeSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */; };
+		4E25BA852B45AE79007E2953 /* SourceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA842B45AE79007E2953 /* SourceEditView.swift */; };
 		4E25BA872B45AFC5007E2953 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25BA862B45AFC5007E2953 /* Source.swift */; };
 		4E2A2F202B4AD8B20096AEBF /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A2F1F2B4AD8B20096AEBF /* AccountDetailsView.swift */; };
 		4E2A2F222B4ADE920096AEBF /* SourceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A2F212B4ADE920096AEBF /* SourceDetailsView.swift */; };
@@ -65,7 +65,7 @@
 
 /* Begin PBXFileReference section */
 		4E0A60712B4D66B700A1E2C2 /* PeriodFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodFilter.swift; sourceTree = "<group>"; };
-		4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeSourceView.swift; sourceTree = "<group>"; };
+		4E25BA842B45AE79007E2953 /* SourceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditView.swift; sourceTree = "<group>"; };
 		4E25BA862B45AFC5007E2953 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4E2A2F1F2B4AD8B20096AEBF /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		4E2A2F212B4ADE920096AEBF /* SourceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDetailsView.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 				4E94B5B42B485314006119DE /* SourcesView.swift */,
 				4E94B5B62B4853BF006119DE /* SourceCell.swift */,
 				4E2A2F212B4ADE920096AEBF /* SourceDetailsView.swift */,
-				4E25BA842B45AE79007E2953 /* AddIncomeSourceView.swift */,
+				4E25BA842B45AE79007E2953 /* SourceEditView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 				4E6531B92B3DB62400FF4811 /* UrbanistFontModifier.swift in Sources */,
 				4E6302A22B4EF8DD00CD8FA5 /* TransactionsList.swift in Sources */,
 				4E2A2F202B4AD8B20096AEBF /* AccountDetailsView.swift in Sources */,
-				4E25BA852B45AE79007E2953 /* AddIncomeSourceView.swift in Sources */,
+				4E25BA852B45AE79007E2953 /* SourceEditView.swift in Sources */,
 				4E3577A82B46C88D00D2AACE /* IconPickerModalView.swift in Sources */,
 				4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */,
 				4EBED46D2B3ED0E100B11BFC /* AppTextFieldStyle.swift in Sources */,

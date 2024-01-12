@@ -20,6 +20,9 @@ struct SourcesView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query private var sources: [Source]
+    private var sourceGroups: [String: [Source]] {
+        Dictionary(grouping: sources, by: { $0.group?.name ?? "" })
+    }
     
     private var transactions: [Transaction] {
         return sources.flatMap { $0.transactions }
@@ -37,54 +40,65 @@ struct SourcesView: View {
                 )
             } else {
                 VStack {
+                    // Chart
                     ZStack() {
-                            Chart(chartData()) { item in
-                                SectorMark(
-                                    angle: .value(
-                                        Text(verbatim: item.source.name),
-                                        item.amount
-                                    ),
-                                    innerRadius: .ratio(0.75)
-                                )
-                                .foregroundStyle(Color(hex: item.source.color))
-                            }
-                            .frame(height: 240)
-                            
-                            Text("total \(Formatter.shared.format(transactions.reduce(0) {$0 + $1.amount }))")
-                                .modifier(UrbanistFont(.regular, size: 24))
-                                .foregroundColor(Color.text_color)
-                                .multilineTextAlignment(.center)
+                        Chart(chartData()) { item in
+                            SectorMark(
+                                angle: .value(
+                                    Text(verbatim: item.source.name),
+                                    item.amount
+                                ),
+                                innerRadius: .ratio(0.75)
+                            )
+                            .foregroundStyle(Color(hex: item.source.color))
                         }
-                        .padding(.top, 12)
+                        .frame(height: 240)
+                        
+                        Text("total \(Formatter.shared.format(transactions.reduce(0) {$0 + $1.amount }))")
+                            .modifier(UrbanistFont(.regular, size: 24))
+                            .foregroundColor(Color.text_color)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.vertical)
                     
+                    // Sources
                     List {
-                        ForEach(sources) { source in
-                            NavigationLink {
-                                SourceDetailsView(source: source)
-                            } label: {
-                                SourceCell(source: source)
+                        ForEach(Array(sourceGroups.keys).sorted(by: <), id: \.self) { key in
+                            if let sources = sourceGroups[key] {
+                                ForEach(sources) { source in
+                                    NavigationLink {
+                                        SourceDetailsView(source: source)
+                                    } label: {
+                                        SourceCell(source: source)
+                                    }
+                                }
+                                .modifier(EntitledSection(key))
                             }
                         }
                         .onDelete(perform: deleteSources)
                         .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
+                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
                         .listRowBackground(Color.bg_color)
                     }
                     .listStyle(.plain)
-                    .padding(.vertical, 6)
+                    .listSectionSpacing(.compact)
                 }
             }
         }
         .navigationTitle("dashboard_sources")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink {
-                AddIncomeSourceView()
-            } label: {
-                Image(systemName: "plus")
-                    .foregroundStyle(Color.primary_color)
+            Menu("dashboard_manage_menu", systemImage: "plus") {
+                NavigationLink { SourceEditView() } label: {
+                    Text("add_source")
+                }
+                .buttonStyle(.plain)
+                
+                NavigationLink { AddGroupView<SourceGroup>() } label: {
+                    Text("add_group")
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
     }
     
