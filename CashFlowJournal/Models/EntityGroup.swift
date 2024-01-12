@@ -1,5 +1,5 @@
 //
-//  Groups.swift
+//  EntityGroup.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 11.01.2024.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class AccountGroup {
+class EntityGroup {
     @Attribute(.unique) var name: String
     
     init(name: String) {

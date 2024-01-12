@@ -47,10 +47,10 @@
 		4E6DAD032B3F027500EB61E0 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6DAD022B3F027500EB61E0 /* Previewer.swift */; };
 		4E88A2EE2B3F0B11001255B2 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2ED2B3F0B11001255B2 /* Transaction.swift */; };
 		4E88A2F22B3F0EA4001255B2 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */; };
-		4E94B5AA2B4829B7006119DE /* TransactionEntityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5A92B4829B7006119DE /* TransactionEntityPicker.swift */; };
+		4E94B5AA2B4829B7006119DE /* EntityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5A92B4829B7006119DE /* EntityPicker.swift */; };
 		4E94B5AF2B484ADA006119DE /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5AE2B484ADA006119DE /* AccountsView.swift */; };
 		4E94B5B12B484B3F006119DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B02B484B3F006119DE /* AccountCell.swift */; };
-		4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B22B484C73006119DE /* AddAccountView.swift */; };
+		4E94B5B32B484C73006119DE /* AccountEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B22B484C73006119DE /* AccountEditView.swift */; };
 		4E94B5B52B485314006119DE /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B42B485314006119DE /* SourcesView.swift */; };
 		4E94B5B72B4853BF006119DE /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B62B4853BF006119DE /* SourceCell.swift */; };
 		4E94B5B92B4855D9006119DE /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94B5B82B4855D9006119DE /* CategoriesView.swift */; };
@@ -104,10 +104,10 @@
 		4E6DAD022B3F027500EB61E0 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		4E88A2ED2B3F0B11001255B2 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
-		4E94B5A92B4829B7006119DE /* TransactionEntityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntityPicker.swift; sourceTree = "<group>"; };
+		4E94B5A92B4829B7006119DE /* EntityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPicker.swift; sourceTree = "<group>"; };
 		4E94B5AE2B484ADA006119DE /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		4E94B5B02B484B3F006119DE /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
-		4E94B5B22B484C73006119DE /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		4E94B5B22B484C73006119DE /* AccountEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditView.swift; sourceTree = "<group>"; };
 		4E94B5B42B485314006119DE /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
 		4E94B5B62B4853BF006119DE /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
 		4E94B5B82B4855D9006119DE /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -152,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				4E3577AA2B46EC1800D2AACE /* AddTransactionView.swift */,
-				4E94B5A92B4829B7006119DE /* TransactionEntityPicker.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -162,6 +161,7 @@
 			children = (
 				4E88A2F12B3F0EA4001255B2 /* TransactionCell.swift */,
 				4E6302A12B4EF8DD00CD8FA5 /* TransactionsList.swift */,
+				4E94B5A92B4829B7006119DE /* EntityPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				4E94B5AE2B484ADA006119DE /* AccountsView.swift */,
 				4E94B5B02B484B3F006119DE /* AccountCell.swift */,
 				4E2A2F1F2B4AD8B20096AEBF /* AccountDetailsView.swift */,
-				4E94B5B22B484C73006119DE /* AddAccountView.swift */,
+				4E94B5B22B484C73006119DE /* AccountEditView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -309,8 +309,8 @@
 		4EBED46F2B3ED38A00B11BFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4E3645902B4FF35A00AE6278 /* Components */,
 				4E65319D2B3D99BF00FF4811 /* SplashView.swift */,
+				4E3645902B4FF35A00AE6278 /* Components */,
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
 				4E94B5AD2B484ACA006119DE /* Account */,
 				4E25BA832B45AE6B007E2953 /* Source */,
@@ -437,7 +437,7 @@
 				4E3577AB2B46EC1800D2AACE /* AddTransactionView.swift in Sources */,
 				4E88A2EE2B3F0B11001255B2 /* Transaction.swift in Sources */,
 				4EBA7D3E2B459A4D00041F74 /* Formatter.swift in Sources */,
-				4E94B5AA2B4829B7006119DE /* TransactionEntityPicker.swift in Sources */,
+				4E94B5AA2B4829B7006119DE /* EntityPicker.swift in Sources */,
 				4E0A60722B4D66B700A1E2C2 /* PeriodFilter.swift in Sources */,
 				4E65319E2B3D99BF00FF4811 /* SplashView.swift in Sources */,
 				4E2A2F222B4ADE920096AEBF /* SourceDetailsView.swift in Sources */,
@@ -445,7 +445,7 @@
 				4E65319A2B3D985000FF4811 /* UserDefaults.swift in Sources */,
 				4E6DAD012B3EF58D00EB61E0 /* DashboardView.swift in Sources */,
 				4E3645942B503D9C00AE6278 /* EntityGroup.swift in Sources */,
-				4E94B5B32B484C73006119DE /* AddAccountView.swift in Sources */,
+				4E94B5B32B484C73006119DE /* AccountEditView.swift in Sources */,
 				4E6531D22B3DC61900FF4811 /* OnboardingBalanceView.swift in Sources */,
 				4E65319C2B3D997C00FF4811 /* RegistrationView.swift in Sources */,
 				4E3577A52B46C12400D2AACE /* BalanceView.swift in Sources */,

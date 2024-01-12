@@ -1,5 +1,5 @@
 //
-//  TransactionEntityPicker.swift
+//  EntityPicker.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 05.01.2024.
@@ -7,19 +7,7 @@
 
 import SwiftUI
 
-protocol Pickerable {
-    var name: String { get }
-    var icon: String { get }
-    var color: String { get }
-}
-
-extension Account: Pickerable {
-    var icon: String { "" }
-}
-extension Source: Pickerable {}
-extension Category: Pickerable {}
-
-struct TransactionEntityPicker<T: Pickerable & Identifiable & Equatable>: View {
+struct EntityPicker<T: Pickerable & Identifiable & Equatable>: View {
     @State var items: [T]
     @Binding var selectedItem: T?
     
@@ -49,11 +37,27 @@ struct TransactionEntityPicker<T: Pickerable & Identifiable & Equatable>: View {
     }
 }
 
+protocol Pickerable {
+    var name: String { get }
+    var icon: String { get }
+    var color: String { get }
+}
+
+extension Account: Pickerable {
+    var icon: String { "" }
+}
+extension Source: Pickerable {}
+extension Category: Pickerable {}
+extension EntityGroup: Pickerable {
+    var icon: String { "" }
+    var color: String { Color.primary_color.toHex() }
+}
+
 #Preview {
     do {
         let previewer = try Previewer()
         
-        return TransactionEntityPicker(items: previewer.sources, selectedItem: .constant(previewer.sources[0]))
+        return EntityPicker(items: previewer.sources, selectedItem: .constant(previewer.sources[0]))
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }
