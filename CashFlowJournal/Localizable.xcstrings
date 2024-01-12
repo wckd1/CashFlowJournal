@@ -89,6 +89,28 @@
         }
       }
     },
+    "add_group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add group"
+          }
+        }
+      }
+    },
+    "add_group_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter group title"
+          }
+        }
+      }
+    },
     "add_source" : {
       "extractionState" : "manual",
       "localizations" : {

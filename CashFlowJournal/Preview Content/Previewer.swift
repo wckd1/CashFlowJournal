@@ -11,6 +11,7 @@ import SwiftData
 @MainActor
 struct Previewer {
     let container: ModelContainer
+    let groups: [EntityGroup]
     let accounts: [Account]
     let sources: [Source]
     let categories: [Category]
@@ -18,12 +19,24 @@ struct Previewer {
     
     init() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, Category.self, configurations: config)
+        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, Category.self, EntityGroup.self, configurations: config)
+        
+        // Groups
+        groups = [
+            EntityGroup(name: "Deposits"),
+            EntityGroup(name: "Investments")
+        ]
+        
+        for group in groups {
+            container.mainContext.insert(group)
+        }
         
         // Accounts
         accounts = [
             Account(name: "Cash", balance: 359, color: Color.random().toHex()),
-            Account(name: "Lovcen", balance: 1450, color: Color.random().toHex())
+            Account(name: "Lovcen", balance: 1450, color: Color.random().toHex()),
+            Account(name: "Lovcen Deposit", balance: 1450, color: Color.random().toHex(), group: groups[0]),
+            Account(name: "Freedom", balance: 1450, color: Color.random().toHex(), group: groups[1])
         ]
 
         for account in accounts {

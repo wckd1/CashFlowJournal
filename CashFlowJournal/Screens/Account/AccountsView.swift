@@ -13,6 +13,9 @@ struct AccountsView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query private var accounts: [Account]
+    private var accountGroups: [String: [Account]] {
+        Dictionary(grouping: accounts, by: { $0.group?.name ?? "" })
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -48,11 +51,16 @@ struct AccountsView: View {
                     
                     // Accounts
                     List {
-                        ForEach(accounts) { account in
-                            NavigationLink {
-                                AccountDetailsView(account: account)
-                            } label: {
-                                AccountCell(account: account)
+                        ForEach(Array(accountGroups.keys).sorted(by: <), id: \.self) { key in
+                            if let accounts = accountGroups[key] {
+                                ForEach(accounts) { account in
+                                    NavigationLink {
+                                        AccountDetailsView(account: account)
+                                    } label: {
+                                        AccountCell(account: account)
+                                    }
+                                }
+                                .modifier(EntitledSection(key))
                             }
                         }
                         .onDelete(perform: deleteAccounts)
@@ -69,13 +77,18 @@ struct AccountsView: View {
         .navigationTitle("dashboard_accounts")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink {
-                AddAccountView()
-            } label: {
-                Image(systemName: "plus")
-                    .foregroundStyle(Color.primary_color)
+            Menu("dashboard_manage_menu", systemImage: "plus") {
+                
+                NavigationLink { AddAccountView() } label: {
+                    Text("add_account")
+                }
+                .buttonStyle(.plain)
+                
+                NavigationLink { AddGroupView() } label: {
+                    Text("add_group")
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
     }
     
@@ -97,5 +110,21 @@ struct AccountsView: View {
         }
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}
+
+extension View {
+    func headeredSection(title: String) -> any View {
+        if title.isEmpty {
+            self
+        } else {
+            Section {
+                self
+            } header: {
+                Text(title)
+                    .modifier(UrbanistFont(.regular, size: 18))
+                    .foregroundColor(Color.text_color)
+            }
+        }
     }
 }
