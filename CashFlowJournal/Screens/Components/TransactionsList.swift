@@ -25,8 +25,11 @@ struct TransactionsList: View {
                 ForEach(sortedTransactions) { group in
                     Section {
                         ForEach(group.transactions) { transaction in
-                            // TODO: Transaction details
-                            TransactionCell(transaction: transaction)
+                            NavigationLink {
+                                TransactionDetailsView(transaction: transaction)
+                            } label: {
+                                TransactionCell(transaction: transaction)
+                            }
                         }
                     } header: {
                         Text(group.id)

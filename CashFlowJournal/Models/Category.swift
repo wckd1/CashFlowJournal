@@ -14,7 +14,7 @@ class Category {
     var color: String
     var icon: String
     @Relationship(inverse: \Transaction.category) var transactions: [Transaction] = [Transaction]()
-    var group: CategoryGroup?
+    @Relationship var group: CategoryGroup?
      
     init(name: String, color: String, icon: String, group: CategoryGroup? = nil) {
         self.name = name

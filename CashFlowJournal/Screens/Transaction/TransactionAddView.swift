@@ -1,5 +1,5 @@
 //
-//  AddTransactionView.swift
+//  TransactionAddView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 04.01.2024.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct AddTransactionView: View {
+struct TransactionAddView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
@@ -233,7 +233,7 @@ struct AddTransactionView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddTransactionView()
+            TransactionAddView()
                 .modelContainer(previewer.container)
         }
     } catch {

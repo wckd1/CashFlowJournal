@@ -89,7 +89,7 @@ struct CategoriesView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             Menu("dashboard_manage_menu", systemImage: "plus") {
-                NavigationLink { AccountEditView() } label: {
+                NavigationLink { CategoryEditView() } label: {
                     Text("add_category")
                 }
                 .buttonStyle(.plain)

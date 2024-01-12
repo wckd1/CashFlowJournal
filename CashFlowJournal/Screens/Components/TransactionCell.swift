@@ -29,7 +29,7 @@ struct TransactionCell: View {
                     .frame(width: 42, height: 42)
             }
             
-            HStack(alignment: .top, spacing: 12) {
+            HStack(alignment: .center, spacing: 12) {
                 VStack(spacing: 6) {
                     Text(transaction.title)
                         .frame(maxWidth: .infinity, alignment: .leading)

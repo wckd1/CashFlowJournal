@@ -40,11 +40,13 @@ struct CategoryEditView: View {
                 
                 CustomIconPicker(hint: "add_category_icon_hint", icon: $category.icon, color: $color)
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("add_category_group_hint")
-                        .modifier(UrbanistFont(.regular, size: 18))
-                    
-                    EntityPicker(items: groups, selectedItem: $category.group)
+                if groups.count > 0 {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("add_category_group_hint")
+                            .modifier(UrbanistFont(.regular, size: 18))
+                        
+                        EntityPicker(items: groups, selectedItem: $category.group)
+                    }
                 }
                 
                 Spacer()

@@ -40,7 +40,7 @@ struct DashboardView: View {
                 }
                 .padding(.vertical, 12)
                 
-                NavigationLink(destination: AddTransactionView()) {
+                NavigationLink(destination: TransactionAddView()) {
                     Text("add_transaction")
                         .foregroundStyle(Color.text_color)
                 }
