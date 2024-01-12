@@ -40,11 +40,13 @@ struct SourceEditView: View {
                 
                 CustomIconPicker(hint: "add_source_icon_hint", icon: $source.icon, color: $color)
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("add_source_group_hint")
-                        .modifier(UrbanistFont(.regular, size: 18))
-                    
-                    EntityPicker(items: groups, selectedItem: $source.group)
+                if groups.count > 0 {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("add_source_group_hint")
+                            .modifier(UrbanistFont(.regular, size: 18))
+                        
+                        EntityPicker(items: groups, selectedItem: $source.group)
+                    }
                 }
                 
                 Spacer()

@@ -16,6 +16,7 @@ struct AccountDetailsView: View {
     private var incomeTransactions: [Transaction] {
         let transactions = account.transactions.filter { transaction in
             transaction.type == .income
+            || (transaction.type == .transfer && transaction.account?.persistentModelID == account.persistentModelID)
         }
         
         guard let interval = selectedPeriod.periodDates() else { return transactions }
@@ -28,7 +29,7 @@ struct AccountDetailsView: View {
     private var expenseTransactions: [Transaction] {
         let transactions = account.transactions.filter { transaction in
             transaction.type == .expense
-            || transaction.type == .transfer
+            || (transaction.type == .transfer && transaction.originAccount?.persistentModelID == account.persistentModelID)
         }
         
         guard let interval = selectedPeriod.periodDates() else { return transactions }

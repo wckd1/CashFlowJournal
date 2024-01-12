@@ -485,6 +485,28 @@
         }
       }
     },
+    "expense_category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense category"
+          }
+        }
+      }
+    },
+    "expense_category_group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense category group"
+          }
+        }
+      }
+    },
     "Failed to create preview: %@" : {
 
     },
@@ -517,6 +539,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Income: %@"
+          }
+        }
+      }
+    },
+    "income_source" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income source"
+          }
+        }
+      }
+    },
+    "income_source_group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income source group"
           }
         }
       }
@@ -664,6 +708,28 @@
         }
       }
     },
+    "origin_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origin account"
+          }
+        }
+      }
+    },
+    "origin_account_group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origin account group"
+          }
+        }
+      }
+    },
     "picker_last7days" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -781,6 +847,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        }
+      }
+    },
+    "target_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Target account"
+          }
+        }
+      }
+    },
+    "target_account_group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Target account group"
           }
         }
       }

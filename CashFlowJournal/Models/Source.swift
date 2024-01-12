@@ -14,7 +14,7 @@ class Source {
     var color: String
     var icon: String
     @Relationship(inverse: \Transaction.source) var transactions: [Transaction] = [Transaction]()
-    var group: SourceGroup?
+    @Relationship var group: SourceGroup?
     
     init(name: String, color: String, icon: String, group: SourceGroup? = nil) {
         self.name = name

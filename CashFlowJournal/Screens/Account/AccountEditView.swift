@@ -50,11 +50,13 @@ struct AccountEditView: View {
                         account.color = value.toHex()
                     }
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("add_account_group_hint")
-                        .modifier(UrbanistFont(.regular, size: 18))
-                    
-                    EntityPicker(items: groups, selectedItem: $account.group)
+                if groups.count > 0 {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("add_account_group_hint")
+                            .modifier(UrbanistFont(.regular, size: 18))
+                        
+                        EntityPicker(items: groups, selectedItem: $account.group)
+                    }
                 }
                 
                 Spacer()
