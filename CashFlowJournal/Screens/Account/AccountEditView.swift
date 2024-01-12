@@ -12,7 +12,7 @@ struct AccountEditView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Query private var groups: [EntityGroup]
+    @Query private var groups: [AccountGroup]
     
     @Bindable private var account: Account
     @State private var color: Color
@@ -31,7 +31,6 @@ struct AccountEditView: View {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 24) {
-                
                 TextField("add_account_name_hint", text: $account.name)
                     .foregroundColor(Color.text_color)
                     .textFieldStyle(AppTextFieldStyle(left: "🏦"))
@@ -45,9 +44,7 @@ struct AccountEditView: View {
                         .padding(.top, 6)
                 }
                 
-                ColorPicker("add_account_color_hint", selection: $color, supportsOpacity: false)
-                    .modifier(UrbanistFont(.regular, size: 18))
-                    .foregroundStyle(Color.text_color)
+                CustomColorPicker(hint: "add_account_color_hint", color: $color)
                     .padding(.top, 24)
                     .onChange(of: color) { _, value in
                         account.color = value.toHex()
@@ -74,10 +71,9 @@ struct AccountEditView: View {
                 .buttonStyle(.bordered)
                 .background(account.name.isEmpty ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
-                .padding(.top, 25)
                 .disabled(account.name.isEmpty)
             }
-            .padding(24)
+            .padding()
         }
         .navigationTitle(account.name.isEmpty ? "add_account" : "edit_account")
         .navigationBarTitleDisplayMode(.large)

@@ -11,32 +11,27 @@ import SwiftData
 @MainActor
 struct Previewer {
     let container: ModelContainer
-    let groups: [EntityGroup]
     let accounts: [Account]
     let sources: [Source]
     let categories: [Category]
     let transactions: [Transaction]
     
     init() throws {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        container = try ModelContainer(for: Account.self, Transaction.self, Source.self, Category.self, EntityGroup.self, configurations: config)
-        
-        // Groups
-        groups = [
-            EntityGroup(name: "Deposits"),
-            EntityGroup(name: "Investments")
-        ]
-        
-        for group in groups {
-            container.mainContext.insert(group)
-        }
+        container = try ModelContainer(
+            for: Account.self, Transaction.self, Source.self, Category.self, AccountGroup.self, CategoryGroup.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        )
         
         // Accounts
+        let accountGroups = [
+            AccountGroup(name: "Deposits"),
+            AccountGroup(name: "Investments")
+        ]
         accounts = [
             Account(name: "Cash", balance: 359, color: Color.random().toHex()),
             Account(name: "Lovcen", balance: 1450, color: Color.random().toHex()),
-            Account(name: "Lovcen Deposit", balance: 1450, color: Color.random().toHex(), group: groups[0]),
-            Account(name: "Freedom", balance: 1450, color: Color.random().toHex(), group: groups[1])
+            Account(name: "Lovcen Deposit", balance: 1450, color: Color.random().toHex(), group: accountGroups[0]),
+            Account(name: "Freedom", balance: 1450, color: Color.random().toHex(), group: accountGroups[1])
         ]
 
         for account in accounts {
@@ -55,9 +50,15 @@ struct Previewer {
         }
         
         // Expense categories
+        let expenseGroups = [
+            CategoryGroup(name: "Household"),
+            CategoryGroup(name: "Intertament")
+        ]
         categories = [
-            Category(name: "Food", color: Color.random().toHex(), icon: "bag"),
-            Category(name: "Rent", color: Color.random().toHex(), icon: "house")
+            Category(name: "Grocery", color: Color.random().toHex(), icon: "bag", group: expenseGroups[0]),
+            Category(name: "Clothes", color: Color.random().toHex(), icon: "hanger"),
+            Category(name: "Rent", color: Color.random().toHex(), icon: "house", group: expenseGroups[0]),
+            Category(name: "Netflix", color: Color.random().toHex(), icon: "movieclapper", group: expenseGroups[1])
         ]
         
         for category in categories {

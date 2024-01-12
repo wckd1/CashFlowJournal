@@ -29,6 +29,7 @@ struct AccountsView: View {
                 )
             } else {
                 VStack {
+                    // Chart
                     ZStack() {
                         Chart(accounts) { account in
                             SectorMark(
@@ -47,7 +48,7 @@ struct AccountsView: View {
                             .foregroundColor(Color.text_color)
                             .multilineTextAlignment(.center)
                     }
-                    .padding(.top, 12)
+                    .padding(.vertical)
                     
                     // Accounts
                     List {
@@ -69,7 +70,6 @@ struct AccountsView: View {
                         .listRowBackground(Color.bg_color)
                     }
                     .listStyle(.plain)
-                    .padding(.vertical, 6)
                     .listSectionSpacing(.compact)
                 }
             }
@@ -78,13 +78,12 @@ struct AccountsView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             Menu("dashboard_manage_menu", systemImage: "plus") {
-                
                 NavigationLink { AccountEditView() } label: {
                     Text("add_account")
                 }
                 .buttonStyle(.plain)
                 
-                NavigationLink { AddGroupView() } label: {
+                NavigationLink { AddGroupView<AccountGroup>() } label: {
                     Text("add_group")
                 }
                 .buttonStyle(.plain)

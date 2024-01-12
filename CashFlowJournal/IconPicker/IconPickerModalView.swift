@@ -1,5 +1,5 @@
 //
-//  IconPicker.swift
+//  IconPickerModalView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 04.01.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconPicker: View {
+struct IconPickerModalView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var isFirstTimeAppeared = false
@@ -77,5 +77,5 @@ struct IconPicker: View {
 }
 
 #Preview {
-    IconPicker(selection: .constant("dollarsign"))
+    IconPickerModalView(selection: .constant("dollarsign"))
 }

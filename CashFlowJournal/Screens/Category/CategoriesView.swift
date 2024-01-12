@@ -20,6 +20,9 @@ struct CategoriesView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query private var categories: [Category]
+    private var categoryGroups: [String: [Category]] {
+        Dictionary(grouping: categories, by: { $0.group?.name ?? "" })
+    }
     
     private var transactions: [Transaction] {
         return categories.flatMap { $0.transactions }
@@ -37,6 +40,7 @@ struct CategoriesView: View {
                 )
             } else {
                 VStack {
+                    // Chart
                     ZStack() {
                             Chart(chartData()) { item in
                                 SectorMark(
@@ -55,36 +59,46 @@ struct CategoriesView: View {
                                 .foregroundColor(Color.text_color)
                                 .multilineTextAlignment(.center)
                         }
-                        .padding(.top, 12)
+                        .padding(.vertical)
                     
+                    // Categories
                     List {
-                        ForEach(categories) { category in
-                            NavigationLink {
-                                CategoryDetailsView(category: category)
-                            } label: {
-                                CategoryCell(category: category)
+                        ForEach(Array(categoryGroups.keys).sorted(by: <), id: \.self) { key in
+                            if let categories = categoryGroups[key] {
+                                ForEach(categories) { category in
+                                    NavigationLink {
+                                        CategoryDetailsView(category: category)
+                                    } label: {
+                                        CategoryCell(category: category)
+                                    }
+                                }
+                                .modifier(EntitledSection(key))
                             }
                         }
                         .onDelete(perform: deleteCategories)
                         .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
+                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
                         .listRowBackground(Color.bg_color)
                     }
                     .listStyle(.plain)
-                    .padding(.vertical, 6)
+                    .listSectionSpacing(.compact)
                 }
             }
         }
         .navigationTitle("dashboard_categories")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            NavigationLink {
-                AddExpenseCategoryView()
-            } label: {
-                Image(systemName: "plus")
-                    .foregroundStyle(Color.primary_color)
+            Menu("dashboard_manage_menu", systemImage: "plus") {
+                NavigationLink { AccountEditView() } label: {
+                    Text("add_category")
+                }
+                .buttonStyle(.plain)
+                
+                NavigationLink { AddGroupView<CategoryGroup>() } label: {
+                    Text("add_group")
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
     }
     

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct EntityPicker<T: Pickerable & Identifiable & Equatable>: View {
+typealias EntityPickerItem = Pickerable & Identifiable & Equatable
+
+struct EntityPicker<T: EntityPickerItem>: View {
     @State var items: [T]
     @Binding var selectedItem: T?
     
@@ -20,9 +22,11 @@ struct EntityPicker<T: Pickerable & Identifiable & Equatable>: View {
                         selectedItem = item
                     } label: {
                         HStack {
-                            Image(systemName: item.icon)
-                                .font(.subheadline)
-                                .foregroundStyle(Color.text_color)
+                            if !item.icon.isEmpty {
+                                Image(systemName: item.icon)
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color.text_color)
+                            }
                             Text(item.name)
                                 .foregroundStyle(Color.text_color)
                         }
@@ -48,7 +52,11 @@ extension Account: Pickerable {
 }
 extension Source: Pickerable {}
 extension Category: Pickerable {}
-extension EntityGroup: Pickerable {
+extension AccountGroup: Pickerable {
+    var icon: String { "" }
+    var color: String { Color.primary_color.toHex() }
+}
+extension CategoryGroup: Pickerable {
     var icon: String { "" }
     var color: String { Color.primary_color.toHex() }
 }
