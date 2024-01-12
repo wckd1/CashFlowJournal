@@ -1,20 +1,27 @@
 //
-//  AddExpenseCategoryView.swift
+//  CategoryEditView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 04.01.2024.
 //
 
 import SwiftUI
+import SwiftData
 
-struct AddExpenseCategoryView: View {
+struct CategoryEditView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable private var category = Category(name: "", color: Color.primary_color.toHex(), icon: "bag")
+    @Query private var groups: [CategoryGroup]
     
-    @State private var color = Color.random()
-    @State private var isIconPickerPresented = false
+    @Bindable private var category: Category
+    @State private var color: Color
+    
+    init(category: Category? = nil) {
+        let categoryColorHEX = category?.color ?? Color.random().toHex()
+        self._color = State(initialValue: Color(hex: categoryColorHEX))
+        self.category = category ?? Category(name: "", color:categoryColorHEX, icon: "bag")
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -25,28 +32,20 @@ struct AddExpenseCategoryView: View {
                     .foregroundStyle(Color.text_color)
                     .textFieldStyle(AppTextFieldStyle(left: "🏷️"))
                 
-                ColorPicker("add_category_color_hint", selection: $color, supportsOpacity: false)
-                    .modifier(UrbanistFont(.regular, size: 18))
-                    .foregroundStyle(Color.text_color)
+                CustomColorPicker(hint: "add_category_color_hint", color: $color)
                     .padding(.top, 24)
                     .onChange(of: color) { _, value in
                         category.color = value.toHex()
                     }
                 
-                HStack {
-                    Text("add_category_icon_hint")
+                CustomIconPicker(hint: "add_category_icon_hint", icon: $category.icon, color: $color)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("add_category_group_hint")
                         .modifier(UrbanistFont(.regular, size: 18))
-                    Spacer()
-                    Image(systemName: category.icon)
-                        .font(.title3)
-                        .foregroundStyle(color)
+                    
+                    EntityPicker(items: groups, selectedItem: $category.group)
                 }
-                .onTapGesture {
-                    isIconPickerPresented.toggle()
-                }
-                .sheet(isPresented: $isIconPickerPresented, content: {
-                    IconPicker(selection: $category.icon)
-                })
                 
                 Spacer()
                 
@@ -62,12 +61,11 @@ struct AddExpenseCategoryView: View {
                 .buttonStyle(.bordered)
                 .background(category.name.isEmpty ? Color.gray : Color.primary_color)
                 .cornerRadius(12)
-                .padding(.top, 25)
                 .disabled(category.name.isEmpty)
             }
-            .padding(24)
+            .padding()
         }
-        .navigationTitle("add_category")
+        .navigationTitle(category.name.isEmpty ? "add_category" : "edit_category")
         .navigationBarTitleDisplayMode(.large)
     }
     
@@ -82,7 +80,7 @@ struct AddExpenseCategoryView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddExpenseCategoryView()
+            CategoryEditView()
                 .modelContainer(previewer.container)
         }
     } catch {

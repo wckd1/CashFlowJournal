@@ -78,6 +78,17 @@
         }
       }
     },
+    "add_category_group_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specify category's group (Optional)"
+          }
+        }
+      }
+    },
     "add_category_hint" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -415,6 +426,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit account"
+          }
+        }
+      }
+    },
+    "edit_category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit expense category"
           }
         }
       }

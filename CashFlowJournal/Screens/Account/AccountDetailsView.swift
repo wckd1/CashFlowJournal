@@ -92,7 +92,6 @@ struct AccountDetailsView: View {
                 Image(systemName: "gearshape")
                     .foregroundStyle(Color.primary_color)
             }
-            .buttonStyle(.plain)
         }
     }
 }

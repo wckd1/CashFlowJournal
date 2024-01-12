@@ -8,11 +8,25 @@
 import Foundation
 import SwiftData
 
+protocol EntityGroup: AnyObject {
+    var name: String { get set }
+    init(name: String)
+}
+
 @Model
-class EntityGroup {
+class AccountGroup: EntityGroup {
     @Attribute(.unique) var name: String
     
-    init(name: String) {
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+@Model
+class CategoryGroup: EntityGroup {
+    @Attribute(.unique) var name: String
+    
+    required init(name: String) {
         self.name = name
     }
 }

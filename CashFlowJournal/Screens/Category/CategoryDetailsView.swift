@@ -16,9 +16,17 @@ struct CategoryDetailsView: View {
         ZStack(alignment: .top) {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 12) {
+            VStack(alignment: .leading) {
+                if let group = category.group {
+                    Text(group.name)
+                        .modifier(UrbanistFont(.regular, size: 18))
+                        .foregroundColor(Color.gray)
+                        .padding(.horizontal)
+                }
+                
                 Group {
                     Text("Total expense:\n" + Formatter.shared.format(category.transactions.reduce(0) {$0 + $1.amount }))
+                        .frame(maxWidth: .infinity, alignment: .center)
                         .modifier(UrbanistFont(.regular, size: 24))
                         .foregroundColor(Color.text_color)
                         .multilineTextAlignment(.center)
@@ -31,13 +39,19 @@ struct CategoryDetailsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
-                .padding(.horizontal, 12)
+                .padding(.horizontal)
                 
                 TransactionsList(transactions: category.transactions.filter(period: selectedPeriod))
             }
         }
         .navigationTitle(category.name)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            NavigationLink { CategoryEditView(category: category) } label: {
+                Image(systemName: "gearshape")
+                    .foregroundStyle(Color.primary_color)
+            }
+        }
     }
 }
 

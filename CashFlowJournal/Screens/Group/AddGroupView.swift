@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct AddGroupView: View {
+typealias EntityGroupModel = EntityGroup & PersistentModel
+
+struct AddGroupView<T: EntityGroupModel>: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @Bindable private var group = EntityGroup(name: "")
+    @Bindable private var group: T
+    
+    init() {
+        self.group = T(name: "")
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -56,7 +63,7 @@ struct AddGroupView: View {
         let previewer = try Previewer()
         
         return NavigationView {
-            AddGroupView()
+            AddGroupView<AccountGroup>()
                 .modelContainer(previewer.container)
         }
     } catch {

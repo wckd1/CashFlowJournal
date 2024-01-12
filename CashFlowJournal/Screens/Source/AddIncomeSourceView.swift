@@ -45,7 +45,7 @@ struct AddIncomeSourceView: View {
                     isIconPickerPresented.toggle()
                 }
                 .sheet(isPresented: $isIconPickerPresented, content: {
-                    IconPicker(selection: $source.icon)
+                    IconPickerModalView(selection: $source.icon)
                 })
                 
                 Spacer()

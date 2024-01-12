@@ -18,6 +18,6 @@ struct CashFlowJournalApp: App {
                 .preferredColorScheme(colorScheme)
                 .tint(Color.primary_color)
         }
-        .modelContainer(for: [Account.self, Transaction.self, Source.self, Category.self, EntityGroup.self])
+        .modelContainer(for: [Account.self, Transaction.self, Source.self, Category.self, AccountGroup.self, CategoryGroup.self])
     }
 }
