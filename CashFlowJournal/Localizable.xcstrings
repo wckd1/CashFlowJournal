@@ -631,17 +631,6 @@
         }
       }
     },
-    "picker_last30days" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 30 days"
-          }
-        }
-      }
-    },
     "picker_month" : {
       "extractionState" : "manual",
       "localizations" : {

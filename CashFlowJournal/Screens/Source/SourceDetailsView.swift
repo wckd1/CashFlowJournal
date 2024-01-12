@@ -25,7 +25,7 @@ struct SourceDetailsView: View {
                         .padding(.vertical, 24)
                     
                     Picker("picker_period_hint", selection: $selectedPeriod) {
-                        ForEach(PeriodFilter.incomeCases , id: \.self) {
+                        ForEach(PeriodFilter.allCases , id: \.self) {
                             Text($0.title).tag($0)
                         }
                     }
