@@ -1,5 +1,5 @@
 //
-//  BalanceView.swift
+//  DashboardBalanceView.swift
 //  CashFlowJournal
 //
 //  Created by Роман Коробейников on 04.01.2024.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct BalanceView: View {
+struct DashboardBalanceView: View {
     @Environment(\.modelContext) var modelContext
     @Query private var accounts: [Account]
     @State private var isAccountsShown = false
@@ -61,7 +61,7 @@ struct BalanceView: View {
     do {
         let previewer = try Previewer()
         
-        return BalanceView()
+        return DashboardBalanceView()
             .modelContainer(previewer.container)
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")

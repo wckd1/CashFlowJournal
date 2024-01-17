@@ -24,7 +24,7 @@ struct DashboardView: View {
                 
                 VStack(spacing: 0) {
                     // Balance
-                    BalanceView()
+                    DashboardBalanceView()
                         .padding(.horizontal, 12)
                     
                     // Transactions
@@ -39,22 +39,30 @@ struct DashboardView: View {
                     }
                 }
                 .padding(.vertical, 12)
-                
-                NavigationLink(destination: TransactionAddView()) {
-                    Text("add_transaction")
-                        .foregroundStyle(Color.text_color)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("dashboard_greeting \(username)")
+                        .modifier(UrbanistFont(.regular, size: 18))
+                        .foregroundColor(Color.text_color)
                 }
-                .buttonStyle(.plain)
-                .padding(.vertical, 12)
-                .padding(.horizontal, 18)
-                .background(Color.primary_color)
-                .cornerRadius(6)
-                .padding(.trailing, 18)
-                .padding(.bottom, 12)
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        TransactionAddView()
+                    } label: {
+                        Image(systemName: "plus")
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.white)
+                            .background(Color.primary_color.gradient, in: .circle)
+                            .contentShape(.circle)
+                    }
+                }
             }
         }
     }
 }
+
 
 #Preview {
     do {
