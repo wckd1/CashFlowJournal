@@ -13,7 +13,7 @@ class Account {
     var name: String = ""
     var balance: Float = 0.0
     var color: String
-    @Relationship(inverse: \Transaction.account) var transactions: [Transaction] = [Transaction]()
+    @Relationship var transactions: [Transaction] = [Transaction]()
     @Relationship var group: AccountGroup?
     
     init(name: String, balance: Float = 0, color: String, group: AccountGroup? = nil) {

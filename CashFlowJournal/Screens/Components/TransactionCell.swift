@@ -24,9 +24,21 @@ struct TransactionCell: View {
                     .background(Color(hex: transaction.category!.color))
                     .cornerRadius(12)
             case .transfer:
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(hex: transaction.account!.color))
-                    .frame(width: 42, height: 42)
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(hex: transaction.originAccount!.color))
+                        .frame(width: 42, height: 42)
+                    
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(hex: transaction.account!.color))
+                        .frame(width: 42, height: 42)
+                        .padding(1)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.bg_color, lineWidth: 2)
+                        )
+                        .padding(.leading, 21)
+                }
             }
             
             HStack(alignment: .center, spacing: 12) {

@@ -200,23 +200,23 @@ struct TransactionAddView: View {
                 switch transaction.type {
                 case .income:
                     // Update source's transactions
-                    selectedSource?.transactions.append(transaction)
+                    selectedSource!.transactions.append(transaction)
                     // Update account balance
-                    originAccount?.balance += transaction.amount
+                    originAccount!.balance += transaction.amount
                 case .expense:
                     // Update category's transactions
-                    selectedCategory?.transactions.append(transaction)
+                    selectedCategory!.transactions.append(transaction)
                     // Update account balance
-                    originAccount?.balance -= transaction.amount
+                    originAccount!.balance -= transaction.amount
                 case .transfer:
                     // Update accounts transactions
-                    selectedAccount?.transactions.append(transaction)
+                    selectedAccount!.transactions.append(transaction)
                     // Update account balance
-                    selectedAccount?.balance += transaction.amount
-                    originAccount?.balance -= transaction.amount
+                    selectedAccount!.balance += transaction.amount
+                    originAccount!.balance -= transaction.amount
                 }
                 
-                originAccount?.transactions.append(transaction)
+                originAccount!.transactions.append(transaction)
             }
             
             modelContext.processPendingChanges()
