@@ -52,30 +52,6 @@ struct DashboardView: View {
                 .padding(.trailing, 18)
                 .padding(.bottom, 12)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Text("dashboard_greeting \(username)")
-                        .modifier(UrbanistFont(.regular, size: 18))
-                        .foregroundColor(Color.text_color)
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu("dashboard_manage_menu", systemImage: "squares.leading.rectangle") {
-                        NavigationLink(destination: AccountsView()) {
-                            Text("dashboard_accounts")
-                        }
-                        .buttonStyle(.plain)
-                        NavigationLink(destination: SourcesView()) {
-                            Text("dashboard_sources")
-                        }
-                        .buttonStyle(.plain)
-                        NavigationLink(destination: CategoriesView()) {
-                            Text("dashboard_categories")
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-            }
         }
     }
 }

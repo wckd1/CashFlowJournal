@@ -19,6 +19,10 @@ struct AppTabView: View {
             DashboardView()
                 .tag(SectionTab.dashboard)
                 .tabItem { SectionTab.dashboard.tabContent }
+            
+            SettingsView()
+                .tag(SectionTab.settings)
+                .tabItem { SectionTab.settings.tabContent }
         }
         .sheet(isPresented: !$isOnboarded) {
             OnboardingView()
