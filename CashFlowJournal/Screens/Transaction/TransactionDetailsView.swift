@@ -15,15 +15,18 @@ struct TransactionDetailsView: View {
             Color.bg_color.edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading, spacing: 18) {
+                // Date
                 Text(transaction.date.formatted(date: .long, time: .shortened))
                     .modifier(UrbanistFont(.regular, size: 18))
                     .foregroundColor(Color.gray)
                 
+                // Amount
                 Text(Formatter.shared.format(transaction.amount))
                     .modifier(UrbanistFont(.regular, size: 30))
                     .foregroundColor(transaction.type.color)
                     .multilineTextAlignment(.leading)
                 
+                // Origin account
                 LabeledContent("origin_account") {
                     NavigationLink {
                         AccountDetailsView(account: transaction.originAccount!)
@@ -40,6 +43,7 @@ struct TransactionDetailsView: View {
                 }
                 
                 switch transaction.type {
+                // Income source
                 case .income:
                     LabeledContent("income_source") {
                         NavigationLink {
@@ -55,6 +59,7 @@ struct TransactionDetailsView: View {
                                 .foregroundStyle(Color.text_color)
                         }
                     }
+                // Expense category
                 case .expense:
                     LabeledContent("expense_category") {
                         NavigationLink {
@@ -71,6 +76,7 @@ struct TransactionDetailsView: View {
                         }
                     }
                 // TODO: Origin account showed instead of destination
+                // Detination account
                 case .transfer:
                     LabeledContent("target_account") {
                         NavigationLink {
