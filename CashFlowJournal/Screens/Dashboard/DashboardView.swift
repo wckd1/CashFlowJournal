@@ -50,6 +50,7 @@ struct DashboardView: View {
                 .background(Color.primary_color)
                 .cornerRadius(6)
                 .padding(.trailing, 18)
+                .padding(.bottom, 12)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

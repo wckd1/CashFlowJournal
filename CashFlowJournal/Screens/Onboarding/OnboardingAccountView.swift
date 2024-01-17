@@ -14,7 +14,6 @@ struct OnboardingAccountView: View {
     
     var body: some View {
         NavigationStack {
-            
             ZStack {
                 Color.bg_color.edgesIgnoringSafeArea(.all)
                 

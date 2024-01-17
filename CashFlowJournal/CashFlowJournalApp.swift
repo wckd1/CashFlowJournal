@@ -14,7 +14,7 @@ struct CashFlowJournalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            AppTabView()
                 .preferredColorScheme(colorScheme)
                 .tint(Color.primary_color)
         }
