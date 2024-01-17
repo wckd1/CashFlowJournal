@@ -10,7 +10,7 @@ import SwiftUI
 extension Color {
     static let bg_color = Color("CashFlowBackground")
     static let primary_color = Color("CashFlowPrimary")
-    static let text_color = Color("CashFlowTextColor")
+    static let text_color = Color("CashFlowText")
     static let income_color = Color("CashFlowPrimary")
     static let expense_color = Color("CashFlowRed")
     static let error_color = Color("CashFlowRed")

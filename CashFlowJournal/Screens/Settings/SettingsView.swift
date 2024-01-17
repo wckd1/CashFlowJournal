@@ -21,14 +21,12 @@ struct SettingsView: View {
                         .modifier(UrbanistFont(.regular, size: 24))
                         .foregroundStyle(Color.text_color)
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 18) {
                         NavigationLink {
                             AccountsView()
                         } label: {
                             HStack(alignment: .center, spacing: 12) {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.primary_color)
-                                    .frame(width: 30, height: 30)
+                                Text("🏦")
                                 
                                 Text("dashboard_accounts")
                                     .modifier(UrbanistFont(.regular, size: 18))
@@ -40,9 +38,7 @@ struct SettingsView: View {
                             SourcesView()
                         } label: {
                             HStack(alignment: .center, spacing: 12) {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.primary_color)
-                                    .frame(width: 30, height: 30)
+                                Text("💸")
                                 
                                 Text("dashboard_sources")
                                     .modifier(UrbanistFont(.regular, size: 18))
@@ -54,9 +50,7 @@ struct SettingsView: View {
                             CategoriesView()
                         } label: {
                             HStack(alignment: .center, spacing: 12) {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.primary_color)
-                                    .frame(width: 30, height: 30)
+                                Text("🏷️")
                                 
                                 Text("dashboard_categories")
                                     .modifier(UrbanistFont(.regular, size: 18))

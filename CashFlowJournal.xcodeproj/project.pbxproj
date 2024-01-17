@@ -339,14 +339,14 @@
 			isa = PBXGroup;
 			children = (
 				4E63DB352B58208400010AED /* AppTabView.swift */,
-				4E63DB392B5823D900010AED /* Settings */,
 				4E3645902B4FF35A00AE6278 /* Components */,
 				4E6DACFF2B3EF57F00EB61E0 /* Dashboard */,
+				4E63DB392B5823D900010AED /* Settings */,
 				4E94B5AD2B484ACA006119DE /* Account */,
 				4E25BA832B45AE6B007E2953 /* Source */,
 				4E5AE3F62B470A0A00CBCB29 /* Category */,
-				4E3577A92B46EBFC00D2AACE /* Transaction */,
 				4E3645952B503E2B00AE6278 /* Group */,
+				4E3577A92B46EBFC00D2AACE /* Transaction */,
 				4E6531C82B3DBCC300FF4811 /* Onboarding */,
 			);
 			path = Screens;
